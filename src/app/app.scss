@@ -1,0 +1,18 @@
+body{
+    color: black; 
+    .MusicBoxContainer{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .MusicBox {
+            flex: 0 1 calc(33.333% - 10px);
+            margin: 5px;
+            background: white; 
+            .MusicBoxHeader{
+    
+            }
+        }
+    }
+  
+}
