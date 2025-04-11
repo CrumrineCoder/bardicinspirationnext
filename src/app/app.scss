@@ -4,12 +4,15 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-
+    gap: 10px; 
+    margin: 10px; 
     .MusicBox {
-      flex: 0 1 calc(33.333% - 10px);
+      flex: 0 1 calc(33.333% - 20px);
       margin: 5px;
       background: white;
+      text-align: center; 
       .MusicBoxHeader {
+        font-size: 1.2em; 
       }
       .youtubeWrapper {
         display: flex;
