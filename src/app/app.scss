@@ -6,11 +6,20 @@ body{
         justify-content: space-between;
 
         .MusicBox {
-            flex: 0 1 calc(33.333% - 10px);
+            flex: 1 1 calc(33.333% - 10px);
             margin: 5px;
             background: white; 
             .MusicBoxHeader{
     
+            }
+            .youtubeWrapper{
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                iframe{
+                    aspect-ratio: 16 / 9;
+    width: 100% !important;
+                }
             }
         }
     }
