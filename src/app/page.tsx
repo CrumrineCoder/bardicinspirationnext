@@ -12,6 +12,7 @@ export default function Home() {
           songName={song.songName}
           tags={song.tags}
           link={song.link}
+          artist={song.artist}
         />
       ))}
     </div>
