@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    email TEXT UNIQUE NOT NULL
+);
 
-First, run the development server:
+CREATE TABLE songs (
+    id SERIAL PRIMARY KEY,
+    artist_name TEXT NOT NULL,
+    song_name TEXT NOT NULL,
+    youtube_link TEXT
+);
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+CREATE TABLE tags (
+    id SERIAL PRIMARY KEY,
+    name TEXT UNIQUE NOT NULL
+);
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+CREATE TABLE song_tags (
+    id SERIAL PRIMARY KEY,
+    song_id INTEGER REFERENCES songs(id) ON DELETE CASCADE,
+    tag_id INTEGER REFERENCES tags(id) ON DELETE CASCADE,
+    UNIQUE(song_id, tag_id)  -- optional, avoid duplicate tags
+);
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+CREATE TABLE tag_votes (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+    song_tag_id INTEGER REFERENCES song_tags(id) ON DELETE CASCADE,
+    UNIQUE(user_id, song_tag_id)  -- one vote per user per tag per song
+);
