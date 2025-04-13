@@ -47,12 +47,11 @@ export default function Home() {
         console.log("reducedCurrentSongsTagsIDs");
         console.log(reducedCurrentSongsTagsIDs);
 
-        const currentSongsTags = tags.filter((taglisting) =>
+        const currentTags = tags.filter((taglisting) =>
           reducedCurrentSongsTagsIDs.includes(taglisting.id)
         );
 
-        console.log("currentSongsTags");
-        console.log(currentSongsTags);
+        const currentTagNames = currentTags.map(({name}) => name)
 
         if (currentTag) {
           // Reduce the SongTagIds to only include SongTags with the name of the currentTag
@@ -60,7 +59,9 @@ export default function Home() {
         //We can just move on if there's no tag
         // From each TagID, get the name of the Tag.
 
-        return <div className="song" key={index}></div>;
+        return <div className="song" key={index}>
+          {currentTagNames}
+        </div>;
       })}
     </div>
   );
