@@ -13,7 +13,7 @@ import { useState } from "react";
 import "./app.scss";
 
 export default function Home() {
-  const [currentTag, setCurrentTag] = useState();
+  const [currentTag] = useState();
   // To be replaced with JWT? logic for getting the actual user
   /*  const [currentUser, setCurrentUser] = useState<{ id: number; email: string; userName: string } | null>(null);
   useEffect(() => {
