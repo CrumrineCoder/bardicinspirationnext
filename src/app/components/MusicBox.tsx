@@ -7,6 +7,7 @@ interface MusicBoxProps {
   tags: string[];
   link: string;
   artist: string;
+  // Probably won't pass down the user like this in the final rendition of project, just for dummy data
   user: {
     id: number;
     userName: string;
@@ -14,6 +15,7 @@ interface MusicBoxProps {
   } | null;
 }
 
+// The options for the YouTube player
 const options = {
   playerVars: {
     autoplay: 1,
@@ -21,6 +23,7 @@ const options = {
   },
 };
 
+// Will remove user probably? 
 function MusicBox ({songName, tags, link, artist, user}: MusicBoxProps) {
   return (
     <div className="MusicBox">
