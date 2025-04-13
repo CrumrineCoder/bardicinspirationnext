@@ -26,12 +26,7 @@ const options = {
   },
 };
 
-const MusicBox: React.FC<MusicBoxProps> = ({
-  songName,
-  tags,
-  link,
-  artist,
-}) => {
+function MusicBox ({songName, tags, link, artist, user, setUser}: MusicBoxProps) {
   return (
     <div className="MusicBox">
       <h2 className="MusicBoxHeader">

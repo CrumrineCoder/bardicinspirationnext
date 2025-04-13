@@ -1,3 +1,4 @@
+'use client';
 import MusicBox from "./components/MusicBox";
 import songs from "./fakeDB/songs";
 import { useState } from "react";
