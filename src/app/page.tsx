@@ -1,16 +1,17 @@
 'use client';
 import MusicBox from "./components/MusicBox";
 import songs from "./fakeDB/songs";
-import { useState } from "react";
+import users from "./fakeDB/user";
+import { useState, useEffect } from "react";
 
 import "./app.scss";
 
+
 export default function Home() {
-  const [dummyUser, setDummyUser] = useState({
-    id: 1,
-    name: "John Doe",
-    email: "johndoe@example.com",
-  });
+  const [currentUser, setCurrentUser] = useState<{ id: number; email: string; userName: string } | null>(null);
+  useEffect(() => {
+    setCurrentUser(users[0]);
+  }, []);
   return (
     <div className="MusicBoxContainer">
       {songs.map((song, index) => (
@@ -20,8 +21,7 @@ export default function Home() {
           tags={song.tags}
           link={song.link}
           artist={song.artist}
-          user={dummyUser}
-          setUser={setDummyUser}
+          user={currentUser}
         />
       ))}
     </div>

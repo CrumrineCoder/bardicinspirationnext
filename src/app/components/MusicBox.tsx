@@ -9,14 +9,9 @@ interface MusicBoxProps {
   artist: string;
   user: {
     id: number;
-    name: string;
+    userName: string;
     email: string;
-  };
-  setUser: React.Dispatch<React.SetStateAction<{
-    id: number;
-    name: string;
-    email: string;
-  }>>;
+  } | null;
 }
 
 const options = {
@@ -26,7 +21,7 @@ const options = {
   },
 };
 
-function MusicBox ({songName, tags, link, artist, user, setUser}: MusicBoxProps) {
+function MusicBox ({songName, tags, link, artist, user}: MusicBoxProps) {
   return (
     <div className="MusicBox">
       <h2 className="MusicBoxHeader">
@@ -39,6 +34,15 @@ function MusicBox ({songName, tags, link, artist, user, setUser}: MusicBoxProps)
         {tags.map((tag, index) => (
           <span className="tag" key={index}>
             {tag}
+            {user && (
+              <button
+                onClick={() => {
+                  
+                }}
+              >
+                Agree
+              </button>
+            )}
           </span>
         ))}
       </div>
