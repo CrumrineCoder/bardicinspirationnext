@@ -29,7 +29,7 @@ export default function Home() {
     <div className="MusicBoxContainer">
       {songData.map((song, index) => {
         // Get all SongTags (relational map) for currently visible Songs. Will not include songs that are not visible (Deleted songs on initial load)
-        const SongTagsIDs = songTags;
+        const SongTagsIDs = songTags.filter((songTag) => songTag.songId === song.id);
         if(currentTag){
           // Reduce the SongTagIds to only include SongTags with the name of the currentTag
         }
