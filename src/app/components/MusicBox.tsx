@@ -7,6 +7,16 @@ interface MusicBoxProps {
   tags: string[];
   link: string;
   artist: string;
+  user: {
+    id: number;
+    name: string;
+    email: string;
+  };
+  setUser: React.Dispatch<React.SetStateAction<{
+    id: number;
+    name: string;
+    email: string;
+  }>>;
 }
 
 const options = {
@@ -37,6 +47,7 @@ const MusicBox: React.FC<MusicBoxProps> = ({
           </span>
         ))}
       </div>
+      <input></input>
     </div>
   );
 };
