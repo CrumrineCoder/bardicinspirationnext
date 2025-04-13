@@ -1,4 +1,4 @@
-'use client';
+"use client";
 //import MusicBox from "./components/MusicBox";
 
 //import songs from "./fakeDB/songs";
@@ -8,17 +8,14 @@ import songData from "./fakeDB/songData";
 import tags from "./fakeDB/tags";
 import songTags from "./fakeDB/songTags";
 
-
-
 import { useState } from "react";
 //useEffect
 import "./app.scss";
 
-
 export default function Home() {
-  const [currentTag, setCurrentTag] = useState(); 
-  // To be replaced with JWT? logic for getting the actual user 
-/*  const [currentUser, setCurrentUser] = useState<{ id: number; email: string; userName: string } | null>(null);
+  const [currentTag, setCurrentTag] = useState();
+  // To be replaced with JWT? logic for getting the actual user
+  /*  const [currentUser, setCurrentUser] = useState<{ id: number; email: string; userName: string } | null>(null);
   useEffect(() => {
     setCurrentUser(users[0]);
   }, []);
@@ -29,28 +26,42 @@ export default function Home() {
     <div className="MusicBoxContainer">
       {songData.map((song, index) => {
         // Get all SongTags (relational map) for currently visible Songs. Will not include songs that are not visible (Deleted songs on initial load)
-        const SongTagsIDs = songTags.filter((songTag) => songTag.songId === song.id);
+        const SongTagsIDs = songTags.filter(
+          (songTag) => songTag.songId === song.id
+        );
         console.log("SongTags");
         console.log(SongTagsIDs);
-        if(currentTag){
+
+        // Using the SongTags relational map, get all Tag IDs
+        const currentSongsTagIDs = SongTagsIDs.map((SongTags) => ({
+          tagID: SongTags.tagId,
+        }));
+
+        console.log("currentSongsTagIDs");
+        console.log(currentSongsTagIDs);
+
+        const reducedCurrentSongsTagsIDs = currentSongsTagIDs.map(
+          ({ tagID }) => tagID
+        );
+
+        console.log("reducedCurrentSongsTagsIDs");
+        console.log(reducedCurrentSongsTagsIDs);
+
+        const currentSongsTags = tags.filter((taglisting) =>
+          reducedCurrentSongsTagsIDs.includes(taglisting.id)
+        );
+
+        console.log("currentSongsTags");
+        console.log(currentSongsTags);
+
+        if (currentTag) {
           // Reduce the SongTagIds to only include SongTags with the name of the currentTag
         }
         //We can just move on if there's no tag
-        const currentSongsTagIDs = SongTagsIDs.map (SongTags => ({tagID: SongTags.tagId}));
-        console.log("currentSongsTagIDs");
-        console.log(currentSongsTagIDs);
-        // Using the SongTags relational map, get all Tag IDs
-        
-        // From each TagID, get the name of the Tag. 
+        // From each TagID, get the name of the Tag.
 
-
-        return (
-          <div className="song" key={index}>
-         
-          </div>
-        );
+        return <div className="song" key={index}></div>;
       })}
- 
     </div>
   );
 }
