@@ -25,8 +25,6 @@ const options = {
 
 // Will remove user probably? 
 function MusicBox ({songName, tags, link, artist, user}: MusicBoxProps) {
-
-  console.log(tags);
   return (
     <div className="MusicBox">
       <h2 className="MusicBoxHeader">
