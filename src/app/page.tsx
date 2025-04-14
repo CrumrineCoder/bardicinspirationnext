@@ -1,8 +1,10 @@
 'use client';
 import MusicBox from "./components/MusicBox";
+import { getDBVersion } from "./db";
+/*
 import Form from "./components/fakeForm";
 import UploadForm from "./components/fakeUploadForm";
-
+*/
 //import songs from "./fakeDB/songs";
 
 import songData from "./fakeDB/songData";
@@ -32,10 +34,12 @@ export default function Home() {
   }, []);
   */
   //
-
+  getDBVersion().then(({ version }) => {
+    console.log({ version });
+  });
   return (
     <>
-      <Form></Form>
+      
       <button onClick={() => setUser(users[0])}>Login</button>
       <br />
       <button onClick={() => setUser(null)}>Logout</button>
