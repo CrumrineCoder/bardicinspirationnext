@@ -36,8 +36,7 @@ export default function Home() {
   
   return (
     <>
-     <Form></Form>
-     <UploadForm></UploadForm>
+  
       <button onClick={() => setUser(users[0])}>Login</button>
       <br />
       <button onClick={() => setUser(null)}>Logout</button>

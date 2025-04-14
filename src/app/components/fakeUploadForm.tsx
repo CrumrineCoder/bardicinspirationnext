@@ -3,7 +3,6 @@ import postgres from "postgres";
 
 export default async function UploadForm() {
   async function create(formData: FormData) {
-    "use server";
     if (process.env.DATABASE_URL) {
       const sql = postgres(process.env.DATABASE_URL, { ssl: "require" });
       await sql`CREATE TABLE IF NOT EXISTS comments (comment TEXT)`;
