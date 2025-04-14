@@ -1,4 +1,4 @@
-
+"use server";
 import postgres from "postgres";
 
 async function getData() {
