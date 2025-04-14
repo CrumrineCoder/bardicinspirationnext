@@ -1,5 +1,6 @@
-"use server";
+"use client";
 import postgres from "postgres";
+/*
 
 async function getData() {
   if (process.env.DATABASE_URL) {
@@ -8,8 +9,8 @@ async function getData() {
     return response[0].version;
   }
 }
+  */
 
-export default async function Form(){
-    const data = await getData();
-    return <>{data}</>;
+export default  function Form(){
+    return <>hi</>;
 }

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import MusicBox from "./components/MusicBox";
 import Form from "./components/fakeForm";
 import UploadForm from "./components/fakeUploadForm";
@@ -22,7 +22,6 @@ interface User {
   userName: string;
 }
 
-
 export default function Home() {
   //const [currentTag] = useState();
   const [user, setUser] = useState<User | null>(null);
@@ -33,10 +32,10 @@ export default function Home() {
   }, []);
   */
   //
-  
+
   return (
     <>
-  
+      <Form></Form>
       <button onClick={() => setUser(users[0])}>Login</button>
       <br />
       <button onClick={() => setUser(null)}>Logout</button>
