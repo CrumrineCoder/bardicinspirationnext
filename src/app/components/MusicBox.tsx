@@ -8,11 +8,13 @@ interface MusicBoxProps {
   link: string;
   artist: string;
   // Probably won't pass down the user like this in the final rendition of project, just for dummy data
+  /*
   user: {
     id: number;
     userName: string;
     email: string;
   } | null;
+  */ 
 }
 
 // The options for the YouTube player
@@ -24,7 +26,7 @@ const options = {
 };
 
 // Will remove user probably? 
-function MusicBox ({songName, tags, link, artist, user}: MusicBoxProps) {
+function MusicBox ({songName, tags, link, artist}: MusicBoxProps) {
   return (
     <div className="MusicBox">
       <h2 className="MusicBoxHeader">
@@ -37,15 +39,7 @@ function MusicBox ({songName, tags, link, artist, user}: MusicBoxProps) {
         {tags && tags.map((tag, index) => (
           <span className="tag" key={index}>
             {tag}
-            {user && (
-              <button
-                onClick={() => {
-                  
-                }}
-              >
-                Agree
-              </button>
-            )}
+          
           </span>
         ))}
       </div>
@@ -55,3 +49,15 @@ function MusicBox ({songName, tags, link, artist, user}: MusicBoxProps) {
 };
 
 export default MusicBox;
+
+/*
+  {user && (
+              <button
+                onClick={() => {
+                  
+                }}
+              >
+                Agree
+              </button>
+            )}
+              */

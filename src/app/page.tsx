@@ -3,10 +3,13 @@ import MusicBox from "./components/MusicBox";
 
 //import songs from "./fakeDB/songs";
 
-//import users from "./fakeDB/user";
+
 import songData from "./fakeDB/songData";
 import tags from "./fakeDB/tags";
 import songTags from "./fakeDB/songTags";
+
+import users from "./fakeDB/user";
+import tagVotes from "./fakeDB/tagVotes";
 
 import { useState } from "react";
 //useEffect
@@ -14,7 +17,7 @@ import "./app.scss";
 
 export default function Home() {
   //const [currentTag] = useState();
-  const [currentUser] = useState(null);
+  const [currentUserID] = useState(null);
   // To be replaced with JWT? logic for getting the actual user
   /*  const [currentUser, setCurrentUser] = useState<{ id: number; email: string; userName: string } | null>(null);
   useEffect(() => {
@@ -68,7 +71,11 @@ export default function Home() {
           ({ id }) => id
         );
         // [ 1, 2, 3 ]
-        // [ 4 ]
+        // [ 4 ] (It always scales up, unlike the tags, because they're all unique IDs. not to say that it will be 1 2 3 4, but to show different answers as compared to tags).
+
+        // Search for tagVotes by the reduced CurrentSongTagsIDs (songTagID)
+
+        // For returned tagVotes, return the userIDs so that we have the people who voted on the tags below. 
 
         return (
           <div className="song" key={index}>
@@ -78,7 +85,6 @@ export default function Home() {
               link={song.link}
               tags={currentTagNames}
               artist={song.artist}
-              user={currentUser}
             />
           </div>
         );
@@ -86,9 +92,3 @@ export default function Home() {
     </div>
   );
 }
-/*
-  
-{songs.map((song, index) => (
-       
-      ))}
-      */
