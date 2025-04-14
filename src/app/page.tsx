@@ -104,21 +104,21 @@ export default function Home() {
           // Find the SongTags entry for this tag
           const songTag = SongTagsIDs.find((songTag) => songTag.tagId === tag.id);
           // { id: 1, songId: 1, tagId: 1 }
-          console.log ("tag: ");
-          console.log(tag);
-          console.log("songTags: ");
-          console.log(songTag);
+
           // Find all votes for this SongTag
-          const voters = currentTagVotes
+          const voterIDs = currentTagVotes
             .filter((tagVote) => tagVote.songTag === songTag?.id)
             .map((tagVote) => tagVote.userID);
 
+          // Loop over each VoterID, and for each one search for the first user which has the same ID (should only be 1 per the DB, and then return its email)
+          const voterNames = voterIDs.map((voter) => users.find(user => user.id === voter)?.email)
+   
           return {
             tagName: tag.name,
-            voters: voters,
+            voters: voterNames,
           };
         });
-        console.log(tagsWithVoters);
+       // console.log(tagsWithVoters);
 
         // const currentTagVotes = tagVotes.filter((tagVote) => tagVote.includes(reducedCurrentSongsTagsIDs)).
 
