@@ -5,14 +5,16 @@ import YouTube from "react-youtube";
 interface MusicBoxProps {
   songName: string;
   // tags: string[] | null;
-  tags: {
-    tagName: string;
-    voters: {
-      id: number;
-      email: string;
-      userName: string;
-    }[];
-  }[] | null;
+  tags:
+    | {
+        tagName: string;
+        voters: {
+          id: number;
+          email: string;
+          userName: string;
+        }[];
+      }[]
+    | null;
   link: string;
   artist: string;
   // Probably won't pass down the user like this in the final rendition of project, just for dummy data
@@ -45,7 +47,12 @@ function MusicBox({ songName, tags, link, artist }: MusicBoxProps) {
         <YouTube videoId={link} opts={options} />
       </div>
       <div className="tagWrapper">
-      
+        {tags &&
+          tags.map((tag, index) => (
+            <span className="tag" key={index}>
+              {tag.tagName}
+            </span>
+          ))}
       </div>
       <input></input>
     </div>
@@ -53,14 +60,7 @@ function MusicBox({ songName, tags, link, artist }: MusicBoxProps) {
 }
 
 export default MusicBox;
-/*
-  {tags &&
-          tags.map((tag, index) => (
-            <span className="tag" key={index}>
-              {tag.tagName}
-            </span>
-          ))}
-            */
+
 /*
   {user && (
               <button

@@ -119,7 +119,8 @@ export default function Home() {
 
             // Loop over each VoterID, and for each one search for the first user which has the same ID (should only be 1 per the DB, and then return its email)
             const voters = voterIDs
-              .map((voter) => users.find((user) => user.id === voter));
+              .map((voter) => users.find((user) => user.id === voter))
+              .filter((voter): voter is { id: number; email: string; userName: string } => voter !== undefined);
             /*
             ?.email)
               .filter((email): email is string => email !== undefined);
