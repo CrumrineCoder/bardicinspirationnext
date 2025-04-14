@@ -4,7 +4,11 @@ import YouTube from "react-youtube";
 
 interface MusicBoxProps {
   songName: string;
-  tags: string[] | null;
+  // tags: string[] | null;
+  tags: {
+    tagName: string;
+    voters: string[];
+  }[];
   link: string;
   artist: string;
   // Probably won't pass down the user like this in the final rendition of project, just for dummy data
@@ -14,7 +18,7 @@ interface MusicBoxProps {
     userName: string;
     email: string;
   } | null;
-  */ 
+  */
 }
 
 // The options for the YouTube player
@@ -25,8 +29,9 @@ const options = {
   },
 };
 
-// Will remove user probably? 
-function MusicBox ({songName, tags, link, artist}: MusicBoxProps) {
+// Will remove user probably?
+function MusicBox({ songName, tags, link, artist }: MusicBoxProps) {
+  console.log(tags);
   return (
     <div className="MusicBox">
       <h2 className="MusicBoxHeader">
@@ -36,20 +41,19 @@ function MusicBox ({songName, tags, link, artist}: MusicBoxProps) {
         <YouTube videoId={link} opts={options} />
       </div>
       <div className="tagWrapper">
-        {tags && tags.map((tag, index) => (
-          <span className="tag" key={index}>
-            {tag}
-          
-          </span>
-        ))}
+        {tags &&
+          tags.map((tag, index) => (
+            <span className="tag" key={index}>
+              {tag.tagName}
+            </span>
+          ))}
       </div>
       <input></input>
     </div>
   );
-};
+}
 
 export default MusicBox;
-
 /*
   {user && (
               <button

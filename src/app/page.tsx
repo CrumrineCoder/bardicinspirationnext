@@ -65,7 +65,8 @@ export default function Home() {
         */
 
         // From each TagID, get the name of the Tag.
-        const currentTagNames = currentTags.map(({ name }) => name);
+        // Deprecated: we get the currentTagNames when looping through SongTags
+        // const currentTagNames = currentTags.map(({ name }) => name);
         // [ 'calm', 'melancholic', 'piano' ]
 
         const reducedCurrentSongsTagsIDs = SongTagsIDs.map(
@@ -111,14 +112,16 @@ export default function Home() {
             .map((tagVote) => tagVote.userID);
 
           // Loop over each VoterID, and for each one search for the first user which has the same ID (should only be 1 per the DB, and then return its email)
-          const voterNames = voterIDs.map((voter) => users.find(user => user.id === voter)?.email)
+          const voterNames = voterIDs
+            .map((voter) => users.find(user => user.id === voter)?.email)
+            .filter((email): email is string => email !== undefined);
    
           return {
             tagName: tag.name,
             voters: voterNames,
           };
         });
-       // console.log(tagsWithVoters);
+ 
 
         // const currentTagVotes = tagVotes.filter((tagVote) => tagVote.includes(reducedCurrentSongsTagsIDs)).
 
@@ -130,7 +133,7 @@ export default function Home() {
               key={index}
               songName={song.songName}
               link={song.link}
-              tags={currentTagNames}
+              tags={tagsWithVoters}
               artist={song.artist}
             />
           </div>
