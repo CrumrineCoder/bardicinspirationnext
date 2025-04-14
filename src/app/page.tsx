@@ -14,9 +14,15 @@ import { useState } from "react";
 //useEffect
 import "./app.scss";
 
+interface User {
+  id: number, 
+  email: string, 
+  userName: string
+}
+
 export default function Home() {
   //const [currentTag] = useState();
-  const [currentUserID, setCurrentUserID] = useState<number | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   // To be replaced with JWT? logic for getting the actual user
   /*  const [currentUser, setCurrentUser] = useState<{ id: number; email: string; userName: string } | null>(null);
   useEffect(() => {
@@ -28,11 +34,11 @@ export default function Home() {
   return (
     <>
 
-    <button onClick={() => setCurrentUserID(1)}>Login</button>
+    <button onClick={() => setUser(users[0])}>Login</button>
     <br />
-    <button onClick={() => setCurrentUserID(null)}>Logout</button>
+    <button onClick={() => setUser(null)}>Logout</button>
     <br />
-    Current User:{""}{currentUserID}
+    Current User:{""}{user && user.userName}
       <div className="MusicBoxContainer">
         {songData.map((song, index) => {
           // This is logic for getting the current tags for the song.
@@ -140,7 +146,7 @@ export default function Home() {
                 link={song.link}
                 tags={tagsWithVoters}
                 artist={song.artist}
-                userID = {currentUserID}
+                user = {user}
               />
             </div>
           );
