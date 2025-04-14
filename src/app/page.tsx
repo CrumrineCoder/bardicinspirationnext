@@ -1,5 +1,6 @@
 "use client";
 import MusicBox from "./components/MusicBox";
+import Form from "./components/fakeForm";
 
 //import songs from "./fakeDB/songs";
 
@@ -15,10 +16,11 @@ import { useState } from "react";
 import "./app.scss";
 
 interface User {
-  id: number, 
-  email: string, 
-  userName: string
+  id: number;
+  email: string;
+  userName: string;
 }
+
 
 export default function Home() {
   //const [currentTag] = useState();
@@ -30,15 +32,16 @@ export default function Home() {
   }, []);
   */
   //
-
+  
   return (
     <>
-
-    <button onClick={() => setUser(users[0])}>Login</button>
-    <br />
-    <button onClick={() => setUser(null)}>Logout</button>
-    <br />
-    Current User:{""}{user && user.userName}
+     <Form></Form>
+      <button onClick={() => setUser(users[0])}>Login</button>
+      <br />
+      <button onClick={() => setUser(null)}>Logout</button>
+      <br />
+      Current User:{""}
+      {user && user.userName}
       <div className="MusicBoxContainer">
         {songData.map((song, index) => {
           // This is logic for getting the current tags for the song.
@@ -126,7 +129,12 @@ export default function Home() {
             // Loop over each VoterID, and for each one search for the first user which has the same ID (should only be 1 per the DB, and then return its email)
             const voters = voterIDs
               .map((voter) => users.find((user) => user.id === voter))
-              .filter((voter): voter is { id: number; email: string; userName: string } => voter !== undefined);
+              .filter(
+                (
+                  voter
+                ): voter is { id: number; email: string; userName: string } =>
+                  voter !== undefined
+              );
             /*
             ?.email)
               .filter((email): email is string => email !== undefined);
@@ -146,7 +154,7 @@ export default function Home() {
                 link={song.link}
                 tags={tagsWithVoters}
                 artist={song.artist}
-                user = {user}
+                user={user}
               />
             </div>
           );
