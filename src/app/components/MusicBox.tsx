@@ -7,11 +7,16 @@ interface MusicBoxProps {
   // tags: string[] | null;
   tags: {
     tagName: string;
-    voters: string[];
-  }[];
+    voters: {
+      id: number;
+      email: string;
+      userName: string;
+    }[];
+  }[] | null;
   link: string;
   artist: string;
   // Probably won't pass down the user like this in the final rendition of project, just for dummy data
+  userID: number | null;
   /*
   user: {
     id: number;
@@ -31,7 +36,6 @@ const options = {
 
 // Will remove user probably?
 function MusicBox({ songName, tags, link, artist }: MusicBoxProps) {
-  console.log(tags);
   return (
     <div className="MusicBox">
       <h2 className="MusicBoxHeader">
@@ -41,12 +45,7 @@ function MusicBox({ songName, tags, link, artist }: MusicBoxProps) {
         <YouTube videoId={link} opts={options} />
       </div>
       <div className="tagWrapper">
-        {tags &&
-          tags.map((tag, index) => (
-            <span className="tag" key={index}>
-              {tag.tagName}
-            </span>
-          ))}
+      
       </div>
       <input></input>
     </div>
@@ -54,6 +53,14 @@ function MusicBox({ songName, tags, link, artist }: MusicBoxProps) {
 }
 
 export default MusicBox;
+/*
+  {tags &&
+          tags.map((tag, index) => (
+            <span className="tag" key={index}>
+              {tag.tagName}
+            </span>
+          ))}
+            */
 /*
   {user && (
               <button

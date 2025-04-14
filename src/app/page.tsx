@@ -118,17 +118,19 @@ export default function Home() {
               .map((tagVote) => tagVote.userID);
 
             // Loop over each VoterID, and for each one search for the first user which has the same ID (should only be 1 per the DB, and then return its email)
-            const voterNames = voterIDs
-              .map((voter) => users.find((user) => user.id === voter)?.email)
+            const voters = voterIDs
+              .map((voter) => users.find((user) => user.id === voter));
+            /*
+            ?.email)
               .filter((email): email is string => email !== undefined);
+              */
 
             // When validating users, I might want to send the whole user instead of just the names unless names are unique (But IDs might be safer? In case a user deletes their account?)
             return {
               tagName: tag.name,
-              voters: voterNames,
+              voters: voters,
             };
           });
-
           return (
             <div className="song" key={index}>
               <MusicBox
@@ -137,6 +139,7 @@ export default function Home() {
                 link={song.link}
                 tags={tagsWithVoters}
                 artist={song.artist}
+                userID = {currentUserID}
               />
             </div>
           );
