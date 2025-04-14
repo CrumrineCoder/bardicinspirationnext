@@ -31,6 +31,7 @@ export default function Home() {
       {songData.map((song, index) => {
         // This is logic for getting the current tags for the song. 
 
+        // to do: can I speed this up by not having to search all of songTags for each song? 
         // Get all SongTags (relational map) for currently visible Songs. Will not include songs that are not visible (Deleted songs on initial load)
         const SongTagsIDs = songTags.filter(
           (songTag) => songTag.songId === song.id
@@ -73,7 +74,53 @@ export default function Home() {
         // [ 1, 2, 3 ]
         // [ 4 ] (It always scales up, unlike the tags, because they're all unique IDs. not to say that it will be 1 2 3 4, but to show different answers as compared to tags).
 
-        // Search for tagVotes by the reduced CurrentSongTagsIDs (songTagID)
+        // Search for tagVotes by the reduced CurrentSongTagsIDs (songTagID). This has the userID. 
+        const currentTagVotes = tagVotes.filter((tagVote) =>
+          reducedCurrentSongsTagsIDs.includes((tagVote.songTag))
+        );
+        /*
+        [
+          { id: 1, userID: 1, songTag: 1 },
+          { id: 2, userID: 2, songTag: 2 },
+          { id: 3, userID: 1, songTag: 3 },
+          { id: 4, userID: 3, songTag: 1 },
+          { id: 5, userID: 2, songTag: 3 },
+          { id: 6, userID: 4, songTag: 2 },
+          { id: 7, userID: 3, songTag: 3 },
+          { id: 8, userID: 4, songTag: 1 }
+        ]
+        */ 
+        // Create a mapping of tags to the users who voted for them
+        /* 
+         [
+          { id: 1, name: 'calm' },
+          { id: 2, name: 'melancholic' },
+          { id: 3, name: 'piano' }
+        ]
+          Looping over each object in this array
+        */
+        const tagsWithVoters = currentTags.map((tag) => {
+          // { id: 1, name: 'calm' }
+          // Find the SongTags entry for this tag
+          const songTag = SongTagsIDs.find((songTag) => songTag.tagId === tag.id);
+          // { id: 1, songId: 1, tagId: 1 }
+          console.log ("tag: ");
+          console.log(tag);
+          console.log("songTags: ");
+          console.log(songTag);
+          // Find all votes for this SongTag
+          const voters = currentTagVotes
+            .filter((tagVote) => tagVote.songTag === songTag?.id)
+            .map((tagVote) => tagVote.userID);
+
+          return {
+            tagName: tag.name,
+            voters: voters,
+          };
+        });
+        console.log(tagsWithVoters);
+
+        // const currentTagVotes = tagVotes.filter((tagVote) => tagVote.includes(reducedCurrentSongsTagsIDs)).
 
         // For returned tagVotes, return the userIDs so that we have the people who voted on the tags below. 
 

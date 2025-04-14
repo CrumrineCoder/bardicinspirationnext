@@ -8,5 +8,6 @@ const tagVotes = [
     {id: 6, userID: 4, songTag: 2},
     {id: 7, userID: 3, songTag: 3},
     {id: 8, userID: 4, songTag: 1},
+    {id: 9, userID: 4, songTag: 4},
 ];
 export default tagVotes;
