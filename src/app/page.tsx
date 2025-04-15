@@ -1,6 +1,6 @@
 'use client';
 import MusicBox from "./components/MusicBox";
-import { getDBVersion } from "./db";
+//import { getDBVersion } from "./db";
 /*
 import Form from "./components/fakeForm";
 import UploadForm from "./components/fakeUploadForm";
@@ -11,22 +11,34 @@ import songData from "./fakeDB/songData";
 import tags from "./fakeDB/tags";
 import songTags from "./fakeDB/songTags";
 
+import {songsTable} from "./db/schema";
+
+import { db }  from "./db/uplink";
+
 import users from "./fakeDB/user";
 import tagVotes from "./fakeDB/tagVotes";
 
-import { useState } from "react";
-//useEffect
-import "./app.scss";
+import { useState, useEffect } from "react";
 
+import "./app.scss";
+// Probably move these to an interface file later
 interface User {
   id: number;
   email: string;
   userName: string;
 }
 
+interface Song {
+  id: number;
+  songName: string;
+  artist: string;
+  link: string;
+}
+
 export default function Home() {
   //const [currentTag] = useState();
   const [user, setUser] = useState<User | null>(null);
+  const [songs, setSongs] = useState<Song[]>([]);
   // To be replaced with JWT? logic for getting the actual user
   /*  const [currentUser, setCurrentUser] = useState<{ id: number; email: string; userName: string } | null>(null);
   useEffect(() => {
@@ -34,9 +46,20 @@ export default function Home() {
   }, []);
   */
   //
+  /*
   getDBVersion().then(({ version }) => {
     console.log({ version });
   });
+  */
+  useEffect(() => {
+    async function fetchSongs() {
+      const fetchedSongs = await db.select().from(songsTable);
+      setSongs(fetchedSongs);
+      console.log(fetchedSongs);
+    }
+
+    fetchSongs();
+  }, []);
   return (
     <>
       
