@@ -50,6 +50,7 @@ export default function HomePage() {
 
   return (
     <>
+    Test
       <button onClick={() => setUser(users[0])}>Login</button>
       <br />
       <button onClick={() => setUser(null)}>Logout</button>

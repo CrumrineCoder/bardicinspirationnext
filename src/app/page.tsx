@@ -6,8 +6,11 @@ import SongList from "./serverComponents/SongList";
 import { db } from "./db/uplink";
 
 export default function Home() {
-  <>
-    <SongList />
-    <HomePage />
-  </>;
+  return (
+    <>
+      <SongList />
+      Test
+      <HomePage />
+    </>
+  );
 }
