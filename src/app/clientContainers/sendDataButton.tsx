@@ -2,7 +2,7 @@
 import { sendData } from "../queries/addToDB";
 import { useState } from "react";
 
-export default function SendDataButton() {
+export default function SendDataButton({ onUpdate }: { onUpdate: () => void }) {
   const [songName, setSongName] = useState<string | null>(null);
   const [artist, setArtist] = useState<string | null>(null);
   const [link, setLink] = useState<string | null>(null);
@@ -13,6 +13,7 @@ export default function SendDataButton() {
         e.preventDefault();
         if (artist && songName && link) {
           sendData(songName, artist, link);
+          onUpdate();
         }
       }}
     >

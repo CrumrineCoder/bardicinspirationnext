@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import fetchSongs from "./fetchSongs"
 
-export default function SongList() {
+export default function SongList({ refresh }: { refresh: boolean }) {
   const [songs, setSongs] = useState<{id: number, artist: string, songName: string, link: string}[]>();
 
   useEffect(() => {
@@ -11,7 +11,7 @@ export default function SongList() {
       const data = await response;
       setSongs(data);
     });
-  }, []);
+  }, [refresh]);
 
   return (
     <div>

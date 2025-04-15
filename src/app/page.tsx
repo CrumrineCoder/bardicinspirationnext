@@ -1,3 +1,4 @@
+'use client'
 import HomePage from "./clientContainers/HomePage";
 
 import { songsTable } from "./db/schema";
@@ -6,11 +7,18 @@ import SendDataButton from "./clientContainers/sendDataButton";
 
 import { db } from "./db/uplink";
 
+import {useState} from "react";
+
 export default function Home() {
+  const [refresh, setRefresh] = useState(false);
+
+  // Function to toggle the refresh state
+  const triggerRefresh = () => setRefresh((prev) => !prev);
+
   return (
     <>
-      <SendDataButton></SendDataButton>
-      <SongList />
+      <SendDataButton onUpdate={triggerRefresh}></SendDataButton>
+      <SongList refresh={refresh}/>
     </>
   );
 }
