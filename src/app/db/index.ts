@@ -1,6 +1,9 @@
 import { neon } from '@neondatabase/serverless';
 import dotenv from 'dotenv';
 
+import { drizzle } from 'drizzle-orm/neon-http';
+import { postsTable } from './schema';
+
 dotenv.config();
 
 if (!process.env.DATABASE_URL) {
