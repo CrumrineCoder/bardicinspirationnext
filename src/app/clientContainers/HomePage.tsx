@@ -1,5 +1,6 @@
 'use client';
 import MusicBox from "../components/MusicBox";
+import SendDataButton from "./sendDataButton";
 //import { getDBVersion } from "./db";
 /*
 import Form from "./components/fakeForm";
@@ -51,6 +52,7 @@ export default function HomePage() {
   return (
     <>
     Test
+      <SendDataButton></SendDataButton>
       <button onClick={() => setUser(users[0])}>Login</button>
       <br />
       <button onClick={() => setUser(null)}>Logout</button>
