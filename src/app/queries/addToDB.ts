@@ -2,12 +2,12 @@
 import { db } from "../db/uplink";
 import { songsTable } from "../db/schema";
 
-export async function sendData() {
+export async function sendData(songName: string, artist: string, link: string) {
     try {
       await db.insert(songsTable).values({
-        songName: "Dirtmouth",
-        artist: "Hollow Knight",
-        link: "NSlkW1fFkyo",
+        songName: songName,
+        artist: artist,
+        link: link,
       });
       console.log("Data sent successfully!");
     } catch (error) {

@@ -1,9 +1,13 @@
 .song{
   color: white; 
 }
-body {
+html{
   background: blue; 
-  color: white;
+  color: black;
+  width: 100vw;
+  height: 100vh; 
+body {
+
   .MusicBoxContainer {
     display: flex;
     flex-wrap: wrap;
@@ -35,4 +39,5 @@ body {
       }
     }
   }
+}
 }
