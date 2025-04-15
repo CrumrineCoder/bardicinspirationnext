@@ -1,23 +1,21 @@
+"use client";
 
-import { db } from "../db/uplink";
-import { songsTable } from "../db/schema";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import fetchSongs from "./fetchSongs"
 
-export default async function SongList() {
-  'use client'
-  const [songs, setSongs] = useState<{ id: number; artist: string; songName: string; link?: string }[]>([]);
+export default function SongList() {
+  const [songs, setSongs] = useState<{id: number, artist: string, songName: string, link: string}[]>();
 
-  async function retrieveDB () {
-    const fetchedSongs = await db.select().from(songsTable);
-    setSongs(fetchedSongs);
-  }
-  
   useEffect(() => {
-    retrieveDB();
+    fetchSongs().then(async (response) => {
+      const data = await response;
+      setSongs(data);
+    });
   }, []);
+
   return (
     <div>
-      {songs.map((song, index) => (
+      {songs && songs.map((song, index) => (
         <div key={index}>
           ID: {song.id}
           <br />

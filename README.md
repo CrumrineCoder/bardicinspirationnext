@@ -6,3 +6,5 @@ Useful Tutorials in making this site:
 * https://www.freecodecamp.org/news/nextjs-clerk-neon-fullstack-development/
 * https://orm.drizzle.team/docs/tutorials/drizzle-nextjs-neon
 * https://www.youtube.com/watch?v=Jw8fiam70fQ (Nextjs with Neon Progress on Vercel)
+* https://nextjs.org/blog/building-apis-with-nextjs
+* https://nextjs-faq.com/fetch-api-in-rsc
