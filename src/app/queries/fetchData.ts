@@ -13,7 +13,7 @@ export async function fetchAllSongs() {
   const songs = await db.select().from(songsTable);
   return songs;
 }
-
+/*
 export async function fetchTagsByID(id: number[]) {
   const songs = await db.select().from(tagTable).where(eq(tagTable.id, id));
   return songs;
@@ -34,3 +34,4 @@ export async function fetchTagVotesByID(id: number[]) {
   return tagVotes;
 }
 
+*/

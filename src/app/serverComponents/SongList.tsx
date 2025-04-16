@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchAllSongs, fetchTagsByID, fetchSongTagsByID,   fetchUsersByID, fetchTagVotesByID } from "../queries/fetchData"
-
+import { fetchAllSongs, } from "../queries/fetchData"
+// fetchTagsByID, fetchSongTagsByID,   fetchUsersByID, fetchTagVotesByID 
 export default function SongList({ refresh }: { refresh: boolean }) {
   const [songs, setSongs] = useState<{id: number, artist: string, songName: string, link: string}[]>();
 
