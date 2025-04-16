@@ -7,14 +7,15 @@ import {
   usersTable,
   songTagsTable,
 } from "../db/schema";
+import {or, eq} from "drizzle-orm";
 
 export async function fetchSongs() {
   const songs = await db.select().from(songsTable);
   return songs;
 }
 
-export async function fetchTags() {
-  const songs = await db.select().from(tagTable);
+export async function fetchTags(id: number) {
+  const songs = await db.select().from(tagTable).where(eq(tagTable.id, id));
   return songs;
 }
 

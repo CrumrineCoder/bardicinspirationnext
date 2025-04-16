@@ -8,3 +8,4 @@ Useful Tutorials in making this site:
 * https://www.youtube.com/watch?v=Jw8fiam70fQ (Nextjs with Neon Progress on Vercel)
 * https://nextjs.org/blog/building-apis-with-nextjs
 * https://nextjs-faq.com/fetch-api-in-rsc
+* https://www.youtube.com/watch?v=dgDFPRol0cw&ab_channel=DaveGray
