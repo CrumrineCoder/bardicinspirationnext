@@ -29,9 +29,9 @@ export default function SongList({ refresh }: { refresh: boolean }) {
       // Get the user data from the userID
       // Return tags + user who voted on it. 
 
-      fetchTagsByID(1).then((data) => {
+     /* fetchTagsByID(1).then((data) => {
         console.log(data);
-      });
+      }); */
     }
   }, [songs]);
 

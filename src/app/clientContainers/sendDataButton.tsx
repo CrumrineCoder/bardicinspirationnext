@@ -1,5 +1,5 @@
 "use client";
-import { sendData } from "../queries/addToDB";
+import { addSongToDB } from "../queries/addToDB";
 import { useState } from "react";
 
 export default function SendDataButton({ onUpdate }: { onUpdate: () => void }) {
@@ -12,7 +12,7 @@ export default function SendDataButton({ onUpdate }: { onUpdate: () => void }) {
       onSubmit={(e) => {
         e.preventDefault();
         if (artist && songName && link) {
-          sendData(songName, artist, link);
+          addSongToDB(songName, artist, link);
           onUpdate();
         }
       }}
