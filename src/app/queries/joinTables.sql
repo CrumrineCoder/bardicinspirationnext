@@ -1,0 +1,3 @@
+SELECT * 
+FROM tag INNER JOIN songs
+ON 
