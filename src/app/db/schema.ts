@@ -21,12 +21,12 @@ export const songTagsTable = pgTable("songTags", {
 export const usersTable = pgTable("users", {
     id: serial("id").primaryKey().notNull(),
     email: text("email").notNull(),
-    userName: text("userName").notNull(),
+    userName: text("username").notNull(),
 })
 
 export const tagVotesTable = pgTable("tagVotes", {
     id: serial("id").primaryKey().notNull(),
-    userID: text("useriD").notNull(),
+    userID: text("userID").notNull(),
     songTagID: text("songTagID").notNull(),
 })
 
