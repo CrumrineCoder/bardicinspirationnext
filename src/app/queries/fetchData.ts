@@ -26,6 +26,7 @@ export async function fetchTagsBySongID(songID: number) {
     .select({ tagName: tagTable.tagName })
     .from(tagTable)
     .where(inArray(tagTable.id, tagIDs));
+  console.log(tagNames);
   return tagNames;
 }
 /*

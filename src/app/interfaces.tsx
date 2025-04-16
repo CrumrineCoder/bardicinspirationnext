@@ -4,3 +4,8 @@ export interface Song {
     artist: string, 
     link: string
 }
+
+export interface Tag {
+    id: number,
+    tagname: string
+}

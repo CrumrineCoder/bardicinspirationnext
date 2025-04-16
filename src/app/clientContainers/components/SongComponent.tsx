@@ -1,8 +1,19 @@
 import AddTagButton from "./submitTag";
 
-import {Song} from "../../interfaces";
+import {Song, Tag} from "../../interfaces";
+import {useEffect, useState} from "react";
+import {fetchTagsBySongID} from "../../queries/fetchData";
 
-export default function SongComponent( song: Song) {
+export default function SongComponent({ song}: {song: Song}) {
+    const [tags, setTags] = useState<{tagName: string}[]>();
+
+    useEffect (()=>{
+        fetchTagsBySongID(song.id).then(async (response) => {
+            const data = await response;
+            setTags(data);
+          });
+        
+    }, []);
   return (
     <div>
       ID: {song.id}
@@ -13,8 +24,12 @@ export default function SongComponent( song: Song) {
       <br />
       YT Link: {song.link}
       <br />
-      ADD TAGs!!
-   
+      TAGS!
+      {tags && tags.map((tag, index) => (
+        <div key={index}>
+          {tag.tagName}
+        </div>
+      ))}
     </div>
   );
 }
