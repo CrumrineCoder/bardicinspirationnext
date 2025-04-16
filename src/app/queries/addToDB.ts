@@ -1,6 +1,6 @@
 'use server'
 import { db } from "../db";
-import { songsTable, tagTable } from "../db/schema";
+import { songsTable, songTagsTable, tagTable } from "../db/schema";
 
 export async function addSongToDB(songName: string, artist: string, link: string) {
     try {
@@ -15,13 +15,23 @@ export async function addSongToDB(songName: string, artist: string, link: string
     }
   }
 
-  export async function addTagToDB(tagname: string) {
+  export async function addTagToDB(tagname: string, songID: number) {
     try {
-      await db.insert(tagTable).values({
+      const insertedTag = await db.insert(tagTable).values({
         tagName: tagname
-      });
-      console.log("Data sent successfully!");
+      }).returning({ id: tagTable.id });
+
+      const tagID = insertedTag[0]?.id;
+      console.log("Inserted tag ID:", tagID);
+      console.log("Inserted songID:", songID);
+      try{
+        await db.insert(songTagsTable).values({tagID: tagID, songID: songID})
+      }
+      catch (error) {
+        console.error("Error sending data to SongTags:", error);
+      }
+      
     } catch (error) {
-      console.error("Error sending data:", error);
+      console.error("Error sending data to Tags:", error);
     }
   }

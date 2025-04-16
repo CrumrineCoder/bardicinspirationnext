@@ -2,7 +2,7 @@
 import { addTagToDB } from "../queries/addToDB";
 import { useState } from "react";
 
-export default function AddTagButton({ onUpdate }: { onUpdate: () => void }) {
+export default function AddTagButton({ onUpdate, songID }: { onUpdate: () => void; songID: number }) {
   const [tagName, setTagName] = useState<string | null>(null);
 
   return (
@@ -10,7 +10,7 @@ export default function AddTagButton({ onUpdate }: { onUpdate: () => void }) {
       onSubmit={(e) => {
         e.preventDefault();
         if (tagName) {
-          addTagToDB(tagName);
+          addTagToDB(tagName, songID);
           onUpdate();
         }
       }}

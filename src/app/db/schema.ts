@@ -12,10 +12,10 @@ export const tagTable = pgTable("tags", {
     tagName: text("tagname").notNull(),
 });
 
-export const songTagsTable = pgTable("songTags", {
+export const songTagsTable = pgTable("songtags", {
     id: serial("id").primaryKey().notNull(),
-    songID: integer("songID").notNull(),
-    tagID: integer("tagID").notNull(),
+    songID: integer("songid").notNull(),
+    tagID: integer("tagid").notNull(),
 });
 
 export const usersTable = pgTable("users", {
@@ -24,10 +24,10 @@ export const usersTable = pgTable("users", {
     userName: text("username").notNull(),
 })
 
-export const tagVotesTable = pgTable("tagVotes", {
+export const tagVotesTable = pgTable("tagvotes", {
     id: serial("id").primaryKey().notNull(),
-    userID: text("userID").notNull(),
-    songTagID: text("songTagID").notNull(),
+    userID: text("userid").notNull(),
+    songTagID: text("songtagid").notNull(),
 })
 
 export type InsertSong = typeof songsTable.$inferInsert;

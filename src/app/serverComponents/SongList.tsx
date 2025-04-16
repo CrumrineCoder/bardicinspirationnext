@@ -49,7 +49,7 @@ export default function SongList({ refresh }: { refresh: boolean }) {
           YT Link: {song.link}
           <br />
           ADD TAGs!!
-          <AddTagButton onUpdate={() => refresh}/>
+          <AddTagButton onUpdate={() => refresh} songID={song.id} />
         </div>
       ))}
     </div>
