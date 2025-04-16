@@ -12,7 +12,7 @@ export default function AddTagButton({ onUpdate, songID }: { onUpdate: () => voi
         e.preventDefault();
         if (tagName) {
           addTagToDB(tagName, songID);
-          fetchTagsBySongID(songID)
+          fetchTagsBySongID(songID);
           onUpdate();
         }
       }}

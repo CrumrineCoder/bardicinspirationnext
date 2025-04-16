@@ -4,15 +4,16 @@ import {Song, Tag} from "../../interfaces";
 import {useEffect, useState} from "react";
 import {fetchTagsBySongID} from "../../queries/fetchData";
 
-export default function SongComponent({onUpdate, song}: {onUpdate: () => void; song: Song}) {
+export default function SongComponent({song}: {song: Song}) {
     const [tags, setTags] = useState<{tagName: string}[]>();
-
-    useEffect (()=>{
+    const getTags = () => {
         fetchTagsBySongID(song.id).then(async (response) => {
             const data = await response;
             setTags(data);
-          });
-        
+        });
+    };
+    useEffect (()=>{
+        getTags();
     }, []);
   return (
     <div>
@@ -30,7 +31,7 @@ export default function SongComponent({onUpdate, song}: {onUpdate: () => void; s
           {tag.tagName}
         </div>
       ))}
-       <AddTagButton onUpdate={() => onUpdate} songID={song.id} />
+       <AddTagButton onUpdate={() => getTags()} songID={song.id} />
     </div>
   );
 }
