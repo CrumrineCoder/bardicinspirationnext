@@ -7,11 +7,26 @@ import {
   usersTable,
   songTagsTable,
 } from "../db/schema";
-import {or, eq} from "drizzle-orm";
+import { or, eq, inArray } from "drizzle-orm";
 
 export async function fetchAllSongs() {
   const songs = await db.select().from(songsTable);
   return songs;
+}
+
+export async function fetchTagsBySongID(songID: number) {
+  const songTags = await db
+    .select()
+    .from(songTagsTable)
+    .where(eq(songTagsTable.songID, songID));
+
+  const tagIDs = songTags.map((tag) => tag.tagID);
+
+  const tagNames = await db
+    .select({ tagName: tagTable.tagName })
+    .from(tagTable)
+    .where(inArray(tagTable.id, tagIDs));
+  return tagNames;
 }
 /*
 export async function fetchTagsByID(id: number[]) {

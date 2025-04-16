@@ -1,5 +1,6 @@
 "use client";
 import { addTagToDB } from "../queries/addToDB";
+import { fetchTagsBySongID } from "../queries/fetchData"
 import { useState } from "react";
 
 export default function AddTagButton({ onUpdate, songID }: { onUpdate: () => void; songID: number }) {
@@ -11,6 +12,7 @@ export default function AddTagButton({ onUpdate, songID }: { onUpdate: () => voi
         e.preventDefault();
         if (tagName) {
           addTagToDB(tagName, songID);
+          fetchTagsBySongID(songID)
           onUpdate();
         }
       }}

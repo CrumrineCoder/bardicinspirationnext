@@ -22,8 +22,7 @@ export async function addSongToDB(songName: string, artist: string, link: string
       }).returning({ id: tagTable.id });
 
       const tagID = insertedTag[0]?.id;
-      console.log("Inserted tag ID:", tagID);
-      console.log("Inserted songID:", songID);
+
       try{
         await db.insert(songTagsTable).values({tagID: tagID, songID: songID})
       }
