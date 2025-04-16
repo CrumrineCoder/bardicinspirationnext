@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { db } from "../../app/db/uplink";
+import { db } from "../../app/db";
 import { songsTable } from "../../app/db/schema";
 
 export async function GET(request: Request) {

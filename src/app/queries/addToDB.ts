@@ -1,5 +1,5 @@
 'use server'
-import { db } from "../db/uplink";
+import { db } from "../db";
 import { songsTable } from "../db/schema";
 
 export async function sendData(songName: string, artist: string, link: string) {
