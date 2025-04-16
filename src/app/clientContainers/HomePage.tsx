@@ -1,6 +1,6 @@
 'use client';
 import MusicBox from "../components/MusicBox";
-import SendDataButton from "./submitSongForm";
+import SendDataButton from "./components/submitSongForm";
 //import { getDBVersion } from "./db";
 /*
 import Form from "./components/fakeForm";

@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchAllSongs, } from "../queries/fetchData"
-import AddTagButton from "../clientContainers/submitTag";
+import { fetchAllSongs, fetchTagsBySongID } from "../queries/fetchData"
+import SongComponent from "./components/SongComponent";
+import {Song} from "../interfaces";
 // fetchTagsByID, fetchSongTagsByID,   fetchUsersByID, fetchTagVotesByID 
 export default function SongList({ refresh }: { refresh: boolean }) {
-  const [songs, setSongs] = useState<{id: number, artist: string, songName: string, link: string}[]>();
+  const [songs, setSongs] = useState<Song[]>();
 
   useEffect(() => {
     fetchAllSongs().then(async (response) => {
       const data = await response;
-      console.log(data);
       setSongs(data);
     });
   }, [refresh]);
@@ -39,18 +39,7 @@ export default function SongList({ refresh }: { refresh: boolean }) {
   return (
     <div>
       {songs && songs.map((song, index) => (
-        <div key={index}>
-          ID: {song.id}
-          <br />
-          Artist: {song.artist}
-          <br />
-          Song Name: {song.songName}
-          <br />
-          YT Link: {song.link}
-          <br />
-          ADD TAGs!!
-          <AddTagButton onUpdate={() => refresh} songID={song.id} />
-        </div>
+        <SongComponent song={song} key={index}></SongComponent>
       ))}
     </div>
   );

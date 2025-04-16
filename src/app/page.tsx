@@ -1,6 +1,6 @@
 "use client";
-import SongList from "./serverComponents/SongList";
-import SubmitSongForm from "./clientContainers/submitSongForm";
+import SongList from "./clientContainers/SongList";
+import SubmitSongForm from "./clientContainers/components/submitSongForm";
 
 import { useState } from "react";
 

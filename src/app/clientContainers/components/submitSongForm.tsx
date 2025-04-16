@@ -1,5 +1,5 @@
 "use client";
-import { addSongToDB } from "../queries/addToDB";
+import { addSongToDB } from "../../queries/addToDB";
 import { useState } from "react";
 
 export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
