@@ -9,7 +9,7 @@ export const songsTable = pgTable("songs", {
 
 export const tagTable = pgTable("tags", {
     id: serial("id").primaryKey().notNull(),
-    tagName: text("tagName").notNull(),
+    tagName: text("tagname").notNull(),
 });
 
 export const songTagsTable = pgTable("songTags", {
