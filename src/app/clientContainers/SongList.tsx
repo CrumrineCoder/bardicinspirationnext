@@ -39,7 +39,7 @@ export default function SongList({ refresh }: { refresh: boolean }) {
   return (
     <div>
       {songs && songs.map((song, index) => (
-        <SongComponent song={song} key={index}></SongComponent>
+        <SongComponent onUpdate={() => refresh} song={song} key={index}></SongComponent>
       ))}
     </div>
   );

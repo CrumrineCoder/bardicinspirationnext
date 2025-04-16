@@ -4,7 +4,7 @@ import {Song, Tag} from "../../interfaces";
 import {useEffect, useState} from "react";
 import {fetchTagsBySongID} from "../../queries/fetchData";
 
-export default function SongComponent({ song}: {song: Song}) {
+export default function SongComponent({onUpdate, song}: {onUpdate: () => void; song: Song}) {
     const [tags, setTags] = useState<{tagName: string}[]>();
 
     useEffect (()=>{
@@ -30,7 +30,7 @@ export default function SongComponent({ song}: {song: Song}) {
           {tag.tagName}
         </div>
       ))}
+       <AddTagButton onUpdate={() => onUpdate} songID={song.id} />
     </div>
   );
 }
-//    <AddTagButton onUpdate={() => refresh} songID={song.id} />
