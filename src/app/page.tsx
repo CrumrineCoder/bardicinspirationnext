@@ -1,6 +1,6 @@
 "use client";
 import SongList from "./serverComponents/SongList";
-import SendDataButton from "./clientContainers/submitSongForm";
+import SubmitSongForm from "./clientContainers/submitSongForm";
 
 import { useState } from "react";
 
@@ -25,7 +25,7 @@ export default function Home() {
       <br />
       Current User:{""}
       {user && user.username}
-      <SendDataButton onUpdate={triggerRefresh}></SendDataButton>
+      <SubmitSongForm onUpdate={triggerRefresh}></SubmitSongForm>
       <SongList refresh={refresh} />
     </>
   );

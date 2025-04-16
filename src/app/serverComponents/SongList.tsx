@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { fetchAllSongs, } from "../queries/fetchData"
+import AddTagButton from "../clientContainers/submitTag";
 // fetchTagsByID, fetchSongTagsByID,   fetchUsersByID, fetchTagVotesByID 
 export default function SongList({ refresh }: { refresh: boolean }) {
   const [songs, setSongs] = useState<{id: number, artist: string, songName: string, link: string}[]>();
@@ -46,6 +47,9 @@ export default function SongList({ refresh }: { refresh: boolean }) {
           Song Name: {song.songName}
           <br />
           YT Link: {song.link}
+          <br />
+          ADD TAGs!!
+          <AddTagButton onUpdate={() => refresh}/>
         </div>
       ))}
     </div>

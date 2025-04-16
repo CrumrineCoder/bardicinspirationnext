@@ -2,7 +2,7 @@
 import { addSongToDB } from "../queries/addToDB";
 import { useState } from "react";
 
-export default function SendDataButton({ onUpdate }: { onUpdate: () => void }) {
+export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   const [songName, setSongName] = useState<string | null>(null);
   const [artist, setArtist] = useState<string | null>(null);
   const [link, setLink] = useState<string | null>(null);
