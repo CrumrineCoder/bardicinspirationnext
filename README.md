@@ -14,6 +14,7 @@ ToDo:
 * Front End (Make it pretty! Animations!)
 * Auth
 * Check if song name + artist is in DB already
+* Check if YT link is valid + serialize it to be the ID only
 * Add users when adding song, and then allowing upvotes and such. 
 * Update YT Link
 * Community Notes (How they used it in a game)

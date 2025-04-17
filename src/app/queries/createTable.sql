@@ -27,7 +27,6 @@ CREATE TABLE tagVotes (
             );
 
 
-
 DROP TABLE songs;
 DROP TABLE songtags;
 DROP TABLE tags;

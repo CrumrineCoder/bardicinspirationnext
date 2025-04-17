@@ -29,7 +29,7 @@ export default function SongComponent({ song }: { song: Song }) {
         {song.artist} - {song.songName}
       </h2>
       <div className="youtubeWrapper">
-        <YouTube videoId={"https://www.youtube.com/watch?v="+song.link} opts={ytPlayerOptions} />
+        <YouTube videoId={song.link} opts={ytPlayerOptions} />
       </div>
       <div className="tagWrapper">
         {tags && tags.map((tag, index) => <div className="tag" key={index}>{tag.tagName}</div>)}
