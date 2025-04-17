@@ -18,4 +18,4 @@ ToDo:
 * Add users when adding song, and then allowing upvotes and such. 
 * Update YT Link
 * Community Notes (How they used it in a game)
-* AI Suggested Tags
+* Search By Tag (Maybe we can do something where we pull all tags, and the AI can suggest a few tags based on what the user wrote?)

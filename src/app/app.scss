@@ -14,8 +14,7 @@ body {
     justify-content: space-between;
     gap: 10px; 
     margin: 10px; 
-    border: 10px solid transparent;
-    border-image: url("./assets/360_F_347663067_YorPbArqcfnsX8OVVATZOvCsg6wcfhp4.jpg") 30 round;
+   
     .MusicBox {
       flex: 0 1 calc(33.333% - 20px);
       margin: 5px;
@@ -25,14 +24,19 @@ body {
       padding: 5px; 
       border-radius: 3px; 
 
+      border: 10px solid transparent;
+      border-image: url("./assets/360_F_347663067_YorPbArqcfnsX8OVVATZOvCsg6wcfhp4.jpg") 45 round;
+
+      box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
       .MusicBoxHeader {
         font-size: 1.2em; 
         text-align: left; 
         font-style: italic; 
         margin-bottom: 5px; 
+        color: rgb(29, 29, 29);
         p:nth-child(1) {
-          font-weight: bold; 
-          font-size: 1.3em; 
+          font-weight: 800; 
+          font-style: normal;
         }
 
       }
