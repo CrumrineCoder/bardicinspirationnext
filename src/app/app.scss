@@ -14,6 +14,8 @@ body {
     justify-content: space-between;
     gap: 10px; 
     margin: 10px; 
+    border: 10px solid transparent;
+    border-image: url("./assets/360_F_347663067_YorPbArqcfnsX8OVVATZOvCsg6wcfhp4.jpg") 30 round;
     .MusicBox {
       flex: 0 1 calc(33.333% - 20px);
       margin: 5px;
