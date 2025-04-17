@@ -13,7 +13,7 @@ const ytPlayerOptions = {
 };
 
 export default function SongComponent({ song }: { song: Song }) {
-  const [tags, setTags] = useState<{ tagName: string }[]>();
+  const [tags, setTags] = useState<{ tagName: string }[]>([]);
   const getTags = () => {
     fetchTagsBySongID(song.id).then(async (response) => {
       const data = await response;
@@ -33,7 +33,7 @@ export default function SongComponent({ song }: { song: Song }) {
         <YouTube videoId={song.link} opts={ytPlayerOptions} />
       </div>
       <div className="tagWrapper">
-        {tags && tags.map((tag, index) => <div className="tag" key={index}>{tag.tagName}</div>)}
+        {tags.length > 0 ? tags.map((tag, index) => <div className="tag" key={index}>{tag.tagName}</div>) : <p>No tags!</p>}
         <AddTagButton onUpdate={() => getTags()} songID={song.id} />
       </div>
     </div>
