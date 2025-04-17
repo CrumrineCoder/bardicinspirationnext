@@ -1,66 +1,4 @@
-'use client';
-import MusicBox from "../components/MusicBox";
-import SendDataButton from "./components/submitSongForm";
-//import { getDBVersion } from "./db";
-/*
-import Form from "./components/fakeForm";
-import UploadForm from "./components/fakeUploadForm";
-*/
-//import songs from "./fakeDB/songs";
-
-import songData from "../fakeDB/songData";
-import tags from "../fakeDB/tags";
-import songTags from "../fakeDB/songTags";
-
-import users from "../fakeDB/user";
-import tagVotes from "../fakeDB/tagVotes";
-
-import { useState, useEffect } from "react";
-
-import "../app.scss";
-// Probably move these to an interface file later
-interface User {
-  id: number;
-  email: string;
-  userName: string;
-}
-
-interface Song {
-  id: number;
-  songName: string;
-  artist: string;
-  link: string;
-}
-
-export default function HomePage() {
-  //const [currentTag] = useState();
-  const [user, setUser] = useState<User | null>(null);
-  const [songs, setSongs] = useState<Song[]>([]);
-  // To be replaced with JWT? logic for getting the actual user
-  /*  const [currentUser, setCurrentUser] = useState<{ id: number; email: string; userName: string } | null>(null);
-  useEffect(() => {
-    setCurrentUser(users[0]);
-  }, []);
-  */
-  //
-  /*
-  getDBVersion().then(({ version }) => {
-    console.log({ version });
-  });
-  */
-
-  return (
-    <>
-    Test
-      <button onClick={() => setUser(users[0])}>Login</button>
-      <br />
-      <button onClick={() => setUser(null)}>Logout</button>
-      <br />
-      Current User:{""}
-      {user && user.userName}
-      <div className="MusicBoxContainer">
-        {songData.map((song, index) => {
-          // This is logic for getting the current tags for the song.
+  // This is logic for getting the current tags for the song.
 
           // to do: can I speed this up by not having to search all of songTags for each song?
           // Get all SongTags (relational map) for currently visible Songs. Will not include songs that are not visible (Deleted songs on initial load)
@@ -161,21 +99,3 @@ export default function HomePage() {
               tagName: tag.name,
               voters: voters,
             };
-          });
-          return (
-            <div className="song" key={index}>
-              <MusicBox
-                key={index}
-                songName={song.songName}
-                link={song.link}
-                tags={tagsWithVoters}
-                artist={song.artist}
-                user={user}
-              />
-            </div>
-          );
-        })}
-      </div>
-    </>
-  );
-}

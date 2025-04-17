@@ -1,4 +1,6 @@
 "use client";
+import "./app.scss";
+
 import SongList from "./clientContainers/SongList";
 import SubmitSongForm from "./clientContainers/components/submitSongForm";
 

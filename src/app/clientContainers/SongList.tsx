@@ -37,7 +37,7 @@ export default function SongList({ refresh }: { refresh: boolean }) {
   }, [songs]);
 
   return (
-    <div>
+    <div className="MusicBoxContainer">
       {songs && songs.map((song, index) => (
         <SongComponent song={song} key={index}></SongComponent>
       ))}

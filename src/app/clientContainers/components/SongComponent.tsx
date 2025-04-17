@@ -1,37 +1,40 @@
 import AddTagButton from "./submitTag";
 
-import {Song, Tag} from "../../interfaces";
-import {useEffect, useState} from "react";
-import {fetchTagsBySongID} from "../../queries/fetchData";
+import { Song, Tag } from "../../interfaces";
+import { useEffect, useState } from "react";
+import { fetchTagsBySongID } from "../../queries/fetchData";
+import YouTube from "react-youtube";
 
-export default function SongComponent({song}: {song: Song}) {
-    const [tags, setTags] = useState<{tagName: string}[]>();
-    const getTags = () => {
-        fetchTagsBySongID(song.id).then(async (response) => {
-            const data = await response;
-            setTags(data);
-        });
-    };
-    useEffect (()=>{
-        getTags();
-    }, []);
+const ytPlayerOptions = {
+  playerVars: {
+    autoplay: 1,
+    controls: 1,
+  },
+};
+
+export default function SongComponent({ song }: { song: Song }) {
+  const [tags, setTags] = useState<{ tagName: string }[]>();
+  const getTags = () => {
+    fetchTagsBySongID(song.id).then(async (response) => {
+      const data = await response;
+      setTags(data);
+    });
+  };
+  useEffect(() => {
+    getTags();
+  }, []);
   return (
-    <div>
-      ID: {song.id}
-      <br />
-      Artist: {song.artist}
-      <br />
-      Song Name: {song.songName}
-      <br />
-      YT Link: {song.link}
-      <br />
-      TAGS!
-      {tags && tags.map((tag, index) => (
-        <div key={index}>
-          {tag.tagName}
-        </div>
-      ))}
-       <AddTagButton onUpdate={() => getTags()} songID={song.id} />
+    <div className="MusicBox">
+      <h2 className="MusicBoxHeader">
+        {song.artist} - {song.songName}
+      </h2>
+      <div className="youtubeWrapper">
+        <YouTube videoId={"https://www.youtube.com/watch?v="+song.link} opts={ytPlayerOptions} />
+      </div>
+      <div className="tagWrapper">
+        {tags && tags.map((tag, index) => <div className="tag" key={index}>{tag.tagName}</div>)}
+        <AddTagButton onUpdate={() => getTags()} songID={song.id} />
+      </div>
     </div>
   );
 }
