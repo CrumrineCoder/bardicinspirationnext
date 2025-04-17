@@ -20,14 +20,26 @@ body {
       background: white;
       text-align: center; 
       color: black; 
+      padding: 5px; 
+      border-radius: 10px; 
+
       .MusicBoxHeader {
         font-size: 1.2em; 
+        text-align: left; 
+        font-style: italic; 
+        margin-bottom: 5px; 
+        p:nth-child(1) {
+          font-weight: bold; 
+          font-size: 1.3em; 
+        }
+
       }
       .youtubeWrapper {
         display: flex;
         justify-content: center;
         width: 100%;
         iframe {
+          border-radius: 15px; 
           aspect-ratio: 16 / 9;
           width: 100% !important;
         }

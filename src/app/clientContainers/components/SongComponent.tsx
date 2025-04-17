@@ -26,7 +26,8 @@ export default function SongComponent({ song }: { song: Song }) {
   return (
     <div className="MusicBox">
       <h2 className="MusicBoxHeader">
-        {song.artist} - {song.songName}
+        <p>{song.songName} </p>
+        <p>{song.artist} </p>
       </h2>
       <div className="youtubeWrapper">
         <YouTube videoId={song.link} opts={ytPlayerOptions} />
