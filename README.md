@@ -9,3 +9,12 @@ Useful Tutorials in making this site:
 * https://nextjs.org/blog/building-apis-with-nextjs
 * https://nextjs-faq.com/fetch-api-in-rsc
 * https://www.youtube.com/watch?v=dgDFPRol0cw&ab_channel=DaveGray
+
+ToDo:
+* Front End (Make it pretty! Animations!)
+* Auth
+* Check if song name + artist is in DB already
+* Add users when adding song, and then allowing upvotes and such. 
+* Update YT Link
+* Community Notes (How they used it in a game)
+* AI Suggested Tags
