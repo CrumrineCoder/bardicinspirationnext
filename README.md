@@ -15,8 +15,10 @@ ToDo:
 * Auth
 * Check if song name + artist is in DB already
 * Check if YT link is valid + serialize it to be the ID only
+    * Feature where we'll search for a valid YT video for them
 * Add users when adding song, and then allowing upvotes and such. 
 * Update YT Link
 * No duplicate tags
 * Community Notes (How they used it in a game)
 * Search By Tag (Maybe we can do something where we pull all tags, and the AI can suggest a few tags based on what the user wrote?)
+    * AI suggested tags for a song 

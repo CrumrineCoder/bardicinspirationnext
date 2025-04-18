@@ -7,6 +7,23 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   const [artist, setArtist] = useState<string | null>(null);
   const [link, setLink] = useState<string | null>(null);
 
+  async function findYouTubeAndSave(){
+    console.log("In it");
+    if(songName && artist){
+      console.log("SongName artist");
+      try {
+        const response = await fetch ("/api/getYoutube", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        console.log(response);
+      } catch (error){
+        console.log("Error: " + error);
+      }
+    }
+  }
   return (
     <div className="SubmitFormJumbo">
       <form
@@ -55,8 +72,10 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             onChange={(e) => setLink(e.target.value)}
           />
         </div>
+        <button onClick={findYouTubeAndSave}>Find Youtube Link</button>
         <button type="submit">Add Song</button>
       </form>
+   
     </div>
   );
 }

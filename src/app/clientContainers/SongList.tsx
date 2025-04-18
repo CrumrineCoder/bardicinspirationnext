@@ -11,7 +11,6 @@ export default function SongList({ refresh }: { refresh: boolean }) {
   useEffect(() => {
     fetchAllSongs().then(async (response) => {
       const data = await response;
-      console.log(data);
       setSongs(data);
     });
   }, [refresh]);
