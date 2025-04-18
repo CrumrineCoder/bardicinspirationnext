@@ -43,6 +43,9 @@ html {
 
         .formInputContainer {
           padding: 3px 0px;
+          &:nth-child(3){
+            padding-top: 10px; 
+          }
           .YouTubeFindButton{
             font-style: italic;
             color: color.scale($black, $lightness: 35%);
