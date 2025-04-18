@@ -12,6 +12,7 @@ Useful Tutorials in making this site:
 
 ToDo:
 * Front End (Make it pretty! Animations!)
+    -> In progress!
 * Auth
 * Check if song name + artist is in DB already
 * Check if YT link is valid + serialize it to be the ID only

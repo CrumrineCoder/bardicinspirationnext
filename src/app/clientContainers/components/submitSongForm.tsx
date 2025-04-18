@@ -21,16 +21,19 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
   const [potentialLinkIndex, setPotentialLinkIndex] = useState<number>(0);
 
+  function resetVal(){
+    setSongName(null);
+    setArtist(null);
+    setLink(null);
+    setPotentialLinks(null);
+    setShowDisclaimer(false);
+    setPotentialLinkIndex(0);
+  }
   function submitForm() {
     if (artist && songName && link) {
       addSongToDB(songName, artist, link);
       onUpdate();
-      setSongName(null);
-      setArtist(null);
-      setLink(null);
-      setPotentialLinks(null);
-      setShowDisclaimer(false);
-      setPotentialLinkIndex(0);
+      resetVal();
     }
   }
   async function findYouTubeAndSave() {
@@ -159,7 +162,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             </div>
           )}
         </div>
-
+        <span onClick={()=> resetVal()} className="resetButton">Reset</span>
         <button type="submit">Add Song</button>
       </form>
     </div>

@@ -61,14 +61,13 @@ html {
         .YouTubeSearchToolTips {
           .YouTubeDisclaimer {
             text-align: center;
-            animation: fadeIn 3s ease-in-out;
-
-            @keyframes fadeIn {
-              from {
-                opacity: 1;
+            animation: blink 3s ease-in-out infinite;
+            @keyframes blink {
+              0%, 100% {
+              opacity: 1;
               }
-              to {
-                opacity: 0;
+              50% {
+              opacity: 0.5;
               }
             }
           }
@@ -95,16 +94,14 @@ html {
                   color: white;
                 }
               }
-              .YouTubeNextButton {
-                color: red;
-              }
-              .YouTubePreviousButton {
-                color: blue;
-              }
               .YouTubeNextButton,
               .YouTubePreviousButton {
                 float: right;
                 margin-left: 10px;
+                color: color.scale($black, $lightness: 45%);
+                &:hover{
+                  color: color.scale($black);
+                }
               }
               .YouTubeNextButton,
               .YouTubePreviousButton,
@@ -116,11 +113,21 @@ html {
             }
             .YouTubeIframe {
               margin-top: 10px;
-              padding-bottom: 10px;
             }
           }
         }
 
+        .resetButton{
+          position: absolute; 
+          bottom: 10px; 
+          font-style: italic; 
+          font-weight: 200; 
+          color: color.scale($black, $lightness: 25%);
+          &:hover{
+            color: black; 
+            cursor: pointer; 
+          }
+        }
         button {
           background: $blue;
           color: white;
@@ -131,6 +138,7 @@ html {
           margin-right: 5px;
           font-weight: 600;
           border-radius: 3px;
+          margin-top: 20px; 
           &:hover {
             cursor: pointer;
             background: color.scale($blue, $lightness: -45%);
