@@ -18,9 +18,10 @@ html {
       align-items: center;
       .SubmitFormContainer {
         display: inline-block;
-        background-color: $red; 
-        color: white; 
-        border: 1px solid $black;
+       // background-color: color.scale($red, $lightness: -65%); 
+        background: white; 
+        color: $black; 
+        border: 1px solid $red;
         border-radius: 8px; 
         padding: 20px; 
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -39,6 +40,7 @@ html {
           display: block;
           margin-right: 5px;
           font-weight: 600;
+          border-radius: 3px; 
           &:hover {
             cursor: pointer;
             background: color.scale($red, $lightness: -45%);

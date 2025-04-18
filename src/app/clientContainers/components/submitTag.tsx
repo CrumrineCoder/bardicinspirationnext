@@ -23,13 +23,13 @@ export default function AddTagButton({ onUpdate, songID }: { onUpdate: () => voi
         <input
           type="text"
           name="tagName"
-          placeholder="Add a Tag"
+          placeholder="Enter Tag"
           required
           value={tagName || ""}
           onChange={(e) => setTagName(e.target.value)}
         />
       </div>
-      <button className="submitButton" type="submit">Submit</button>
+      <button className="submitButton" type="submit">Add Tag</button>
     </form>
   );
 }

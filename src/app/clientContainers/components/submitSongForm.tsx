@@ -55,7 +55,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             onChange={(e) => setLink(e.target.value)}
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">Add Song</button>
       </form>
     </div>
   );
