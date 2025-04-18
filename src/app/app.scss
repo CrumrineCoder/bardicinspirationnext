@@ -56,6 +56,15 @@ html {
           }
         }
 
+        .YouTubeSearchToolTips{
+          .YouTubeDisclaimer{
+            color: red; 
+          }
+          .YouTubeIframe{
+            padding-bottom: 10px; 
+          }
+        }
+
         button {
           background: $red;
           color: white;

@@ -10,6 +10,7 @@ const ytPlayerOptions = {
     autoplay: 0,
     controls: 1,
   },
+  width: 400
 };
 
 export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
@@ -105,7 +106,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
           )}
           {!link && potentialLinks != null && potentialLinks.length > 0 && (
             potentialLinks.map((link, index) => (
-              <YouTube key={index} videoId={link} opts={ytPlayerOptions} />
+              <YouTube className="YouTubeIframe" key={index} videoId={link} opts={ytPlayerOptions} />
             ))
           )}
         </div>
