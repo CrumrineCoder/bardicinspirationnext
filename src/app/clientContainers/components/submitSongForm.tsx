@@ -168,21 +168,3 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
     </div>
   );
 }
-
-/*
-potentialLinks.map((link, index) => (
-              <div key={index}>
-                <span
-                  className="YouTubeConfirmButton"
-                  onClick={findYouTubeAndSave}
-                >
-                  Use this one!
-                </span>
-                <YouTube
-                  className="YouTubeIframe"
-                  videoId={link}
-                  opts={ytPlayerOptions}
-                />
-              </div>
-))
-              */
