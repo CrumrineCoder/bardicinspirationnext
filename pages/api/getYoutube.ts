@@ -6,14 +6,13 @@ export default async function getYoutube(
 ) {
     try{
         const { searchQuery } = req.query;
-        // I need to setup the query
-        /*
+        
         console.log(searchQuery);
         if (!searchQuery) {
             res.status(400).json({ error: "Missing search query" });
             return;
         }
-        */
+        
 
         const apiKey = process.env.YOUTUBE_API_KEY;
         console.log("Apikey");

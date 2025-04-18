@@ -10,7 +10,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   async function findYouTubeAndSave(){
     if(songName && artist){
       try {
-        const response = await fetch ("/api/getYoutube", {
+        const response = await fetch(`/api/getYoutube?songName=${encodeURIComponent(songName)}&artist=${encodeURIComponent(artist)}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
