@@ -1,61 +1,74 @@
-.song{
-  color: white; 
-}
-html{
-  background: blue; 
-  color: black;
+$primary: #7d1a1a;
+$secondary: #d4af37;
+$accent: #2c5f2d;
+$background: #f5e6c8;
+$text: #2b2b2b;
+$border: #4b4e6d;
+
+html {
+  background-color: $background;
+  color: $text;
   width: 100vw;
-  height: 100vh; 
-body {
+  height: 100vh;
+  body {
+    .MusicBoxContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 10px;
 
-  .MusicBoxContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px; 
-    margin: 10px; 
-   
-    .MusicBox {
-      flex: 0 1 calc(33.333% - 20px);
-      margin: 5px;
-      background: white;
-      text-align: center; 
-      color: black; 
-      padding: 5px; 
-      border-radius: 3px; 
+      .MusicBox {
+        flex: 0 1 calc(33.333% - 20px);
+        margin: 5px;
+        background: hsl(220, 12%, 95%);
+        text-align: center;
+        color: black;
+        border-radius: 3px;
 
-      border: 10px solid transparent;
-      border-image: url("./assets/360_F_347663067_YorPbArqcfnsX8OVVATZOvCsg6wcfhp4.jpg") 45 round;
+        border: 10px solid transparent;
+        border-image: url("./assets/360_F_347663067_YorPbArqcfnsX8OVVATZOvCsg6wcfhp4.jpg")
+          45 round;
 
-      box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-      .MusicBoxHeader {
-        font-size: 1.2em; 
-        text-align: left; 
-        font-style: italic; 
-        margin-bottom: 5px; 
-        color: rgb(29, 29, 29);
-        p:nth-child(1) {
-          font-weight: 800; 
-          font-style: normal;
+        box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+        .MusicBoxSongContainer {
+          background: white;
+          padding: 5px; 
+          padding-bottom: 20px; 
+    //      border-radius: 0px 0px 30px 30px; 
+          .MusicBoxHeader {
+            font-size: 1.2em;
+            text-align: left;
+            font-style: italic;
+            margin-bottom: 5px;
+            color: rgb(29, 29, 29);
+            p:nth-child(1) {
+              font-weight: 800;
+              font-style: normal;
+            }
+          }
         }
-
-      }
-      .youtubeWrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        iframe {
-          border-radius: 15px; 
-          aspect-ratio: 16 / 9;
-          width: 100% !important;
+        .youtubeWrapper {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          iframe {
+            border-radius: 15px;
+            aspect-ratio: 16 / 9;
+            width: 100% !important;
+          }
         }
-      }
-      .tagWrapper{
-        .tag{
-            padding: 5px; 
+        .tagWrapper {
+          .tagDisclaimer{
+            color:#4e4e4e;
+            font-style: italic;
+          }
+          .tag {
+            padding: 5px;
+            display: inline; 
+          }
         }
       }
     }
   }
-}
 }

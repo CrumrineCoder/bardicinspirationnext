@@ -14,6 +14,7 @@ export default function AddTagButton({ onUpdate, songID }: { onUpdate: () => voi
           addTagToDB(tagName, songID);
           fetchTagsBySongID(songID);
           onUpdate();
+          setTagName(null);
         }
       }}
     >

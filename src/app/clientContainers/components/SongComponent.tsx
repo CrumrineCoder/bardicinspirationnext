@@ -25,15 +25,25 @@ export default function SongComponent({ song }: { song: Song }) {
   }, []);
   return (
     <div className="MusicBox">
-      <h2 className="MusicBoxHeader">
-        <p>{song.songName} </p>
-        <p>{song.artist} </p>
-      </h2>
-      <div className="youtubeWrapper">
-        <YouTube videoId={song.link} opts={ytPlayerOptions} />
+      <div className="MusicBoxSongContainer">
+        <h2 className="MusicBoxHeader">
+          <p>{song.songName} </p>
+          <p>{song.artist} </p>
+        </h2>
+        <div className="youtubeWrapper">
+          <YouTube videoId={song.link} opts={ytPlayerOptions} />
+        </div>
       </div>
       <div className="tagWrapper">
-        {tags.length > 0 ? tags.map((tag, index) => <div className="tag" key={index}>{tag.tagName}</div>) : <p>No tags!</p>}
+        {tags.length > 0 ? (
+          tags.map((tag, index) => (
+            <div className="tag" key={index}>
+              {tag.tagName}
+            </div>
+          ))
+        ) : (
+          <p className="tagDisclaimer">No tags!</p>
+        )}
         <AddTagButton onUpdate={() => getTags()} songID={song.id} />
       </div>
     </div>
