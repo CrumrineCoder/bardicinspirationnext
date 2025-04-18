@@ -7,6 +7,8 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   const [artist, setArtist] = useState<string | null>(null);
   const [link, setLink] = useState<string | null>(null);
 
+  const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
+
   async function findYouTubeAndSave(){
     if(songName && artist){
       try {
@@ -21,6 +23,8 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
       } catch (error){
         console.log("Error: " + error);
       }
+    } else{
+      setShowDisclaimer(true);
     }
   }
   return (
@@ -47,6 +51,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             placeholder="Enter Song Name"
             value={songName || ""}
             onChange={(e) => setSongName(e.target.value)}
+            onFocus={() => setShowDisclaimer(false)}
           />
         </div>
         <div className="formInputContainer">
@@ -58,6 +63,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             placeholder="Enter Artist Name"
             value={artist || ""}
             onChange={(e) => setArtist(e.target.value)}
+            onFocus={() => setShowDisclaimer(false)}  
           />
         </div>
         <div className="formInputContainer">
@@ -71,6 +77,9 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             onChange={(e) => setLink(e.target.value)}
           />
            <span className="YouTubeFindButton" onClick={findYouTubeAndSave}>OR find it for me</span>
+        </div>
+        <div className="YouTubeSearchToolTips">
+          {showDisclaimer && <div className="YouTubeDisclaimer">Please enter a Song Name and Artist!</div>}
         </div>
        
         <button type="submit">Add Song</button>
