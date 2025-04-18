@@ -27,6 +27,18 @@ html {
 
         border: 3px solid transparent;
         border-color: $blue;
+        position: relative; 
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 0 30px 30px 0;
+          border-color: transparent $blue transparent transparent; 
+        }
      /*   border-image: url("./assets/360_F_347663067_YorPbArqcfnsX8OVVATZOvCsg6wcfhp4.jpg")
           45 round;
       */
