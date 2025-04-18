@@ -43,6 +43,14 @@ html {
 
         .formInputContainer {
           padding: 3px 0px;
+          .YouTubeFindButton{
+            font-style: italic;
+            color: color.scale($black, $lightness: 35%);
+            &:hover{
+              cursor: pointer;
+              color: $black; 
+            }
+          }
         }
 
         button {
@@ -150,6 +158,7 @@ html {
               input {
                 width: calc(100% - 20px);
               }
+          
             }
             .submitButton {
               background: $blue;

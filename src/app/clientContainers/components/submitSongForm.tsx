@@ -70,8 +70,9 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             value={link || ""}
             onChange={(e) => setLink(e.target.value)}
           />
+           <span className="YouTubeFindButton" onClick={findYouTubeAndSave}>OR find it for me</span>
         </div>
-        <button onClick={findYouTubeAndSave}>Find Youtube Link</button>
+       
         <button type="submit">Add Song</button>
       </form>
    
