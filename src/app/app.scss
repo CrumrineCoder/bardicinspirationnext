@@ -63,6 +63,7 @@ html {
             color: red;
           }
           .YouTubeSuggestionsContainer {
+            padding-top: 5px; 
             .YouTubeConfirmButton {
               text-align: center;
             }
@@ -75,6 +76,11 @@ html {
             .YouTubeNextButton, .YouTubePreviousButton{
               float: right;
               margin-left: 10px;
+            }
+            .YouTubeNextButton, .YouTubePreviousButton, .YouTubeConfirmButton{
+              &:hover{
+                cursor: pointer; 
+              }
             }
             .YouTubeIframe {
               padding-bottom: 10px;

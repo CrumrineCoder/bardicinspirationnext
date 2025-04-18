@@ -21,6 +21,18 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
   const [potentialLinkIndex, setPotentialLinkIndex] = useState<number>(0);
 
+  function submitForm() {
+    if (artist && songName && link) {
+      addSongToDB(songName, artist, link);
+      onUpdate();
+      setSongName(null);
+      setArtist(null);
+      setLink(null);
+      setPotentialLinks(null);
+      setShowDisclaimer(false);
+      setPotentialLinkIndex(0);
+    }
+  }
   async function findYouTubeAndSave() {
     if (songName && artist) {
       try {
@@ -51,13 +63,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
         className="SubmitFormContainer"
         onSubmit={(e) => {
           e.preventDefault();
-          if (artist && songName && link) {
-            addSongToDB(songName, artist, link);
-            onUpdate();
-            setSongName(null);
-            setArtist(null);
-            setLink(null);
-          }
+          submitForm();
         }}
       >
         <div className="formInputContainer">
@@ -107,7 +113,15 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
           )}
           {!link && potentialLinks != null && potentialLinks.length > 0 && (
             <div className="YouTubeSuggestionsContainer">
-              <span className="YouTubeConfirmButton">Use this one!</span>
+                <span
+                onClick={() => {
+                  setLink(potentialLinks[potentialLinkIndex]);
+         //         submitForm();
+                }}
+                className="YouTubeConfirmButton"
+                >
+                Use this one!
+                </span>
               {potentialLinkIndex >= 0 && potentialLinkIndex < 4 && (
                 <span
                   className="YouTubeNextButton"
