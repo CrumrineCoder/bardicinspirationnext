@@ -107,13 +107,27 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
           {!link && potentialLinks != null && potentialLinks.length > 0 && (
             <div className="YouTubeSuggestionsContainer">
               <span className="YouTubeConfirmButton">Use this one!</span>
-              {potentialLinkIndex >= 0 && potentialLinkIndex < 4 && <span className="YouTubeNextButton">Next!</span>}
-              {potentialLinkIndex <= 4 && potentialLinkIndex > 0 && <span className="YouTubePreviousButton">Previous!</span>}
-            <YouTube
-              className="YouTubeIframe"
-              videoId={potentialLinks[potentialLinkIndex]}
-              opts={ytPlayerOptions}
-            />
+              {potentialLinkIndex >= 0 && potentialLinkIndex < 4 && (
+                <span
+                  className="YouTubeNextButton"
+                  onClick={() => setPotentialLinkIndex(potentialLinkIndex + 1)}
+                >
+                  Next!
+                </span>
+              )}
+              {potentialLinkIndex <= 4 && potentialLinkIndex > 0 && (
+                <span
+                  className="YouTubePreviousButton"
+                  onClick={() => setPotentialLinkIndex(potentialLinkIndex - 1)}
+                >
+                  Previous!
+                </span>
+              )}
+              <YouTube
+                className="YouTubeIframe"
+                videoId={potentialLinks[potentialLinkIndex]}
+                opts={ytPlayerOptions}
+              />
             </div>
           )}
         </div>
