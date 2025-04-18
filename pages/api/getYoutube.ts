@@ -16,7 +16,7 @@ export default async function getYoutube(
 
         const youtubeApiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
              (typeof searchQuery.songName === "string" ? searchQuery.songName : "") + 
-             (typeof searchQuery.artist === "string" ? searchQuery.artist : "")
+             (typeof searchQuery.artist === "string" ? searchQuery.artist : "") + " song"
         )}&key=${apiKey}`;
         const response = await fetch(youtubeApiUrl);
 
