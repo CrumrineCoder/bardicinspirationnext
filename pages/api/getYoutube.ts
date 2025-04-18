@@ -1,18 +1,23 @@
 import type {NextApiRequest, NextApiResponse} from "next";
 
-export default async function getYouTubeLink(
+export default async function getYoutube(
     req: NextApiRequest, 
     res: NextApiResponse
 ) {
     try{
         const { searchQuery } = req.query;
-
+        // I need to setup the query
+        /*
+        console.log(searchQuery);
         if (!searchQuery) {
             res.status(400).json({ error: "Missing search query" });
             return;
         }
+        */
 
         const apiKey = process.env.YOUTUBE_API_KEY;
+        console.log("Apikey");
+        console.log(apiKey);
         const youtubeApiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(
             searchQuery as string
         )}&key=${apiKey}`;

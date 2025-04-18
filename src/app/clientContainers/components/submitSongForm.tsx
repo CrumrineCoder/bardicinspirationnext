@@ -8,9 +8,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   const [link, setLink] = useState<string | null>(null);
 
   async function findYouTubeAndSave(){
-    console.log("In it");
     if(songName && artist){
-      console.log("SongName artist");
       try {
         const response = await fetch ("/api/getYoutube", {
           method: "GET",

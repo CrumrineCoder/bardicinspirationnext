@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   "reactStrictMode": true,
   env: {
     DATABASE_URL: process.env.DATABASE_URL,
+    YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY
   },
 };
 
