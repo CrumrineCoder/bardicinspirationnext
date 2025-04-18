@@ -34,16 +34,18 @@ export default function SongComponent({ song }: { song: Song }) {
           <YouTube videoId={song.link} opts={ytPlayerOptions} />
         </div>
       </div>
-      <div className="tagWrapper">
-        {tags.length > 0 ? (
-          tags.map((tag, index) => (
-            <div className="tag" key={index}>
-              {tag.tagName}
-            </div>
-          ))
-        ) : (
-          <p className="tagDisclaimer">No tags!</p>
-        )}
+      <div className="tagFormWrapper">
+        <div className="allTags">
+          {tags.length > 0 ? (
+            tags.map((tag, index) => (
+              <div className="tag" key={index}>
+                {tag.tagName}
+              </div>
+            ))
+          ) : (
+            <p className="tagDisclaimer">No tags!</p>
+          )}
+        </div>
         <AddTagButton onUpdate={() => getTags()} songID={song.id} />
       </div>
     </div>

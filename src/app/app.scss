@@ -21,7 +21,6 @@ html {
       .MusicBox {
         flex: 0 1 calc(33.333% - 20px);
         margin: 5px;
-        background: hsl(220, 12%, 95%);
         text-align: center;
         color: black;
         border-radius: 3px;
@@ -33,9 +32,9 @@ html {
         box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
         .MusicBoxSongContainer {
           background: white;
-          padding: 5px; 
-          padding-bottom: 20px; 
-    //      border-radius: 0px 0px 30px 30px; 
+          padding: 5px;
+          padding-bottom: 10px;
+          //      border-radius: 0px 0px 30px 30px;
           .MusicBoxHeader {
             font-size: 1.2em;
             text-align: left;
@@ -58,14 +57,43 @@ html {
             width: 100% !important;
           }
         }
-        .tagWrapper {
-          .tagDisclaimer{
-            color:#4e4e4e;
-            font-style: italic;
+        .tagFormWrapper {
+          background: hsl(220, 22%, 33%);
+          padding: 10px;
+          padding-top: 2px;
+          .allTags {
+            padding-bottom: 5px;
+            .tagDisclaimer {
+              color: #4e4e4e;
+              font-style: italic;
+            }
+            .tag {
+              padding: 3px;
+              display: inline;
+              color: white;
+              font-weight: 500;
+            }
           }
-          .tag {
-            padding: 5px;
-            display: inline; 
+          .formContainer {
+            background: hsl(220, 12%, 95%);
+            border-radius: 5px;
+            padding-bottom: 10px;
+            margin-bottom: 5px;
+            .formInputContainer {
+              padding-top: 15px; 
+              padding-bottom: 5px; 
+            }
+            .submitButton {
+              background: rgb(230, 230, 230);
+              padding: 5px 10px;
+              border-radius: 2px;
+              margin-left: auto;
+              display: block;
+              margin-right: 5px; 
+              &:hover {
+                cursor: pointer;
+              }
+            }
           }
         }
       }

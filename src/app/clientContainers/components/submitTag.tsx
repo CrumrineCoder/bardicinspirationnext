@@ -8,6 +8,7 @@ export default function AddTagButton({ onUpdate, songID }: { onUpdate: () => voi
 
   return (
     <form
+      className="formContainer"
       onSubmit={(e) => {
         e.preventDefault();
         if (tagName) {
@@ -19,16 +20,16 @@ export default function AddTagButton({ onUpdate, songID }: { onUpdate: () => voi
       }}
     >
       <div className="formInputContainer">
-        <label htmlFor="tagName">Add a Tag: </label>
         <input
           type="text"
           name="tagName"
+          placeholder="Add a tag"
           required
           value={tagName || ""}
           onChange={(e) => setTagName(e.target.value)}
         />
       </div>
-      <button type="submit">Submit</button>
+      <button className="submitButton" type="submit">Submit</button>
     </form>
   );
 }

@@ -14,6 +14,9 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
         if (artist && songName && link) {
           addSongToDB(songName, artist, link);
           onUpdate();
+          setSongName(null);
+          setArtist(null);
+          setLink(null);
         }
       }}
     >
