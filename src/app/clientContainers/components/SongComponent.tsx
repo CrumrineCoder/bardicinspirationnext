@@ -7,7 +7,7 @@ import YouTube from "react-youtube";
 
 const ytPlayerOptions = {
   playerVars: {
-    autoplay: 1,
+    autoplay: 0,
     controls: 1,
   },
 };
