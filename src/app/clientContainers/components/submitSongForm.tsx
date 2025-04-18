@@ -37,6 +37,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
         );
         const data = await response.json();
         setPotentialLinks(data.videoIDs);
+        setLink(null);
       } catch (error) {
         console.log("Error: " + error);
       }

@@ -72,6 +72,10 @@ html {
             .YouTubePreviousButton{
               color: blue; 
             }
+            .YouTubeNextButton, .YouTubePreviousButton{
+              float: right;
+              margin-left: 10px;
+            }
             .YouTubeIframe {
               padding-bottom: 10px;
             }
