@@ -18,17 +18,17 @@ html {
       align-items: center;
       .SubmitFormContainer {
         display: inline-block;
-       // background-color: color.scale($red, $lightness: -65%); 
-        background: white; 
-        color: $black; 
+        // background-color: color.scale($red, $lightness: -65%);
+        background: white;
+        color: $black;
         border: 1px solid $red;
-        border-radius: 8px; 
-        padding: 20px; 
+        border-radius: 8px;
+        padding: 20px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         padding: 10px;
-        position: relative; 
-        max-width: 360px; 
-        width: 100%; 
+        position: relative;
+        max-width: 360px;
+        width: 100%;
         /*
         &::before {
           content: "";
@@ -41,29 +41,40 @@ html {
           border-width: 0 30px 30px 0;
           border-color: transparent $blue transparent transparent;
         } */
-      //  background: radial-gradient(at 0% 10%, white 70%, grey 70%, grey 100%);
+        //  background: radial-gradient(at 0% 10%, white 70%, grey 70%, grey 100%);
 
         .formInputContainer {
           padding: 3px 0px;
-          &:nth-child(3){
-            padding-top: 10px; 
+          &:nth-child(3) {
+            padding-top: 10px;
           }
-          .YouTubeFindButton{
+          .YouTubeFindButton {
             font-style: italic;
             color: color.scale($black, $lightness: 35%);
-            &:hover{
+            &:hover {
               cursor: pointer;
-              color: $black; 
+              color: $black;
             }
           }
         }
 
-        .YouTubeSearchToolTips{
-          .YouTubeDisclaimer{
-            color: red; 
+        .YouTubeSearchToolTips {
+          .YouTubeDisclaimer {
+            color: red;
           }
-          .YouTubeIframe{
-            padding-bottom: 10px; 
+          .YouTubeSuggestionsContainer {
+            .YouTubeConfirmButton {
+              text-align: center;
+            }
+            .YouTubeNextButton{
+              color: red; 
+            }
+            .YouTubePreviousButton{
+              color: blue; 
+            }
+            .YouTubeIframe {
+              padding-bottom: 10px;
+            }
           }
         }
 
@@ -76,8 +87,8 @@ html {
           display: block;
           margin-right: 5px;
           font-weight: 600;
-          border-radius: 3px; 
-          margin-top: 20px; 
+          border-radius: 3px;
+          margin-top: 20px;
           &:hover {
             cursor: pointer;
             background: color.scale($red, $lightness: -45%);
@@ -172,7 +183,6 @@ html {
               input {
                 width: calc(100% - 20px);
               }
-          
             }
             .submitButton {
               background: $blue;
@@ -185,7 +195,7 @@ html {
               font-weight: 600;
               &:hover {
                 cursor: pointer;
-               background: color.scale($blue, $lightness: -45%);
+                background: color.scale($blue, $lightness: -45%);
               }
             }
           }

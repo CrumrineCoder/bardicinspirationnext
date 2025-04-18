@@ -10,7 +10,7 @@ const ytPlayerOptions = {
     autoplay: 0,
     controls: 1,
   },
-  width: 335
+  width: 335,
 };
 
 export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
@@ -18,8 +18,8 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   const [artist, setArtist] = useState<string | null>(null);
   const [link, setLink] = useState<string | null>(null);
   const [potentialLinks, setPotentialLinks] = useState<string[] | null>(null);
-
   const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
+  const [potentialLinkIndex, setPotentialLinkIndex] = useState<number>(0);
 
   async function findYouTubeAndSave() {
     if (songName && artist) {
@@ -105,9 +105,16 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             </div>
           )}
           {!link && potentialLinks != null && potentialLinks.length > 0 && (
-            potentialLinks.map((link, index) => (
-              <YouTube className="YouTubeIframe" key={index} videoId={link} opts={ytPlayerOptions} />
-            ))
+            <div className="YouTubeSuggestionsContainer">
+              <span className="YouTubeConfirmButton">Use this one!</span>
+              {potentialLinkIndex >= 0 && potentialLinkIndex < 4 && <span className="YouTubeNextButton">Next!</span>}
+              {potentialLinkIndex <= 4 && potentialLinkIndex > 0 && <span className="YouTubePreviousButton">Previous!</span>}
+            <YouTube
+              className="YouTubeIframe"
+              videoId={potentialLinks[potentialLinkIndex]}
+              opts={ytPlayerOptions}
+            />
+            </div>
           )}
         </div>
 
@@ -116,3 +123,21 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
     </div>
   );
 }
+
+/*
+potentialLinks.map((link, index) => (
+              <div key={index}>
+                <span
+                  className="YouTubeConfirmButton"
+                  onClick={findYouTubeAndSave}
+                >
+                  Use this one!
+                </span>
+                <YouTube
+                  className="YouTubeIframe"
+                  videoId={link}
+                  opts={ytPlayerOptions}
+                />
+              </div>
+))
+              */
