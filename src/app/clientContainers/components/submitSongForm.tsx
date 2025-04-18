@@ -10,7 +10,7 @@ const ytPlayerOptions = {
     autoplay: 0,
     controls: 1,
   },
-  width: 400
+  width: 335
 };
 
 export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
