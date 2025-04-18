@@ -25,9 +25,10 @@ export default async function getYoutube(
         }
 
         const result = await response.json();
-        const firstVideoID = result.items[0].id.videoId;
-        console.log(firstVideoID);
-        res.status(200).send({ firstVideoID });
+        const videoIDs = result.items
+            .filter((item: any) => item.id && item.id.videoId)
+            .map((item: any) => item.id.videoId);
+        res.status(200).send({ videoIDs });
     } catch (err) {
         res.status(500).json({error: "Failed to load YouTube Data"})
     }
