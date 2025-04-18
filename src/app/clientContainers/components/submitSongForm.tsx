@@ -16,7 +16,8 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             "Content-Type": "application/json",
           },
         });
-        console.log(response);
+        const data = await response.json();
+        setLink(data.firstVideoID);
       } catch (error){
         console.log("Error: " + error);
       }
