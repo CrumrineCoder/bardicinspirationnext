@@ -75,41 +75,47 @@ html {
           .YouTubeSuggestionsContainer {
             padding-top: 5px;
 
-            .YouTubeConfirmButton {
-              padding: 2px 7px;
-              border-radius: 2px;
-              margin-right: 5px;
-              font-weight: 500;
-              border-radius: 3px;
-              margin-top: 20px;
-              border: $blue 2px solid;
-              color: $blue; 
-              &:hover {
-                cursor: pointer;
-                background: $blue;
-                color: white;
+            .YouTubeSuggestionsControls {
+              display: flex;
+              justify-content: center;
+              margin-top: 20px; 
+              .YouTubeConfirmButton {
+                padding: 2px 7px;
+                border-radius: 2px;
+                margin-right: 5px;
+                font-weight: 500;
+                border-radius: 3px;
+                border: $blue 2px solid;
+                color: $blue;
+                margin-left: auto;
+                margin-right: auto;
+                &:hover {
+                  cursor: pointer;
+                  background: $blue;
+                  color: white;
+                }
               }
-            }
-            .YouTubeNextButton {
-              color: red;
-            }
-            .YouTubePreviousButton {
-              color: blue;
-            }
-            .YouTubeNextButton,
-            .YouTubePreviousButton {
-              float: right;
-              margin-left: 10px;
-            }
-            .YouTubeNextButton,
-            .YouTubePreviousButton,
-            .YouTubeConfirmButton {
-              &:hover {
-                cursor: pointer;
+              .YouTubeNextButton {
+                color: red;
+              }
+              .YouTubePreviousButton {
+                color: blue;
+              }
+              .YouTubeNextButton,
+              .YouTubePreviousButton {
+                float: right;
+                margin-left: 10px;
+              }
+              .YouTubeNextButton,
+              .YouTubePreviousButton,
+              .YouTubeConfirmButton {
+                &:hover {
+                  cursor: pointer;
+                }
               }
             }
             .YouTubeIframe {
-              margin-top: 10px; 
+              margin-top: 10px;
               padding-bottom: 10px;
             }
           }

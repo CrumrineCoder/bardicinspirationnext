@@ -113,35 +113,48 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
           )}
           {!link && potentialLinks != null && potentialLinks.length > 0 && (
             <div className="YouTubeSuggestionsContainer">
-                <span
+              <div className="YouTubeSuggestionsControls">
+              <span
+                className="YouTubePreviousButton"
+                style={{
+                opacity: potentialLinkIndex > 0 ? 1 : 0,
+                pointerEvents: potentialLinkIndex > 0 ? "auto" : "none",
+                }}
                 onClick={() => {
-                  setLink(potentialLinks[potentialLinkIndex]);
-         //         submitForm();
+                if (potentialLinkIndex > 0) {
+                  setPotentialLinkIndex(potentialLinkIndex - 1);
+                }
+                }}
+              >
+                ...previouS
+              </span>
+              <span
+                onClick={() => {
+                setLink(potentialLinks[potentialLinkIndex]);
                 }}
                 className="YouTubeConfirmButton"
-                >
+              >
                 Use this one!
-                </span>
-              {potentialLinkIndex >= 0 && potentialLinkIndex < 4 && (
-                <span
-                  className="YouTubeNextButton"
-                  onClick={() => setPotentialLinkIndex(potentialLinkIndex + 1)}
-                >
-                  Next!
-                </span>
-              )}
-              {potentialLinkIndex <= 4 && potentialLinkIndex > 0 && (
-                <span
-                  className="YouTubePreviousButton"
-                  onClick={() => setPotentialLinkIndex(potentialLinkIndex - 1)}
-                >
-                  Previous!
-                </span>
-              )}
+              </span>
+              <span
+                className="YouTubeNextButton"
+                style={{
+                opacity: potentialLinkIndex < potentialLinks.length - 1 ? 1 : 0,
+                pointerEvents: potentialLinkIndex < potentialLinks.length - 1 ? "auto" : "none",
+                }}
+                onClick={() => {
+                if (potentialLinkIndex < potentialLinks.length - 1) {
+                  setPotentialLinkIndex(potentialLinkIndex + 1);
+                }
+                }}
+              >
+                Next...
+              </span>
+              </div>
               <YouTube
-                className="YouTubeIframe"
-                videoId={potentialLinks[potentialLinkIndex]}
-                opts={ytPlayerOptions}
+              className="YouTubeIframe"
+              videoId={potentialLinks[potentialLinkIndex]}
+              opts={ytPlayerOptions}
               />
             </div>
           )}
