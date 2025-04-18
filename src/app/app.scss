@@ -21,7 +21,7 @@ html {
         // background-color: color.scale($red, $lightness: -65%);
         background: white;
         color: $black;
-        border: 1px solid $red;
+        border: 1px solid $blue;
         border-radius: 8px;
         padding: 20px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -60,36 +60,63 @@ html {
 
         .YouTubeSearchToolTips {
           .YouTubeDisclaimer {
-            color: red;
+            text-align: center;
+            animation: fadeIn 3s ease-in-out;
+
+            @keyframes fadeIn {
+              from {
+                opacity: 1;
+              }
+              to {
+                opacity: 0;
+              }
+            }
           }
           .YouTubeSuggestionsContainer {
-            padding-top: 5px; 
+            padding-top: 5px;
+
             .YouTubeConfirmButton {
-              text-align: center;
+              padding: 2px 7px;
+              border-radius: 2px;
+              margin-right: 5px;
+              font-weight: 500;
+              border-radius: 3px;
+              margin-top: 20px;
+              border: $blue 2px solid;
+              color: $blue; 
+              &:hover {
+                cursor: pointer;
+                background: $blue;
+                color: white;
+              }
             }
-            .YouTubeNextButton{
-              color: red; 
+            .YouTubeNextButton {
+              color: red;
             }
-            .YouTubePreviousButton{
-              color: blue; 
+            .YouTubePreviousButton {
+              color: blue;
             }
-            .YouTubeNextButton, .YouTubePreviousButton{
+            .YouTubeNextButton,
+            .YouTubePreviousButton {
               float: right;
               margin-left: 10px;
             }
-            .YouTubeNextButton, .YouTubePreviousButton, .YouTubeConfirmButton{
-              &:hover{
-                cursor: pointer; 
+            .YouTubeNextButton,
+            .YouTubePreviousButton,
+            .YouTubeConfirmButton {
+              &:hover {
+                cursor: pointer;
               }
             }
             .YouTubeIframe {
+              margin-top: 10px; 
               padding-bottom: 10px;
             }
           }
         }
 
         button {
-          background: $red;
+          background: $blue;
           color: white;
           padding: 5px 10px;
           border-radius: 2px;
@@ -98,10 +125,9 @@ html {
           margin-right: 5px;
           font-weight: 600;
           border-radius: 3px;
-          margin-top: 20px;
           &:hover {
             cursor: pointer;
-            background: color.scale($red, $lightness: -45%);
+            background: color.scale($blue, $lightness: -45%);
           }
         }
       }
