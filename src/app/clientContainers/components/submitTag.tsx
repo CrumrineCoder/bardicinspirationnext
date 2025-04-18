@@ -23,7 +23,7 @@ export default function AddTagButton({ onUpdate, songID }: { onUpdate: () => voi
         <input
           type="text"
           name="tagName"
-          placeholder="Add a tag"
+          placeholder="Add a Tag"
           required
           value={tagName || ""}
           onChange={(e) => setTagName(e.target.value)}

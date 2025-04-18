@@ -1,13 +1,13 @@
-$primary: #7d1a1a;
-$secondary: #d4af37;
-$accent: #2c5f2d;
-$background: #f5e6c8;
-$text: #2b2b2b;
-$border: #4b4e6d;
+$red: #7d1a1a;
+$yellow: #d4af37;
+$green: #2c5f2d;
+$white: #f5e6c8;
+$black: #2b2b2b;
+$blue: #4b4e6d;
 
 html {
-  background-color: $background;
-  color: $text;
+  background-color: $white;
+  color: $black;
   width: 100vw;
   height: 100vh;
   body {
@@ -25,11 +25,12 @@ html {
         color: black;
         border-radius: 3px;
 
-        border: 10px solid transparent;
-        border-image: url("./assets/360_F_347663067_YorPbArqcfnsX8OVVATZOvCsg6wcfhp4.jpg")
+        border: 3px solid transparent;
+        border-color: $blue;
+     /*   border-image: url("./assets/360_F_347663067_YorPbArqcfnsX8OVVATZOvCsg6wcfhp4.jpg")
           45 round;
-
-        box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+      */
+        box-shadow: 2px 4px 6px 0 hsla(0, 0%, 0%, 0.2);
         .MusicBoxSongContainer {
           background: white;
           padding: 5px;
@@ -58,7 +59,7 @@ html {
           }
         }
         .tagFormWrapper {
-          background: hsl(220, 22%, 33%);
+          background: $blue;
           padding: 10px;
           padding-top: 2px;
           .allTags {
@@ -82,16 +83,22 @@ html {
             .formInputContainer {
               padding-top: 15px; 
               padding-bottom: 5px; 
+              input{
+                width: calc(100% - 20px); 
+              }
             }
             .submitButton {
-              background: rgb(230, 230, 230);
+              background: $blue;
+              color: white; 
               padding: 5px 10px;
               border-radius: 2px;
               margin-left: auto;
               display: block;
               margin-right: 5px; 
+              font-weight: 600;
               &:hover {
                 cursor: pointer;
+                background: $black;
               }
             }
           }
