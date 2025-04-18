@@ -50,7 +50,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             type="text"
             name="link"
             required
-            placeholder="Enter Song Link"
+            placeholder="Enter YouTube Link"
             value={link || ""}
             onChange={(e) => setLink(e.target.value)}
           />
