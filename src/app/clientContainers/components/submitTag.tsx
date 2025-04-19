@@ -46,7 +46,7 @@ export default function AddTagButton({
         />
       </div>
       {showDisclaimer && (
-        <div>Hey numbskull, tag already exists on this song!</div>
+        <div className="DupeTagDisclaimer">Hey numbskull, tag already exists on this song!</div>
       )}
       <button className="submitButton" type="submit">
         Add Tag
