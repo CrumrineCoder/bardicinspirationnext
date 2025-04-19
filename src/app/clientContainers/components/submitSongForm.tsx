@@ -18,7 +18,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   const [artist, setArtist] = useState<string | null>(null);
   const [link, setLink] = useState<string | null>(null);
   const [potentialLinks, setPotentialLinks] = useState<string[] | null>(null);
-  const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
+  const [showDisclaimer, setShowDisclaimer] = useState<string | null>(null);
   const [potentialLinkIndex, setPotentialLinkIndex] = useState<number>(0);
 
   function resetVal() {
@@ -26,7 +26,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
     setArtist(null);
     setLink(null);
     setPotentialLinks(null);
-    setShowDisclaimer(false);
+    setShowDisclaimer(null);
     setPotentialLinkIndex(0);
   }
   function submitForm() {
@@ -37,7 +37,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
           resetVal();
         })
         .catch((error) => {
-          console.log("Error: " + error);
+          setShowDisclaimer("Unique SongTag")
         });
     }
   }
@@ -62,7 +62,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
         console.log("Error: " + error);
       }
     } else {
-      setShowDisclaimer(true);
+      setShowDisclaimer("YouTube");
     }
   }
   return (
@@ -83,7 +83,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             placeholder="Enter Song Name"
             value={songName || ""}
             onChange={(e) => setSongName(e.target.value)}
-            onFocus={() => setShowDisclaimer(false)}
+            onFocus={() => setShowDisclaimer(null)}
           />
         </div>
         <div className="formInputContainer">
@@ -95,7 +95,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             placeholder="Enter Artist Name"
             value={artist || ""}
             onChange={(e) => setArtist(e.target.value)}
-            onFocus={() => setShowDisclaimer(false)}
+            onFocus={() => setShowDisclaimer(null)}
           />
         </div>
         <div className="formInputContainer">
@@ -107,18 +107,22 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             placeholder="Enter YouTube Link"
             value={link || ""}
             onChange={(e) => setLink(e.target.value)}
-            onFocus={() => setShowDisclaimer(false)}
+            onFocus={() => setShowDisclaimer(null)}
           />
           <span className="YouTubeFindButton" onClick={findYouTubeAndSave}>
             OR find it for me
           </span>
         </div>
         <div className="YouTubeSearchToolTips">
-          {showDisclaimer && (
+            {showDisclaimer && showDisclaimer === "YouTube" ? (
             <div className="YouTubeDisclaimer">
               Please enter a Song Name and Artist!
             </div>
-          )}
+            ) : showDisclaimer === "Unique SongTag" ? (
+            <div className="YouTubeDisclaimer">
+              That Song is already in the database! Sorry, slowpoke.
+            </div>
+            ) : null}
           {!link && potentialLinks != null && potentialLinks.length > 0 && (
             <div className="YouTubeSuggestionsContainer">
               <div className="YouTubeSuggestionsControls">
