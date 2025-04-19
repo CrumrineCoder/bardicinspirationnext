@@ -16,7 +16,7 @@ export async function addSongToDB(
     });
     console.log("Data sent successfully!");
   } catch (error) {
-    if (error instanceof Error && (error as any).code == 23505) {
+    if ((error as any).code == 23505) {
       throw new Error("A song with this name already exists.");
     } else {
       console.error("Error sending data:", error);
@@ -25,6 +25,7 @@ export async function addSongToDB(
 }
 
 export async function addTagToDB(tagname: string, songID: number) {
+  throw new Error ("fuck you buddy");
   try {
     // Check uniqueness
     const existingTag = await db
@@ -32,7 +33,7 @@ export async function addTagToDB(tagname: string, songID: number) {
       .from(tagTable)
       .where(eq(tagTable.tagName, tagname))
       .limit(1);
-    // If the tag doesn't exist, just go to songTags
+    // If the tag doesn't exist, just go to songTags to register this tag to this song
     if (existingTag.length > 0) {
       const existingTagId = existingTag[0].id;
       try {
@@ -40,8 +41,9 @@ export async function addTagToDB(tagname: string, songID: number) {
           .insert(songTagsTable)
           .values({ tagID: existingTagId, songID: songID });
       } catch (error) {
-        if (error instanceof Error && (error as any).code == 23505) {
-          throw new Error("A tag with this name already exists.");
+        // If the tag is registered to this song already, send an error
+        if ((error as any).code == 23505) {
+          throw new Error(JSON.stringify({ message: "A tag with this name already exists.", code: 23505 }));
         } else {
           console.error("Error:", error);
         }

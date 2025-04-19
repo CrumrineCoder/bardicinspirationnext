@@ -37,7 +37,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
           resetVal();
         })
         .catch((error) => {
-          setShowDisclaimer("Unique SongTag")
+          setShowDisclaimer("Unique SongTag");
         });
     }
   }
