@@ -25,57 +25,41 @@ export async function addSongToDB(
 }
 
 export async function addTagToDB(tagname: string, songID: number) {
-  throw new Error("Fuck you dude");
+  //   throw new Error("Fuck you dude");
   try {
     // Check uniqueness
-
     const existingTag = await db
       .select()
       .from(tagTable)
       .where(eq(tagTable.tagName, tagname))
       .limit(1);
+      
     // If the tag doesn't exist, just go to songTags to register this tag to this song
-
     if (existingTag.length > 0) {
       const existingTagId = existingTag[0].id;
-      const existingSongTagID = await db
-        .select()
-        .from(songTagsTable)
-        .where(eq(songTagsTable.tagID, existingTagId))
-        .limit(1);
-
-      if (existingSongTagID.length > 0) {
-        throw new Error("Tag is already registered to this song");
-      } else
-        try {
-          await db
-            .insert(songTagsTable)
-            .values({ tagID: existingTagId, songID: songID });
-        } catch (error) {
-          console.error("Error:", error);
-        }
-    } else {
-      try {
-        const insertedTag = await db
-          .insert(tagTable)
-          .values({
-            tagName: tagname,
-          })
-          .returning({ id: tagTable.id });
-        const tagID = insertedTag[0]?.id;
-
-        try {
-          await db
-            .insert(songTagsTable)
-            .values({ tagID: tagID, songID: songID });
-        } catch (error) {
-          console.error("Error sending data to SongTags:", error);
-        }
-      } catch (error) {
-        console.error("Error sending data to tags:", error);
-      }
+      await db
+        .insert(songTagsTable)
+        .values({ tagID: existingTagId, songID: songID });
+      return;
     }
+
+    const insertedTag = await db
+      .insert(tagTable)
+      .values({ tagName: tagname })
+      .returning({ id: tagTable.id });
+
+    const tagID = insertedTag[0]?.id;
+    if (!tagID) {
+      throw new Error("Failed to retrieve the inserted tag ID.");
+    }
+
+    await db.insert(songTagsTable).values({ tagID: tagID, songID: songID });
   } catch (error) {
-    console.error("Error sending data to Tags:", error);
+    if ((error as any).code == 23505) {
+      throw new Error("A tag with this name already exists on this song.");
+    } else {
+      console.error("Error sending data to Tags:", error);
+      throw new Error("Unknown error occured");
+    }
   }
 }
