@@ -25,29 +25,35 @@ export async function addSongToDB(
 }
 
 export async function addTagToDB(tagname: string, songID: number) {
-  throw new Error ("fuck you buddy");
+  throw new Error("Fuck you dude");
   try {
     // Check uniqueness
+
     const existingTag = await db
       .select()
       .from(tagTable)
       .where(eq(tagTable.tagName, tagname))
       .limit(1);
     // If the tag doesn't exist, just go to songTags to register this tag to this song
+
     if (existingTag.length > 0) {
       const existingTagId = existingTag[0].id;
-      try {
-        await db
-          .insert(songTagsTable)
-          .values({ tagID: existingTagId, songID: songID });
-      } catch (error) {
-        // If the tag is registered to this song already, send an error
-        if ((error as any).code == 23505) {
-          throw new Error(JSON.stringify({ message: "A tag with this name already exists.", code: 23505 }));
-        } else {
+      const existingSongTagID = await db
+        .select()
+        .from(songTagsTable)
+        .where(eq(songTagsTable.tagID, existingTagId))
+        .limit(1);
+
+      if (existingSongTagID.length > 0) {
+        throw new Error("Tag is already registered to this song");
+      } else
+        try {
+          await db
+            .insert(songTagsTable)
+            .values({ tagID: existingTagId, songID: songID });
+        } catch (error) {
           console.error("Error:", error);
         }
-      }
     } else {
       try {
         const insertedTag = await db

@@ -28,4 +28,4 @@ ToDo:
     * AI suggested tags for a song 
 * Copy link
 * Get BPM of songs from a library? 
-* Errors = vicious mockery
+* Errors = vicious mockery. Health bar on the screen, does 1d8 damage each time? 
