@@ -5,18 +5,27 @@ import { useState } from "react";
 
 export default function AddTagButton({ onUpdate, songID }: { onUpdate: () => void; songID: number }) {
   const [tagName, setTagName] = useState<string | null>(null);
+  const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
 
+  function submitTag(){
+    if (tagName) {
+      addTagToDB(tagName, songID).then(() =>{
+
+        fetchTagsBySongID(songID);
+        onUpdate();
+        setTagName(null);
+      }).catch((error) => {
+        console.log(error);
+        setShowDisclaimer(true);
+      });
+    }
+  }
   return (
     <form
       className="formContainer"
       onSubmit={(e) => {
         e.preventDefault();
-        if (tagName) {
-          addTagToDB(tagName, songID);
-          fetchTagsBySongID(songID);
-          onUpdate();
-          setTagName(null);
-        }
+        submitTag();
       }}
     >
       <div className="formInputContainer">
@@ -29,6 +38,9 @@ export default function AddTagButton({ onUpdate, songID }: { onUpdate: () => voi
           onChange={(e) => setTagName(e.target.value)}
         />
       </div>
+      {showDisclaimer && (
+        <div>Hey numbskull, tag already exists on this song!</div>
+      )}
       <button className="submitButton" type="submit">Add Tag</button>
     </form>
   );

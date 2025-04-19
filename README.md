@@ -28,3 +28,4 @@ ToDo:
     * AI suggested tags for a song 
 * Copy link
 * Get BPM of songs from a library? 
+* Errors = vicious mockery

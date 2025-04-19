@@ -41,7 +41,7 @@ export async function addTagToDB(tagname: string, songID: number) {
           .values({ tagID: existingTagId, songID: songID });
       } catch (error) {
         if (error instanceof Error && (error as any).code == 23505) {
-          throw new Error("A tag with this name already exists on this song.");
+          throw new Error("A tag with this name already exists.");
         } else {
           console.error("Error sending data:", error);
         }
