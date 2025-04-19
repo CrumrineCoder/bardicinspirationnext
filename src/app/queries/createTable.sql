@@ -1,12 +1,13 @@
 CREATE TABLE songs (
     id SERIAL PRIMARY KEY,
-        songName TEXT NOT NULL,
-            artist TEXT NOT NULL,
-                link TEXT NOT NULL);
-
+        songName VARCHAR(255) NOT NULL,
+            artist VARCHAR(255) NOT NULL,
+                link VARCHAR(255) NOT NULL, 
+                UNIQUE (songName, artist) );
+    
 CREATE TABLE tags (
     id SERIAL PRIMARY KEY,
-        tagName TEXT NOT NULL);
+        tagName VARCHAR(255) UNIQUE NOT NULL);
 
 CREATE TABLE songTags (
     id SERIAL PRIMARY KEY,
@@ -16,8 +17,8 @@ CREATE TABLE songTags (
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-        email TEXT NOT NULL,
-            userName TEXT NOT NULL
+        email VARCHAR(255) NOT NULL,
+            userName VARCHAR(255) NOT NULL
             );
 
 CREATE TABLE tagVotes (
