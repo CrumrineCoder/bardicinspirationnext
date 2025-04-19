@@ -12,7 +12,8 @@ CREATE TABLE tags (
 CREATE TABLE songTags (
     id SERIAL PRIMARY KEY,
         songID INTEGER NOT NULL,
-            tagID INTEGER NOT NULL
+            tagID INTEGER NOT NULL,
+            UNIQUE (songID, tagID)
             );
 
 CREATE TABLE users (

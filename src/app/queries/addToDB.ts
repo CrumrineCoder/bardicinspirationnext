@@ -19,7 +19,7 @@ export async function addSongToDB(
     if (error instanceof Error && (error as any).code == 23505) {
       throw new Error("A song with this name already exists.");
     } else {
-    console.error("Error sending data:", error);
+      console.error("Error sending data:", error);
     }
   }
 }
@@ -32,7 +32,7 @@ export async function addTagToDB(tagname: string, songID: number) {
       .from(tagTable)
       .where(eq(tagTable.tagName, tagname))
       .limit(1);
-
+    // If the tag doesn't exist, just go to songTags
     if (existingTag.length > 0) {
       const existingTagId = existingTag[0].id;
       try {
@@ -40,7 +40,11 @@ export async function addTagToDB(tagname: string, songID: number) {
           .insert(songTagsTable)
           .values({ tagID: existingTagId, songID: songID });
       } catch (error) {
-        console.error("Error sending data to SongTags:", error);
+        if (error instanceof Error && (error as any).code == 23505) {
+          throw new Error("A tag with this name already exists on this song.");
+        } else {
+          console.error("Error sending data:", error);
+        }
       }
     } else {
       try {
@@ -63,7 +67,6 @@ export async function addTagToDB(tagname: string, songID: number) {
         console.error("Error sending data to tags:", error);
       }
     }
-
   } catch (error) {
     console.error("Error sending data to Tags:", error);
   }
