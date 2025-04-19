@@ -21,7 +21,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
   const [potentialLinkIndex, setPotentialLinkIndex] = useState<number>(0);
 
-  function resetVal(){
+  function resetVal() {
     setSongName(null);
     setArtist(null);
     setLink(null);
@@ -31,9 +31,14 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   }
   function submitForm() {
     if (artist && songName && link) {
-      addSongToDB(songName, artist, link);
-      onUpdate();
-      resetVal();
+      addSongToDB(songName, artist, link)
+        .then(() => {
+          onUpdate();
+          resetVal();
+        })
+        .catch((error) => {
+          console.log("Error: " + error);
+        });
     }
   }
   async function findYouTubeAndSave() {
@@ -117,52 +122,58 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
           {!link && potentialLinks != null && potentialLinks.length > 0 && (
             <div className="YouTubeSuggestionsContainer">
               <div className="YouTubeSuggestionsControls">
-              <span
-                className="YouTubePreviousButton"
-                style={{
-                opacity: potentialLinkIndex > 0 ? 1 : 0,
-                pointerEvents: potentialLinkIndex > 0 ? "auto" : "none",
-                }}
-                onClick={() => {
-                if (potentialLinkIndex > 0) {
-                  setPotentialLinkIndex(potentialLinkIndex - 1);
-                }
-                }}
-              >
-                ...previouS
-              </span>
-              <span
-                onClick={() => {
-                setLink(potentialLinks[potentialLinkIndex]);
-                }}
-                className="YouTubeConfirmButton"
-              >
-                Use this one!
-              </span>
-              <span
-                className="YouTubeNextButton"
-                style={{
-                opacity: potentialLinkIndex < potentialLinks.length - 1 ? 1 : 0,
-                pointerEvents: potentialLinkIndex < potentialLinks.length - 1 ? "auto" : "none",
-                }}
-                onClick={() => {
-                if (potentialLinkIndex < potentialLinks.length - 1) {
-                  setPotentialLinkIndex(potentialLinkIndex + 1);
-                }
-                }}
-              >
-                Next...
-              </span>
+                <span
+                  className="YouTubePreviousButton"
+                  style={{
+                    opacity: potentialLinkIndex > 0 ? 1 : 0,
+                    pointerEvents: potentialLinkIndex > 0 ? "auto" : "none",
+                  }}
+                  onClick={() => {
+                    if (potentialLinkIndex > 0) {
+                      setPotentialLinkIndex(potentialLinkIndex - 1);
+                    }
+                  }}
+                >
+                  ...previouS
+                </span>
+                <span
+                  onClick={() => {
+                    setLink(potentialLinks[potentialLinkIndex]);
+                  }}
+                  className="YouTubeConfirmButton"
+                >
+                  Use this one!
+                </span>
+                <span
+                  className="YouTubeNextButton"
+                  style={{
+                    opacity:
+                      potentialLinkIndex < potentialLinks.length - 1 ? 1 : 0,
+                    pointerEvents:
+                      potentialLinkIndex < potentialLinks.length - 1
+                        ? "auto"
+                        : "none",
+                  }}
+                  onClick={() => {
+                    if (potentialLinkIndex < potentialLinks.length - 1) {
+                      setPotentialLinkIndex(potentialLinkIndex + 1);
+                    }
+                  }}
+                >
+                  Next...
+                </span>
               </div>
               <YouTube
-              className="YouTubeIframe"
-              videoId={potentialLinks[potentialLinkIndex]}
-              opts={ytPlayerOptions}
+                className="YouTubeIframe"
+                videoId={potentialLinks[potentialLinkIndex]}
+                opts={ytPlayerOptions}
               />
             </div>
           )}
         </div>
-        <span onClick={()=> resetVal()} className="resetButton">Reset</span>
+        <span onClick={() => resetVal()} className="resetButton">
+          Reset
+        </span>
         <button type="submit">Add Song</button>
       </form>
     </div>

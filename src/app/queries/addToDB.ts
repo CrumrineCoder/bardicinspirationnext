@@ -16,7 +16,11 @@ export async function addSongToDB(
     });
     console.log("Data sent successfully!");
   } catch (error) {
+    if (error instanceof Error && (error as any).code == 23505) {
+      throw new Error("A song with this name already exists.");
+    } else {
     console.error("Error sending data:", error);
+    }
   }
 }
 
