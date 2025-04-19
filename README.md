@@ -9,6 +9,7 @@ Useful Tutorials in making this site:
 * https://nextjs.org/blog/building-apis-with-nextjs
 * https://nextjs-faq.com/fetch-api-in-rsc
 * https://www.youtube.com/watch?v=dgDFPRol0cw&ab_channel=DaveGray
+* https://orm.drizzle.team/docs/guides/unique-case-insensitive-email
 
 ToDo:
 * Front End (Make it pretty! Animations!)
@@ -20,7 +21,8 @@ ToDo:
 * Add users when adding song, and then allowing upvotes and such. 
 * Update YT Link
 * No duplicate tags, or duplicate songnames and artist combos. [DONE]
-    * Error handling on front end 
+    * Duplicate tag back end error handling (Don't create new tag, just make new songtag)
+    * Duplicate song front end error handling 
 * Community Notes (How they used it in a game)
 * Search By Tag (Maybe we can do something where we pull all tags, and the AI can suggest a few tags based on what the user wrote?)
     * AI suggested tags for a song 
