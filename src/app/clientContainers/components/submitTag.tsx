@@ -18,6 +18,8 @@ export default function AddTagButton({
       try {
         await addTagToDB(tagName, songID);
         onUpdate(); // Ensure the parent component is updated after successful submission
+        setShowDisclaimer(false);
+        setTagName(null);
       } catch (error: unknown) {
         console.error("Error adding tag to database:", error);
         setShowDisclaimer(true);
@@ -40,6 +42,7 @@ export default function AddTagButton({
           required
           value={tagName || ""}
           onChange={(e) => setTagName(e.target.value)}
+          onFocus={() => setShowDisclaimer(false)}
         />
       </div>
       {showDisclaimer && (
