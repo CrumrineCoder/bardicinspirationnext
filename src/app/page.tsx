@@ -3,7 +3,6 @@ import "./app.scss";
 
 import SongList from "./clientContainers/SongList";
 import SubmitSongForm from "./clientContainers/components/submitSongForm";
-import SubmitTag from "./clientContainers/components/searchTags";
 
 import { useState } from "react";
 
@@ -28,7 +27,6 @@ export default function Home() {
       <br />
       Current User:{""}
       {user && user.username}
-      <SubmitTag/>
       <SubmitSongForm onUpdate={triggerRefresh}></SubmitSongForm>
       <SongList refresh={refresh} />
     </>

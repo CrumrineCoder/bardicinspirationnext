@@ -2,25 +2,26 @@
 
 import { useState } from "react";
 
-import {fetchSongsByTagName} from "../../queries/fetchData";
-// Eventually this should be onChange and autocomplete tags. 
+import { fetchSongsByTagName } from "../../queries/fetchData";
+// Eventually this should be onChange and autocomplete tags.
 export default function searchTag() {
   const [tagName, setTagName] = useState<string | null>(null);
 
   return (
     <div>
-      Search by Tag:
       <form
         onSubmit={(e) => {
           e.preventDefault();
           if (tagName) {
-            fetchSongsByTagName(tagName).then((data) => {
+            fetchSongsByTagName(tagName)
+              .then((data) => {
                 console.log("Fetched songs:", data);
-            }).catch((error) => {
-              console.error("Error fetching songs by tag name:", error);
-              // Need to add a disclaimer to show that the tag isn't in the DB
-              // Also suggested tags, autocomplete, etc. 
-            });
+              })
+              .catch((error) => {
+                console.error("Error fetching songs by tag name:", error);
+                // Need to add a disclaimer to show that the tag isn't in the DB
+                // Also suggested tags, autocomplete, etc.
+              });
           }
         }}
       >
@@ -32,7 +33,7 @@ export default function searchTag() {
           value={tagName || ""}
           onChange={(e) => setTagName(e.target.value)}
         />
-         <button type="submit">Search Tag</button>
+        <button type="submit">Search Tag</button>
       </form>
     </div>
   );
