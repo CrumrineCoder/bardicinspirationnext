@@ -7,7 +7,7 @@ import SearchTag from "./components/searchTags";
 import { Song } from "../interfaces";
 // fetchTagsByID, fetchSongTagsByID,   fetchUsersByID, fetchTagVotesByID
 export default function SongList({ refresh }: { refresh: boolean }) {
-  const [songs, setSongs] = useState<Song[]>();
+  const [songs, setSongs] = useState<Song[] | null>();
 
   useEffect(() => {
     fetchAllSongs().then(async (response) => {
@@ -35,7 +35,7 @@ export default function SongList({ refresh }: { refresh: boolean }) {
 
   return (
     <div className="SongListContainer">
-      <SearchTag />
+      <SearchTag setSongListSongs={(updatedSongs: Song[] | null) => { setSongs(updatedSongs); }}/>
       <div className="MusicBoxContainer">
         {songs &&
           songs.map((song, index) => (

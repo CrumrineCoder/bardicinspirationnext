@@ -3,8 +3,13 @@
 import { useState } from "react";
 
 import { fetchSongsByTagName } from "../../queries/fetchData";
+import {Song} from "../../interfaces";
+
 // Eventually this should be onChange and autocomplete tags.
-export default function searchTag() {
+interface SearchTagProps {
+  setSongListSongs: (updatedSongs: Song[] | null) => void;
+}
+export default function SearchTag({ setSongListSongs }: SearchTagProps) {
   const [tagName, setTagName] = useState<string | null>(null);
 
   return (
@@ -15,7 +20,7 @@ export default function searchTag() {
           if (tagName) {
             fetchSongsByTagName(tagName)
               .then((data) => {
-                console.log("Fetched songs:", data);
+                setSongListSongs(data);
               })
               .catch((error) => {
                 console.error("Error fetching songs by tag name:", error);
