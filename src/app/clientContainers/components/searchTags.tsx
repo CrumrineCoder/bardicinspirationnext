@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import {fetchSongsByTagID} from "../../queries/fetchData";
+import {fetchSongsByTagName} from "../../queries/fetchData";
 // Eventually this should be onChange and autocomplete tags. 
 export default function searchTag() {
   const [tagName, setTagName] = useState<string | null>(null);
@@ -14,7 +14,7 @@ export default function searchTag() {
         onSubmit={(e) => {
           e.preventDefault();
           if (tagName) {
-            fetchSongsByTagID(tagName);
+            fetchSongsByTagName(tagName);
           }
         }}
       >

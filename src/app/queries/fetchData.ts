@@ -18,6 +18,15 @@ export async function searchForTagIDWithName(tagName: string) {
   return existingTag;
 }
 
+export async function searchForSongTagsWithTagID(tagID: number) {
+  const existingTag = await db
+    .select()
+    .from(songTagsTable)
+    .where(eq(songTagsTable.tagID, tagID))
+    .limit(1);
+  return existingTag;
+}
+
 export async function fetchAllSongs() {
   const songs = await db.select().from(songsTable);
   return songs;
@@ -38,8 +47,11 @@ export async function fetchTagsBySongID(songID: number) {
   return tagNames;
 }
 
-export async function fetchSongsByTagID(tagName: string){
-  console.log(tagName);
+export async function fetchSongsByTagName(tagName: string){
+  // get the ID for the current tag 
+  const tagID = await searchForTagIDWithName(tagName);
+  const songTagsForTag = await searchForSongTagsWithTagID(tagID[0].id);
+  console.log(songTagsForTag);
 }
 /*
 export async function fetchTagsByID(id: number[]) {
