@@ -27,7 +27,9 @@ export async function searchForSongTagsWithTagID(tagID: number) {
 }
 
 export async function fetchAllSongs() {
-  const songs = await db.select().from(songsTable);
+  const songs = await db
+  .select()
+  .from(songsTable);
   return songs;
 }
 
@@ -50,23 +52,26 @@ export async function fetchSongsByTagName(tagName: string) {
   // get the ID for the current tag
   const tagID = await searchForTagIDWithName(tagName);
   if (tagID.length > 0) {
-    const songTagsForTag = await searchForSongTagsWithTagID(tagID[0].id);
-    console.log(songTagsForTag);
+    // Get all SongTag relational map listings with this tag
+    const songTagsFromTag = await searchForSongTagsWithTagID(tagID[0].id);
+    // Reduce it to the Song IDs
+    const songIDs = songTagsFromTag.map((songTag) => songTag.songID);
+    return fetchSongsByID(songIDs);
+
   } else {
     throw new Error("No such tag exists");
   }
 }
+
+    export async function fetchSongsByID(songID: number[]){
+      const songs = await db
+      .select()
+      .from(songsTable)
+      .where(inArray(songsTable.id, songID));
+      return songs; 
+    }
+
 /*
-export async function fetchTagsByID(id: number[]) {
-  const songs = await db.select().from(tagTable).where(eq(tagTable.id, id));
-  return songs;
-}
-
-export async function fetchSongTagsByID(id: number[]) {
-  const songTags = await db.select().from(songTagsTable).where(eq(songTagsTable.id, id));
-  return songTags;
-}
-
 export async function fetchUsersByID(id: number[]) {
   const users = await db.select().from(usersTable).where(eq(usersTable.id, id));
   return users;

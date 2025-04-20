@@ -14,7 +14,9 @@ export default function searchTag() {
         onSubmit={(e) => {
           e.preventDefault();
           if (tagName) {
-            fetchSongsByTagName(tagName).catch((error) => {
+            fetchSongsByTagName(tagName).then((data) => {
+                console.log("Fetched songs:", data);
+            }).catch((error) => {
               console.error("Error fetching songs by tag name:", error);
               // Need to add a disclaimer to show that the tag isn't in the DB
               // Also suggested tags, autocomplete, etc. 
