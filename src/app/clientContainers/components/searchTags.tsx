@@ -14,7 +14,9 @@ export default function searchTag() {
         onSubmit={(e) => {
           e.preventDefault();
           if (tagName) {
-            fetchSongsByTagName(tagName);
+            fetchSongsByTagName(tagName).catch((error) => {
+              console.error("Error fetching songs by tag name:", error);
+            });
           }
         }}
       >

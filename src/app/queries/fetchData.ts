@@ -50,8 +50,11 @@ export async function fetchTagsBySongID(songID: number) {
 export async function fetchSongsByTagName(tagName: string){
   // get the ID for the current tag 
   const tagID = await searchForTagIDWithName(tagName);
+  if(tagID.length > 0 ){
   const songTagsForTag = await searchForSongTagsWithTagID(tagID[0].id);
-  console.log(songTagsForTag);
+  } else{
+    throw new Error ("No such tag exists");
+  }
 }
 /*
 export async function fetchTagsByID(id: number[]) {
