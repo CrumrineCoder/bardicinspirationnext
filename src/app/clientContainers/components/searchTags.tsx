@@ -8,8 +8,9 @@ import {Song} from "../../interfaces";
 // Eventually this should be onChange and autocomplete tags.
 interface SearchTagProps {
   setSongListSongs: (updatedSongs: Song[] | null) => void;
+  resetSongsFunction: () => void;
 }
-export default function SearchTag({ setSongListSongs }: SearchTagProps) {
+export default function SearchTag({ setSongListSongs, resetSongsFunction }: SearchTagProps) {
   const [tagName, setTagName] = useState<string | null>(null);
 
   return (
@@ -40,6 +41,7 @@ export default function SearchTag({ setSongListSongs }: SearchTagProps) {
         />
         <button type="submit">Search Tag</button>
       </form>
+      <button onClick={()=> {resetSongsFunction(); setTagName(null)}}>Reset Filter</button>
     </div>
   );
 }

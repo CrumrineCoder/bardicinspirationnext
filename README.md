@@ -21,8 +21,8 @@ ToDo:
 * Add users when adding song, and then allowing upvotes and such. 
 * Update YT Link
 * No duplicate tags, or duplicate songnames and artist combos. [DONE]
-    * Duplicate tag back end error handling (Don't create new tag, just make new songtag)
-    * Duplicate song front end error handling 
+    * Duplicate tag back end error handling (Don't create new tag, just make new songtag) [DONE]
+    * Duplicate song front end error handling [DONE]
 * Community Notes (How they used it in a game)
 * Search By Tag (Maybe we can do something where we pull all tags, and the AI can suggest a few tags based on what the user wrote?)
     * AI suggested tags for a song 
@@ -30,3 +30,4 @@ ToDo:
 * Get BPM of songs from a library? 
 * Errors = vicious mockery. Health bar on the screen, does 1d8 damage each time? 
 * Make all tags be lowercase in db -> how do you check if a tag is unique despite capitalization differences 
+* Delete tag
