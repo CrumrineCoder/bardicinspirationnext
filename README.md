@@ -29,3 +29,4 @@ ToDo:
 * Copy link
 * Get BPM of songs from a library? 
 * Errors = vicious mockery. Health bar on the screen, does 1d8 damage each time? 
+* Make all tags be lowercase in db -> how do you check if a tag is unique despite capitalization differences 

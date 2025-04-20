@@ -3,6 +3,15 @@ import { db } from "../db";
 import { songsTable, songTagsTable, tagTable } from "../db/schema";
 import { eq } from "drizzle-orm";
 
+async function searchForTagIDWithName(tagname: string) {
+  const existingTag = await db
+    .select()
+    .from(tagTable)
+    .where(eq(tagTable.tagName, tagname))
+    .limit(1);
+  return existingTag;
+}
+
 export async function addSongToDB(
   songName: string,
   artist: string,
@@ -28,12 +37,8 @@ export async function addTagToDB(tagname: string, songID: number) {
   //   throw new Error("Fuck you dude");
   try {
     // Check uniqueness
-    const existingTag = await db
-      .select()
-      .from(tagTable)
-      .where(eq(tagTable.tagName, tagname))
-      .limit(1);
-      
+    const existingTag = await searchForTagIDWithName(tagname);
+
     // If the tag doesn't exist, just go to songTags to register this tag to this song
     if (existingTag.length > 0) {
       const existingTagId = existingTag[0].id;
