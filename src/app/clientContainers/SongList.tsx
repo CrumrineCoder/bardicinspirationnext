@@ -16,6 +16,14 @@ export default function SongList({ refresh }: { refresh: boolean }) {
     });
   }, [refresh]);
 
+  function resetSongs(){
+    // Needs to also reset the filter -> Should be put into that component then? 
+    fetchAllSongs().then(async (response) => {
+      const data = await response;
+      setSongs(data);
+    });
+  }
+
   useEffect(() => {
     if (songs) {
       // For each song,
@@ -35,7 +43,18 @@ export default function SongList({ refresh }: { refresh: boolean }) {
 
   return (
     <div className="SongListContainer">
-      <SearchTag setSongListSongs={(updatedSongs: Song[] | null) => { setSongs(updatedSongs); }}/>
+      <SearchTag
+        setSongListSongs={(updatedSongs: Song[] | null) => {
+          setSongs(updatedSongs);
+        }}
+      />
+      <button
+        onClick={() => {
+          resetSongs();
+        }}
+      >
+        Reset Filters
+      </button>
       <div className="MusicBoxContainer">
         {songs &&
           songs.map((song, index) => (
