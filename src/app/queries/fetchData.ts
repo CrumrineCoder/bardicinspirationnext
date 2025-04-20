@@ -9,11 +9,11 @@ import {
 } from "../db/schema";
 import { or, eq, inArray } from "drizzle-orm";
 
-export async function searchForTagIDWithName(tagname: string) {
+export async function searchForTagIDWithName(tagName: string) {
   const existingTag = await db
     .select()
     .from(tagTable)
-    .where(eq(tagTable.tagName, tagname))
+    .where(eq(tagTable.tagName, tagName))
     .limit(1);
   return existingTag;
 }

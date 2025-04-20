@@ -25,11 +25,11 @@ export async function addSongToDB(
   }
 }
 
-export async function addTagToDB(tagname: string, songID: number) {
+export async function addTagToDB(tagName: string, songID: number) {
   //   throw new Error("Fuck you dude");
   try {
     // Check uniqueness
-    const existingTag = await searchForTagIDWithName(tagname);
+    const existingTag = await searchForTagIDWithName(tagName);
 
     // If the tag doesn't exist, just go to songTags to register this tag to this song
     if (existingTag.length > 0) {
@@ -42,7 +42,7 @@ export async function addTagToDB(tagname: string, songID: number) {
 
     const insertedTag = await db
       .insert(tagTable)
-      .values({ tagName: tagname })
+      .values({ tagName: tagName })
       .returning({ id: tagTable.id });
 
     const tagID = insertedTag[0]?.id;
