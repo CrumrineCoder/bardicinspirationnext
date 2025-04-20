@@ -2,15 +2,7 @@
 import { db } from "../db";
 import { songsTable, songTagsTable, tagTable } from "../db/schema";
 import { eq } from "drizzle-orm";
-
-async function searchForTagIDWithName(tagname: string) {
-  const existingTag = await db
-    .select()
-    .from(tagTable)
-    .where(eq(tagTable.tagName, tagname))
-    .limit(1);
-  return existingTag;
-}
+import { searchForTagIDWithName } from "./fetchData";
 
 export async function addSongToDB(
   songName: string,

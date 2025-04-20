@@ -9,6 +9,15 @@ import {
 } from "../db/schema";
 import { or, eq, inArray } from "drizzle-orm";
 
+export async function searchForTagIDWithName(tagname: string) {
+  const existingTag = await db
+    .select()
+    .from(tagTable)
+    .where(eq(tagTable.tagName, tagname))
+    .limit(1);
+  return existingTag;
+}
+
 export async function fetchAllSongs() {
   const songs = await db.select().from(songsTable);
   return songs;
