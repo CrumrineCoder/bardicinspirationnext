@@ -7,12 +7,6 @@ import SignUpForm from "./clientContainers/signupForm";
 
 import { useState } from "react";
 
-interface User {
-  id: number;
-  email: string;
-  username: string;
-}
-
 export default function Home() {
   const [refresh, setRefresh] = useState(false);
 

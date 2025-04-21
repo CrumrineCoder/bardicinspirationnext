@@ -1,3 +1,4 @@
+
 import { signUp } from "../../../auth";
 import { useActionState } from "react";
 
@@ -18,12 +19,12 @@ export default function SignupForm() {
       <input id="password" name="password" type="password" />
       {state?.errors?.password && (
         <div>
-            <p>Password must: </p>
-            <ul>
-                {state.errors.password.map((error) =>(
-                    <li key={error} >- {error}</li>
-                ))}
-            </ul>
+          <p>Password must: </p>
+          <ul>
+            {state.errors.password.map((error) => (
+              <li key={error}>- {error}</li>
+            ))}
+          </ul>
         </div>
       )}
       <button type="submit">Sign Up</button>
