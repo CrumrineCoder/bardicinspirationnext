@@ -1,5 +1,6 @@
 
 import { signUp } from "../../../auth";
+import { getCurrentCookie } from "../session";
 import { useActionState } from "react";
 
 export default function SignupForm() {
@@ -28,6 +29,7 @@ export default function SignupForm() {
         </div>
       )}
       <button type="submit">Sign Up</button>
+      <p onClick={() => getCurrentCookie()}>Get Cookie</p>
     </form>
   );
 }

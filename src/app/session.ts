@@ -20,7 +20,8 @@ export async function getCurrentCookie() {
   if (!payload || !payload.userId) {
     return null; 
   }
-
+  console.log("Payload:");
+  console.log(payload);
   return payload; 
 }
 
