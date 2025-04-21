@@ -10,6 +10,8 @@ Useful Tutorials in making this site:
 * https://nextjs-faq.com/fetch-api-in-rsc
 * https://www.youtube.com/watch?v=dgDFPRol0cw&ab_channel=DaveGray
 * https://orm.drizzle.team/docs/guides/unique-case-insensitive-email
+* https://nextjs.org/docs/app/building-your-application/authentication#3-create-a-user-or-check-user-credentials
+* https://nextjs.org/learn/dashboard-app/adding-authentication
 
 ToDo:
 * Front End (Make it pretty! Animations!)

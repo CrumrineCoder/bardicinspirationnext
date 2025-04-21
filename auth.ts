@@ -11,6 +11,10 @@ import postgres from "postgres";
 // Might need to change to a drizzle solution here. 
 const sql = postgres(process.env.DATABASE_URL!, {ssl: 'require'})
 
+export async function signUp(formData: FormData){
+    
+}
+
 async function getUser(email: string): Promise<User | undefined>{
     try{
         const user = await sql<User[]>`SELECT * FROM users WHERE email = ${email}`;
