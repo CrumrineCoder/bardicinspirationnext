@@ -1,7 +1,16 @@
 import { integer, text, serial, pgTable } from "drizzle-orm/pg-core";
 
 // Should convert this to Drizzle
+
+export const userTable = pgTable("users", {
+    id: serial("id").primaryKey().notNull(),
+    name: text("name").notNull(),
+    email: text("email").notNull(),
+    password: text("password").notNull(),
+  });
+
 import { z } from "zod";
+
 
 export const SignUpFormSchema = z.object({
   name: z
@@ -19,6 +28,7 @@ export const SignUpFormSchema = z.object({
     })
     .trim(),
 });
+
 
 export type FormState =
   | {
