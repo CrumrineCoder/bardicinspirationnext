@@ -12,8 +12,8 @@ export default function SignupForm() {
         await signUp(state, formData);
       }}
     >
-      <input id="name" name="name" placeholder="name" />
-      {state?.errors?.name && <p>{state.errors.name}</p>}
+      <input id="username" name="username" placeholder="username" />
+      {state?.errors?.username && <p>{state.errors.username}</p>}
       <input id="email" name="email" type="email" placeholder="email" />
       {state?.errors?.email && <p>{state.errors.email}</p>}
       <input id="password" name="password" type="password" />

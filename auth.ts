@@ -1,4 +1,4 @@
-'use server'
+"use server";
 import NextAuth from "next-auth";
 import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
@@ -10,42 +10,48 @@ import type { User } from "./src/app/interfaces";
 import bcrypt from "bcrypt";
 import postgres from "postgres";
 import { db } from "@/app/db";
-import {createSession} from "./src/app/session";
+import { createSession } from "./src/app/session";
 import { redirect } from "next/navigation";
 
 // Might need to change to a drizzle solution here.
 const sql = postgres(process.env.DATABASE_URL!, { ssl: "require" });
 
 export async function signUp(state: FormState, formData: FormData) {
+
   const validatedFields = SignUpFormSchema.safeParse({
-    name: formData.get("name"),
+    username: formData.get("username"),
     email: formData.get("email"),
     password: formData.get("password"),
   });
 
+  console.log(validatedFields);
+
   if (!validatedFields.success) {
+    console.log(validatedFields.error);
     return {
       errors: validatedFields.error.flatten().fieldErrors,
     };
   }
 
-  const { name, email, password } = validatedFields.data;
+  const { username, email, password } = validatedFields.data;
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const data = await db.insert(userTable).values({
-    name,
-    email,
-    password: hashedPassword,
-  })
-  .returning({id: userTable.id})
+  const data = await db
+    .insert(userTable)
+    .values({
+    username,
+      email,
+      password: hashedPassword,
+    })
+    .returning({ id: userTable.id });
 
   const user = data[0];
 
-  if(!user){
-    return{
-        message: "An error occured while creating your account"
-    }
+  if (!user) {
+    return {
+      message: "An error occured while creating your account",
+    };
   }
 
   await createSession(user.id);
