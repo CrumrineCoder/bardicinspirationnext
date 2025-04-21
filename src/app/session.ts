@@ -8,21 +8,27 @@ const secretKey = process.env.SESSION_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
 
 export async function getCurrentCookie() {
-  const cookieStore =  await cookies();
+  const cookieStore = await cookies();
   const session = cookieStore.get("session")?.value;
 
   if (!session) {
-    return null; 
+    return null;
   }
 
   const payload = await decrypt(session);
 
   if (!payload || !payload.userId) {
-    return null; 
+    return null;
   }
-  console.log("Payload:");
-  console.log(payload);
-  return payload; 
+  /*
+  {
+    userId: someNumber,
+    expiresAt: '2025-04-28T18:07:31.485Z',
+    iat: 1745258851,
+    exp: 1745863651
+  }
+  */
+  return payload;
 }
 
 // Using Jose, create a JWT for 7 days
