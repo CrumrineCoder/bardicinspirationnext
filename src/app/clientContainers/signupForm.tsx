@@ -1,10 +1,20 @@
-
 import { signUp } from "../../../auth";
 import { getCurrentCookie } from "../session";
-import { useActionState } from "react";
+import { useActionState, useEffect, useState } from "react";
 
 export default function SignupForm() {
   const [state, action, pending] = useActionState(signUp, undefined);
+  const [userID, setUserID] = useState<number | null>(null);
+  async function checkUser() {
+    const user = await getCurrentCookie();
+    // Maybe use an interface here? Not sure how to handle a Promise here with TypeScript
+    if (user && typeof user === "object" && "userId" in user && typeof user.userId === "number") {
+        setUserID(user.userId);
+    }
+  }
+  useEffect(() => {
+    checkUser();
+  }, []);
   return (
     <form
       onSubmit={async (e) => {
@@ -29,7 +39,7 @@ export default function SignupForm() {
         </div>
       )}
       <button type="submit">Sign Up</button>
-      <p onClick={() => getCurrentCookie()}>Get Cookie</p>
+      {userID}
     </form>
   );
 }
