@@ -1,4 +1,4 @@
-'use server'
+"use server";
 import { SignJWT, jwtVerify } from "jose";
 import { SessionPayload } from "./interfaces";
 import { cookies } from "next/headers";
@@ -7,6 +7,24 @@ import { redirect } from "next/navigation";
 const secretKey = process.env.SESSION_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
 
+export async function getCurrentCookie() {
+  const cookieStore =  await cookies();
+  const session = cookieStore.get("session")?.value;
+
+  if (!session) {
+    return null; 
+  }
+
+  const payload = await decrypt(session);
+
+  if (!payload || !payload.userId) {
+    return null; 
+  }
+
+  return payload; 
+}
+
+// Using Jose, create a JWT for 7 days
 export async function encrypt(payload: SessionPayload) {
   return new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
@@ -27,6 +45,7 @@ export async function decrypt(session: string | undefined = "") {
 }
 
 export async function createSession(userId: number) {
+  // 7 days
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
   const session = await encrypt({ userId, expiresAt });
   const cookieStore = await cookies();
@@ -67,5 +86,5 @@ export async function deleteSession() {
 
 export async function logout() {
   deleteSession();
-  redirect("/login");
+  // redirect("/login");
 }

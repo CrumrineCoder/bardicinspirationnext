@@ -18,8 +18,8 @@ CREATE TABLE songTags (
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
-        email VARCHAR(255) NOT NULL,
-            userName VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL unique,
+            userName VARCHAR(255) NOT NULL unique,
                 password VARCHAR(255) NOT NULL
             );
 

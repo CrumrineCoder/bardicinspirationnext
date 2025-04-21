@@ -23,9 +23,17 @@ export async function signUp(state: FormState, formData: FormData) {
     email: formData.get("email"),
     password: formData.get("password"),
   });
-
-  console.log(validatedFields);
-
+  /*
+  {
+    success: true,
+    data: {
+      username: 'The Duder',
+      email: 'duder@gmail.com',
+      password: 'passwordThat23498234Special@#!@#$@#%Characters'
+    }
+  }
+  */
+ // Error handling
   if (!validatedFields.success) {
     console.log(validatedFields.error);
     return {
@@ -35,8 +43,10 @@ export async function signUp(state: FormState, formData: FormData) {
 
   const { username, email, password } = validatedFields.data;
 
+  // Hash our password
   const hashedPassword = await bcrypt.hash(password, 10);
 
+  // Store the user
   const data = await db
     .insert(userTable)
     .values({
@@ -46,6 +56,7 @@ export async function signUp(state: FormState, formData: FormData) {
     })
     .returning({ id: userTable.id });
 
+  // returns the ID of the user we just created
   const user = data[0];
 
   if (!user) {
@@ -56,7 +67,7 @@ export async function signUp(state: FormState, formData: FormData) {
 
   await createSession(user.id);
 
-  redirect("/profile");
+ // redirect("/profile");
 }
 
 async function getUser(email: string): Promise<User | undefined> {
