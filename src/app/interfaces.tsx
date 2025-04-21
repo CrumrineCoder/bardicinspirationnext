@@ -22,7 +22,5 @@ export interface User {
 }
 
 export interface SessionPayload extends JWTPayload {
-  userId: string;
-  name: string;
-  email: string;
+  userId: number;
 }

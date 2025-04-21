@@ -1,3 +1,4 @@
+
 import NextAuth from "next-auth";
 import { authConfig } from "./auth.config";
 import Credentials from "next-auth/providers/credentials";
@@ -9,6 +10,8 @@ import type { User } from "./src/app/interfaces";
 import bcrypt from "bcrypt";
 import postgres from "postgres";
 import { db } from "@/app/db";
+import {createSession} from "./src/app/session";
+import { redirect } from "next/navigation";
 
 // Might need to change to a drizzle solution here.
 const sql = postgres(process.env.DATABASE_URL!, { ssl: "require" });
@@ -44,6 +47,10 @@ export async function signUp(state: FormState, formData: FormData) {
         message: "An error occured while creating your account"
     }
   }
+
+  await createSession(user.id);
+
+  redirect("/profile");
 }
 
 async function getUser(email: string): Promise<User | undefined> {

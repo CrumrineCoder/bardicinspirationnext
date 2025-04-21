@@ -1,7 +1,7 @@
 import { signUp } from "../../../auth";
 import { useActionState } from "react";
 
-export function SignupForm() {
+export default function SignupForm() {
   const [state, action, pending] = useActionState(signUp, undefined);
   return (
     <form
