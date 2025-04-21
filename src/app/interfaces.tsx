@@ -1,3 +1,5 @@
+import { JWTPayload } from "jose";
+
 export interface Song {
   id: number;
   songName: string;
@@ -17,4 +19,10 @@ export interface User {
   name?: string;
   createdAt?: Date;
   updatedAt?: Date;
+}
+
+export interface SessionPayload extends JWTPayload {
+  userId: string;
+  name: string;
+  email: string;
 }
