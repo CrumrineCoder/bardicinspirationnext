@@ -17,10 +17,17 @@ ToDo:
 * Front End (Make it pretty! Animations!)
     -> In progress!
 * Auth
-* Check if song name + artist is in DB already
+    * Login [DONE]
+    * Signup [DONE]
+    * Login/Signup Error Handling
+    * Guest user
+    * Populate Tagvotes when a user creates a tag 
+    * Lock adding and voting on tags behind being a user
+    * Lock adding songs behind being a user
+    * User Profiles (Able to make their own notes and save them?)
+* Check if song name + artist is in DB already [DONE]
 * Check if YT link is valid + serialize it to be the ID only
-    * Feature where we'll search for a valid YT video for them
-* Add users when adding song, and then allowing upvotes and such. 
+    * Feature where we'll search for a valid YT video for them [DONE]
 * Update YT Link
 * No duplicate tags, or duplicate songnames and artist combos. [DONE]
     * Duplicate tag back end error handling (Don't create new tag, just make new songtag) [DONE]

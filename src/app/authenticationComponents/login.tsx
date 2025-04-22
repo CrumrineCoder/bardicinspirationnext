@@ -31,7 +31,7 @@ export default function loginForm() {
           name="password"
           type="password"
         />
-        <button type="submit">Sign Up</button>
+        <button type="submit">Log In</button>
       </form>
     </div>
   );
