@@ -3,7 +3,7 @@ import "./app.scss";
 
 import SongList from "./clientContainers/SongList";
 import SubmitSongForm from "./clientContainers/components/submitSongForm";
-import SignUpForm from "./clientContainers/signupForm";
+import AuthenticationParent from "./authenticationComponents/authenticationParent";
 
 import { useState } from "react";
 
@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <>
-      <SignUpForm></SignUpForm>
+      <AuthenticationParent></AuthenticationParent>
       <SubmitSongForm onUpdate={triggerRefresh}></SubmitSongForm>
       <SongList refresh={refresh} />
     </>
