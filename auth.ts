@@ -12,12 +12,40 @@ import postgres from "postgres";
 import { db } from "@/app/db";
 import { createSession } from "./src/app/session";
 import { redirect } from "next/navigation";
+import { eq } from "drizzle-orm";
 
 // Might need to change to a drizzle solution here.
 const sql = postgres(process.env.DATABASE_URL!, { ssl: "require" });
 
-export async function signUp(state: FormState, formData: FormData) {
+async function verifyPassword(
+  plainPassword: string,
+  hashedPassword: string
+): Promise<boolean> {
+  return await bcrypt.compare(plainPassword, hashedPassword);
+}
 
+export async function login(userName: string, password: string) {
+  const user = await db
+    .select()
+    .from(userTable)
+    .where(eq(userTable.username, userName))
+    .limit(1);
+
+  if (!user){
+    throw new Error("No such user found.")
+  }
+
+  const isPasswordValid = verifyPassword(user[0].password, password);
+  if (!isPasswordValid) {
+    throw new Error("Invalid credentials");
+  }
+
+  await createSession(user[0].id);
+  return user;
+
+}
+
+export async function signUp(state: FormState, formData: FormData) {
   const validatedFields = SignUpFormSchema.safeParse({
     username: formData.get("username"),
     email: formData.get("email"),
@@ -33,7 +61,7 @@ export async function signUp(state: FormState, formData: FormData) {
     }
   }
   */
- // Error handling
+  // Error handling
   if (!validatedFields.success) {
     console.log(validatedFields.error);
     return {
@@ -50,7 +78,7 @@ export async function signUp(state: FormState, formData: FormData) {
   const data = await db
     .insert(userTable)
     .values({
-    username,
+      username,
       email,
       password: hashedPassword,
     })
@@ -67,7 +95,7 @@ export async function signUp(state: FormState, formData: FormData) {
 
   await createSession(user.id);
 
- // redirect("/profile");
+  // redirect("/profile");
 }
 
 async function getUser(email: string): Promise<User | undefined> {

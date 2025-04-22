@@ -7,6 +7,8 @@ import { redirect } from "next/navigation";
 const secretKey = process.env.SESSION_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
 
+
+
 export async function getCurrentCookie() {
   const cookieStore = await cookies();
   const session = cookieStore.get("session")?.value;
