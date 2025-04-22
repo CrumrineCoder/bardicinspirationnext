@@ -1,17 +1,36 @@
-import {login} from "../../../auth";
+import { login } from "../../../auth";
+
+import { useState } from "react";
 
 export default function loginForm() {
+  const [userName, setUserName] = useState<string | null>(null);
+  const [password, setPassword] = useState<string | null>(null);
   return (
     <div>
       <form
         onSubmit={async (e) => {
           e.preventDefault();
-          const formData = new FormData(e.currentTarget);
-          await login(state, formData);
+          if (userName && password) {
+            await login(userName, password);
+          }
         }}
       >
-        <input id="username" name="username" placeholder="username" />
-        <input id="password" name="password" type="password" />
+        <input
+          onChange={(e) => {
+            setUserName(e.target.value);
+          }}
+          id="username"
+          name="username"
+          placeholder="username"
+        />
+        <input
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          id="password"
+          name="password"
+          type="password"
+        />
         <button type="submit">Sign Up</button>
       </form>
     </div>

@@ -3,17 +3,16 @@ import { integer, text, serial, pgTable } from "drizzle-orm/pg-core";
 // Should convert this to Drizzle
 
 export const userTable = pgTable("users", {
-    id: serial("id").primaryKey().notNull(),
-    username: text("username").notNull(),
-    email: text("email").notNull(),
-    password: text("password").notNull(),
-  });
+  id: serial("id").primaryKey().notNull(),
+  username: text("username").notNull(),
+  email: text("email").notNull(),
+  password: text("password").notNull(),
+});
 
 import { z } from "zod";
 
-
 export const SignUpFormSchema = z.object({
-    username: z
+  username: z
     .string()
     .min(2, { message: "username must be at least 2 characters long" })
     .trim(),
@@ -28,7 +27,6 @@ export const SignUpFormSchema = z.object({
     })
     .trim(),
 });
-
 
 export type FormState =
   | {
@@ -58,7 +56,6 @@ export const songTagsTable = pgTable("songtags", {
   songID: integer("songid").notNull(),
   tagID: integer("tagid").notNull(),
 });
-
 
 export const tagVotesTable = pgTable("tagvotes", {
   id: serial("id").primaryKey().notNull(),
