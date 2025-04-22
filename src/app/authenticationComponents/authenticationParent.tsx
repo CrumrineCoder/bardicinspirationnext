@@ -2,6 +2,7 @@ import { getCurrentCookie } from "../session";
 import { verifySession } from "../dal";
 import { useEffect, useState } from "react";
 import SignUpForm from "./signupForm";
+import LoginForm from "./login";
 import { logout } from "../session";
 
 export default function HomePageAuth() {
@@ -14,7 +15,6 @@ export default function HomePageAuth() {
   async function checkUser() {
     const user = await getCurrentCookie();
     const user2 = await verifySession();
-    console.log(user2);
     // Maybe use an interface here? Not sure how to handle a Promise here with TypeScript
     if (
       user &&
@@ -31,9 +31,14 @@ export default function HomePageAuth() {
   return (
     <div className="authenticationContainer">
       {!userID ? (
-        <SignUpForm></SignUpForm>
+        <>
+          <LoginForm></LoginForm>
+          <SignUpForm></SignUpForm>
+        </>
       ) : (
-        <button onClick={() => deleteUser()}>Log Out</button>
+        <>
+          <button onClick={() => deleteUser()}>Log Out</button>
+        </>
       )}
     </div>
   );
