@@ -59,11 +59,6 @@ export const songTagsTable = pgTable("songtags", {
   tagID: integer("tagid").notNull(),
 });
 
-export const usersTable = pgTable("users", {
-  id: serial("id").primaryKey().notNull(),
-  email: text("email").notNull(),
-  userName: text("username").notNull(),
-});
 
 export const tagVotesTable = pgTable("tagvotes", {
   id: serial("id").primaryKey().notNull(),

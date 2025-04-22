@@ -4,7 +4,7 @@ import {
   songsTable,
   tagTable,
   tagVotesTable,
-  usersTable,
+  userTable,
   songTagsTable,
 } from "../db/schema";
 import { or, eq, inArray } from "drizzle-orm";
