@@ -62,6 +62,7 @@ ToDo:
 * Upvote tags
     * Automatically hide tags below a certain threshold unless clicked (discourage trolling)
     * Sort songs when searched by tag
+* Show popular tags at the top. 
 
 * Playlists [Inspired by Melodice - although it'd be different with Bardic Inspiration]
     * It'd be saving songs for a session, probably somewhere in a user's profile. Maybe we can have a stat where songs are used in playlists as a number? As a way to rate popularity? Or just a "I used this!" button on a song. 

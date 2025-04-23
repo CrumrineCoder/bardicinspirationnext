@@ -6,7 +6,11 @@ $black: #2b2b2b;
 $blue: #4b4e6d;
 @use "sass:color";
 
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+/*
 @import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+*/
 
 button {
   border-style: none;
@@ -30,15 +34,13 @@ html {
   width: 100%;
   height: 100vh;
   margin: 0px;
-  font-family: "Spectral", serif;
+  font-family: "Josefin Sans", serif;
   body {
     margin: 0px;
     padding: 20px;
     .authenticationContainer{
-      > * {
-        padding: 10px 0px;
-      }
       .SignUpForm, .LoginForm{
+        padding-bottom: 5px; 
         > * {
           margin: 0px 3px; 
         }
@@ -234,12 +236,16 @@ html {
               font-size: 1.2em;
               text-align: left;
               font-style: italic;
-              margin-bottom: 5px;
               color: rgb(29, 29, 29);
-              margin: 0;
               p:nth-child(1) {
                 font-weight: 800;
                 font-style: normal;
+                margin-bottom: 10px; 
+              }
+              p:nth-child(2){
+               // color: color.scale($black, $lightness: 15%);
+               opacity: .9;
+               font-weight: 600; 
               }
               p {
                 margin: 0;
@@ -261,7 +267,8 @@ html {
             padding: 10px;
             padding-top: 2px;
             .allTags {
-              padding-bottom: 5px;
+              padding-bottom: 15px;
+              padding-top: 15px; 
               .tagDisclaimer {
                 color: white;
                 font-style: italic;

@@ -1,6 +1,7 @@
 import { login } from "../../../auth";
 
 import { useState } from "react";
+import { verifySession } from "../dal";
 
 export default function loginForm() {
   const [userName, setUserName] = useState<string | null>(null);
@@ -12,6 +13,7 @@ export default function loginForm() {
           e.preventDefault();
           if (userName && password) {
             await login(userName, password);
+            verifySession()
           }
         }}
       >
