@@ -43,16 +43,23 @@ ToDo:
     * Duplicate song front end error handling [DONE]
 * Community Notes (How they used it in a game)
 * Search By Tag (Maybe we can do something where we pull all tags, and the AI can suggest a few tags based on what the user wrote?) [DONE]
-    * Autocomplete tags based on what's already in the db -
+    * Autocomplete tags based on what's already in the db
     * AI suggested tags for a song 
     * AI related tags based on what's already in the db.
     * AI parse body of text to find a song
+    * Multiple tags search
+    * Filter by source (Hollow Knight)
+    * Search Song Name 
 * Copy link
 * Get BPM of songs from a library? 
 * Errors = vicious mockery. Health bar on the screen, does 1d8 damage each time? 
     * Bard styling in general
-* Make all tags be lowercase in db -> how do you check if a tag is unique despite capitalization differences 
+* Make all tags be lowercase in db -> how do you check if a tag is unique despite capitalization differences [DONE]
 * Delete tag
 * Handle tag does not exist in searchTag
+* Upvote tags
+    * Automatically hide tags below a certain threshold unless clicked (discourage trolling)
+    * Sort songs when searched by tag
 
 * Playlists [Inspired by Melodice - although it'd be different with Bardic Inspiration]
+* Chrome/Firefox Extension that acts like a Pinterest for the songs to be added. 

@@ -20,7 +20,7 @@ export default function SearchTag({ setSongListSongs, resetSongsFunction }: Sear
         onSubmit={(e) => {
           e.preventDefault();
           if (tagName) {
-            fetchSongsByTagName(tagName)
+            fetchSongsByTagName(tagName.toLowerCase())
               .then((data) => {
                 setSongListSongs(data);
               })

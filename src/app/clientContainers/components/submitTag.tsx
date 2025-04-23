@@ -16,7 +16,7 @@ export default function AddTagButton({
   async function submitTag() {
     if (tagName) {
       try {
-        await addTagToDB(tagName, songID);
+        await addTagToDB(tagName.toLowerCase(), songID);
         onUpdate(); // Ensure the parent component is updated after successful submission
         setShowDisclaimer(false);
         setTagName(null);

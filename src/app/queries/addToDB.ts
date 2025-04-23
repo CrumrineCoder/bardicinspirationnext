@@ -31,7 +31,7 @@ export async function addTagToDB(tagName: string, songID: number) {
     // Check uniqueness
     const existingTag = await searchForTagIDWithName(tagName);
 
-    // If the tag doesn't exist, just go to songTags to register this tag to this song
+    // If the tag does exist, register tag to this song tag relational table
     if (existingTag.length > 0) {
       const existingTagId = existingTag[0].id;
       await db
