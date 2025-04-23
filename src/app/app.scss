@@ -6,10 +6,22 @@ $black: #2b2b2b;
 $blue: #4b4e6d;
 @use "sass:color";
 
-@import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-button{
-  border-style: none; 
+button {
+  border-style: none;
+  padding: 2px 7px;
+  border-radius: 2px;
+  font-weight: 500;
+  border-radius: 3px;
+  border: $blue 2px solid;
+  color: $blue;
+  background: none; 
+  &:hover {
+    cursor: pointer;
+    background: $blue;
+    color: white;
+  }
 }
 
 html {
@@ -17,11 +29,11 @@ html {
   color: $black;
   width: 100%;
   height: 100vh;
-  margin: 0px; 
-  font-family: 'Spectral', serif;
+  margin: 0px;
+  font-family: "Spectral", serif;
   body {
-    margin: 0px; 
-    padding: 20px; 
+    margin: 0px;
+    padding: 20px;
     .SubmitFormJumbo {
       display: flex;
       justify-content: center;
@@ -61,7 +73,7 @@ html {
           .YouTubeFindButton {
             font-style: italic;
             color: color.scale($black, $lightness: 35%);
-            float: right; 
+            float: right;
             &:hover {
               cursor: pointer;
               color: $black;
@@ -74,11 +86,12 @@ html {
             text-align: center;
             animation: blink 3s ease-in-out infinite;
             @keyframes blink {
-              0%, 100% {
-              opacity: 1;
+              0%,
+              100% {
+                opacity: 1;
               }
               50% {
-              opacity: 0.5;
+                opacity: 0.5;
               }
             }
           }
@@ -88,7 +101,7 @@ html {
             .YouTubeSuggestionsControls {
               display: flex;
               justify-content: center;
-              margin-top: 20px; 
+              margin-top: 20px;
               .YouTubeConfirmButton {
                 padding: 2px 7px;
                 border-radius: 2px;
@@ -110,7 +123,7 @@ html {
                 float: right;
                 margin-left: 10px;
                 color: color.scale($black, $lightness: 45%);
-                &:hover{
+                &:hover {
                   color: color.scale($black);
                 }
               }
@@ -128,15 +141,15 @@ html {
           }
         }
 
-        .resetButton{
-          position: absolute; 
-          bottom: 10px; 
-          font-style: italic; 
-          font-weight: 200; 
+        .resetButton {
+          position: absolute;
+          bottom: 10px;
+          font-style: italic;
+          font-weight: 200;
           color: color.scale($black, $lightness: 25%);
-          &:hover{
-            color: black; 
-            cursor: pointer; 
+          &:hover {
+            color: black;
+            cursor: pointer;
           }
         }
         button {
@@ -149,7 +162,7 @@ html {
           margin-right: 5px;
           font-weight: 600;
           border-radius: 3px;
-          margin-top: 20px; 
+          margin-top: 20px;
           &:hover {
             cursor: pointer;
             background: color.scale($blue, $lightness: -45%);
@@ -163,7 +176,7 @@ html {
       justify-content: space-between;
       align-items: stretch;
       .MusicBox {
-        flex: 0 1 calc(33.333% - 10px);
+        flex: 0 1 calc(33.333% - 20px);
         height: 100%;
         text-align: center;
         color: black;
@@ -198,13 +211,13 @@ html {
             font-style: italic;
             margin-bottom: 5px;
             color: rgb(29, 29, 29);
-            margin: 0; 
+            margin: 0;
             p:nth-child(1) {
               font-weight: 800;
               font-style: normal;
             }
-            p{
-              margin: 0; 
+            p {
+              margin: 0;
             }
           }
         }
@@ -247,15 +260,16 @@ html {
                 width: calc(100% - 20px);
               }
             }
-            .DupeTagDisclaimer{
+            .DupeTagDisclaimer {
               text-align: center;
               animation: blink 3s ease-in-out infinite;
               @keyframes blink {
-                0%, 100% {
-                opacity: 1;
+                0%,
+                100% {
+                  opacity: 1;
                 }
                 50% {
-                opacity: 0.5;
+                  opacity: 0.5;
                 }
               }
             }

@@ -13,6 +13,13 @@ Useful Tutorials in making this site:
 * https://nextjs.org/docs/app/building-your-application/authentication#3-create-a-user-or-check-user-credentials
 * https://nextjs.org/learn/dashboard-app/adding-authentication
 
+Inspiration:
+* https://melodice.org/
+* https://tabletopaudio.com/
+* https://www.tabletoprpgmusic.com/
+
+
+
 ToDo:
 * Front End (Make it pretty! Animations!)
     -> In progress!
@@ -47,3 +54,5 @@ ToDo:
 * Make all tags be lowercase in db -> how do you check if a tag is unique despite capitalization differences 
 * Delete tag
 * Handle tag does not exist in searchTag
+
+* Playlists [Inspired by Melodice - although it'd be different with Bardic Inspiration]
