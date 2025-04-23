@@ -63,6 +63,7 @@ ToDo:
     * Automatically hide tags below a certain threshold unless clicked (discourage trolling)
     * Sort songs when searched by tag
 * Show popular tags at the top. 
+* Should I use the YouTube thumbnail art for the background of the song elements? I feel like making a million API calls to YT is not the way to go... and I shouldnt store them locallly, but it'd be nice to use it as a background image on them.    
 
 * Playlists [Inspired by Melodice - although it'd be different with Bardic Inspiration]
     * It'd be saving songs for a session, probably somewhere in a user's profile. Maybe we can have a stat where songs are used in playlists as a number? As a way to rate popularity? Or just a "I used this!" button on a song. 
