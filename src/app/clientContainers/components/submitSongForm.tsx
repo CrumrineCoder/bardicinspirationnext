@@ -21,17 +21,6 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   const [showDisclaimer, setShowDisclaimer] = useState<string | null>(null);
   const [potentialLinkIndex, setPotentialLinkIndex] = useState<number>(0);
 
-  function validateYouTubeUrl(urlToParse: string) {
-    if (urlToParse) {
-      var regExp =
-        /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-      if (urlToParse.match(regExp)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   function resetVal() {
     setSongName(null);
     setArtist(null);
