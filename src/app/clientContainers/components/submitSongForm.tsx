@@ -31,7 +31,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   }
   function submitForm() {
     if (artist && songName && link) {
-   //   const validURL = await getYoutube(link);
+      //   const validURL = await getYoutube(link);
       addSongToDB(songName, artist, link)
         .then(() => {
           onUpdate();
@@ -64,6 +64,26 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
       }
     } else {
       setShowDisclaimer("YouTube");
+    }
+  }
+
+  async function checkYouTubeURL() {
+    if (link) {
+      try {
+        const response = await fetch(
+          `/api/validateYouTubeURL?link=${encodeURIComponent(link)}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
   return (
@@ -180,6 +200,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
           Reset
         </span>
         <button type="submit">Add Song</button>
+        <p onClick={()=> checkYouTubeURL()}>Check YouTube URL</p>
       </form>
     </div>
   );
