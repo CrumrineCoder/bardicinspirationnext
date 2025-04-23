@@ -16,7 +16,7 @@ button {
   border-radius: 3px;
   border: $blue 2px solid;
   color: $blue;
-  background: none; 
+  background: none;
   &:hover {
     cursor: pointer;
     background: $blue;
@@ -170,121 +170,137 @@ html {
         }
       }
     }
-    .MusicBoxContainer {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: stretch;
-      .MusicBox {
-        flex: 0 1 calc(33.333% - 20px);
-        height: 100%;
-        text-align: center;
-        color: black;
-        border-radius: 3px;
+    .SongListContainer {
+       .SearchTagContainer{
+        margin: 10px 0px; 
+        .SearchTagForm{
+          .SearchTagBar{
+            margin-right: 10px; 
+          }
+          .SearchTagSubmitButton{
 
-        border: 3px solid transparent;
-        border-color: $blue;
-        position: relative;
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          right: 0;
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 0 30px 30px 0;
-          border-color: transparent $blue transparent transparent;
+          }
         }
-        /*   border-image: url("./assets/360_F_347663067_YorPbArqcfnsX8OVVATZOvCsg6wcfhp4.jpg")
+        .SearchTagResetButton{
+          margin-top: 10px; 
+        }
+       }
+      .MusicBoxContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: stretch;
+        .MusicBox {
+          flex: 0 1 calc(33.333% - 20px);
+          height: 100%;
+          text-align: center;
+          color: black;
+          border-radius: 3px;
+
+          border: 5px solid transparent;
+          border-color: $blue;
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 30px 30px 0;
+            border-color: transparent $blue transparent transparent;
+          }
+          /*   border-image: url("./assets/360_F_347663067_YorPbArqcfnsX8OVVATZOvCsg6wcfhp4.jpg")
           45 round;
       */
-        box-shadow: 2px 4px 6px 0 hsla(0, 0%, 0%, 0.2);
-        .MusicBoxSongContainer {
-          background: white;
-          padding: 5px;
-          padding-bottom: 10px;
-          //      border-radius: 0px 0px 30px 30px;
-          .MusicBoxHeader {
-            font-size: 1.2em;
-            text-align: left;
-            font-style: italic;
-            margin-bottom: 5px;
-            color: rgb(29, 29, 29);
-            margin: 0;
-            p:nth-child(1) {
-              font-weight: 800;
-              font-style: normal;
-            }
-            p {
-              margin: 0;
-            }
-          }
-        }
-        .youtubeWrapper {
-          display: flex;
-          justify-content: center;
-          width: 100%;
-          iframe {
-            border-radius: 15px;
-            aspect-ratio: 16 / 9;
-            width: 100% !important;
-          }
-        }
-        .tagFormWrapper {
-          background: $blue;
-          padding: 10px;
-          padding-top: 2px;
-          .allTags {
-            padding-bottom: 5px;
-            .tagDisclaimer {
-              color: white;
-              font-style: italic;
-            }
-            .tag {
-              padding: 3px;
-              display: inline;
-              color: white;
-              font-weight: 500;
-            }
-          }
-          .formContainer {
-            background: hsl(220, 12%, 95%);
-            border-radius: 5px;
+          box-shadow: 2px 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+          .MusicBoxSongContainer {
+            background: white;
+            padding: 5px;
             padding-bottom: 10px;
-            margin-bottom: 5px;
-            .formInputContainer {
-              padding-top: 15px;
+            //      border-radius: 0px 0px 30px 30px;
+            .MusicBoxHeader {
+              font-size: 1.2em;
+              text-align: left;
+              font-style: italic;
+              margin-bottom: 5px;
+              color: rgb(29, 29, 29);
+              margin: 0;
+              p:nth-child(1) {
+                font-weight: 800;
+                font-style: normal;
+              }
+              p {
+                margin: 0;
+              }
+            }
+          }
+          .youtubeWrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            iframe {
+              border-radius: 15px;
+              aspect-ratio: 16 / 9;
+              width: 100% !important;
+            }
+          }
+          .tagFormWrapper {
+            background: $blue;
+            padding: 10px;
+            padding-top: 2px;
+            .allTags {
               padding-bottom: 5px;
-              input {
-                width: calc(100% - 20px);
+              .tagDisclaimer {
+                color: white;
+                font-style: italic;
+              }
+              .tag {
+                padding: 3px;
+                display: inline;
+                color: white;
+                font-weight: 500;
               }
             }
-            .DupeTagDisclaimer {
-              text-align: center;
-              animation: blink 3s ease-in-out infinite;
-              @keyframes blink {
-                0%,
-                100% {
-                  opacity: 1;
-                }
-                50% {
-                  opacity: 0.5;
+            .formContainer {
+              background: hsl(220, 12%, 95%);
+              border-radius: 5px;
+              padding-bottom: 10px;
+              margin-bottom: 5px;
+              .formInputContainer {
+                padding-top: 15px;
+                padding-bottom: 5px;
+                input {
+                  width: calc(100% - 20px);
                 }
               }
-            }
-            .submitButton {
-              background: $blue;
-              color: white;
-              padding: 5px 10px;
-              border-radius: 2px;
-              margin-left: auto;
-              display: block;
-              margin-right: 5px;
-              font-weight: 600;
-              &:hover {
-                cursor: pointer;
-                background: color.scale($blue, $lightness: -45%);
+              .DupeTagDisclaimer {
+                text-align: center;
+                animation: blink 3s ease-in-out infinite;
+                @keyframes blink {
+                  0%,
+                  100% {
+                    opacity: 1;
+                  }
+                  50% {
+                    opacity: 0.5;
+                  }
+                }
+              }
+              .submitButton {
+                background: $blue;
+                color: white;
+                padding: 5px 10px;
+                border-radius: 2px;
+                margin-left: auto;
+                display: block;
+                margin-right: 5px;
+                font-weight: 600;
+                &:hover {
+                  cursor: pointer;
+                  background: color.scale($blue, $lightness: -45%);
+                }
               }
             }
           }

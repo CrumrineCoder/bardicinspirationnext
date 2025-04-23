@@ -14,8 +14,9 @@ export default function SearchTag({ setSongListSongs, resetSongsFunction }: Sear
   const [tagName, setTagName] = useState<string | null>(null);
 
   return (
-    <div>
+    <div className="SearchTagContainer">
       <form
+        className="SearchTagForm"
         onSubmit={(e) => {
           e.preventDefault();
           if (tagName) {
@@ -38,10 +39,11 @@ export default function SearchTag({ setSongListSongs, resetSongsFunction }: Sear
           required
           value={tagName || ""}
           onChange={(e) => setTagName(e.target.value)}
+          className="SearchTagBar"
         />
-        <button type="submit">Search Tag</button>
+        <button className="SearchTagSubmitButton" type="submit">Search Tag</button>
       </form>
-      <button onClick={()=> {resetSongsFunction(); setTagName(null)}}>Reset Filter</button>
+      <button className="SearchTagResetButton" onClick={()=> {resetSongsFunction(); setTagName(null)}}>Reset Filter</button>
     </div>
   );
 }
