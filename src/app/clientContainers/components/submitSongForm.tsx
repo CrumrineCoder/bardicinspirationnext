@@ -10,7 +10,7 @@ const ytPlayerOptions = {
     autoplay: 0,
     controls: 1,
   },
-  width: 335,
+
 };
 
 export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
@@ -210,7 +210,6 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
           Reset
         </span>
         <button type="submit">Add Song</button>
-        <p onClick={()=> checkYouTubeURL()}>Check YouTube URL</p>
       </form>
     </div>
   );

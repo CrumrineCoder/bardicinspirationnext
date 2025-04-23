@@ -58,6 +58,7 @@ html {
           .YouTubeFindButton {
             font-style: italic;
             color: color.scale($black, $lightness: 35%);
+            float: right; 
             &:hover {
               cursor: pointer;
               color: $black;
@@ -196,9 +197,13 @@ html {
             font-style: italic;
             margin-bottom: 5px;
             color: rgb(29, 29, 29);
+            margin: 0; 
             p:nth-child(1) {
               font-weight: 800;
               font-style: normal;
+            }
+            p{
+              margin: 0; 
             }
           }
         }

@@ -36,7 +36,9 @@ ToDo:
     * Duplicate song front end error handling [DONE]
 * Community Notes (How they used it in a game)
 * Search By Tag (Maybe we can do something where we pull all tags, and the AI can suggest a few tags based on what the user wrote?) [DONE]
+    * Autocomplete tags based on what's already in the db -
     * AI suggested tags for a song 
+    * AI related tags based on what's already in the db.
     * AI parse body of text to find a song
 * Copy link
 * Get BPM of songs from a library? 
