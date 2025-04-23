@@ -48,5 +48,5 @@ export default async function validateYouTubeURL(
     throw new Error("Failed to fetch data from YouTube API");
   }
 
-  res.status(200).send({ response });
+  res.status(200).send(response.body);
 }

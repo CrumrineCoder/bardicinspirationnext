@@ -79,8 +79,9 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
             },
           }
         );
-        const data = await response.json();
-        console.log(data);
+        const isValidYouTube = response.ok; 
+        console.log(isValidYouTube);
+        return isValidYouTube;
       } catch (error) {
         console.log(error);
       }
