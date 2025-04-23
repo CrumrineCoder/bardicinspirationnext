@@ -32,7 +32,16 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   function submitForm() {
     if (artist && songName && link) {
       //   const validURL = await getYoutube(link);
-      addSongToDB(songName, artist, link)
+      const videoIDRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+      const match = link.match(videoIDRegex);
+      let videoID; 
+      if (match && match[1]) {
+        videoID = match[1];
+      } else {
+        setShowDisclaimer("Invalid YouTube URL");
+        return;
+      }
+      addSongToDB(songName, artist, videoID)
         .then(() => {
           onUpdate();
           resetVal();
@@ -164,7 +173,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
                 </span>
                 <span
                   onClick={() => {
-                    setLink(potentialLinks[potentialLinkIndex]);
+                    setLink("https://www.youtube.com/watch?v="+potentialLinks[potentialLinkIndex]);
                   }}
                   className="YouTubeConfirmButton"
                 >
