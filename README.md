@@ -47,6 +47,7 @@ ToDo:
 * Search By Tag (Maybe we can do something where we pull all tags, and the AI can suggest a few tags based on what the user wrote?) [DONE]
     * Autocomplete tags based on what's already in the db
     * AI suggested tags for a song 
+        * Base case suggested tags too -> instrumental or vocal? How fast or slow? Use in game? Could make a form that's like a starter guide for tags on a song. 
     * AI related tags based on what's already in the db.
     * AI parse body of text to find a song
     * Multiple tags search
