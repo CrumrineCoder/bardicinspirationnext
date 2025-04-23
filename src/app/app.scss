@@ -34,6 +34,16 @@ html {
   body {
     margin: 0px;
     padding: 20px;
+    .authenticationContainer{
+      > * {
+        padding: 10px 0px;
+      }
+      .SignUpForm, .LoginForm{
+        > * {
+          margin: 0px 3px; 
+        }
+      }
+    }
     .SubmitFormJumbo {
       display: flex;
       justify-content: center;

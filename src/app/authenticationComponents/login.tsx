@@ -6,8 +6,8 @@ export default function loginForm() {
   const [userName, setUserName] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
   return (
-    <div>
       <form
+        className="LoginForm"
         onSubmit={async (e) => {
           e.preventDefault();
           if (userName && password) {
@@ -33,6 +33,5 @@ export default function loginForm() {
         />
         <button type="submit">Log In</button>
       </form>
-    </div>
   );
 }
