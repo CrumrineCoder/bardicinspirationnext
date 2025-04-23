@@ -21,6 +21,17 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   const [showDisclaimer, setShowDisclaimer] = useState<string | null>(null);
   const [potentialLinkIndex, setPotentialLinkIndex] = useState<number>(0);
 
+  function validateYouTubeUrl(urlToParse: string) {
+    if (urlToParse) {
+      var regExp =
+        /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+      if (urlToParse.match(regExp)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   function resetVal() {
     setSongName(null);
     setArtist(null);
@@ -31,6 +42,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
   }
   function submitForm() {
     if (artist && songName && link) {
+   //   const validURL = await getYoutube(link);
       addSongToDB(songName, artist, link)
         .then(() => {
           onUpdate();
@@ -45,7 +57,7 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
     if (songName && artist) {
       try {
         const response = await fetch(
-          `/api/getYoutube?songName=${encodeURIComponent(
+          `/api/findYouTubeURL?songName=${encodeURIComponent(
             songName
           )}&artist=${encodeURIComponent(artist)}`,
           {
@@ -114,15 +126,15 @@ export default function SubmitSongForm({ onUpdate }: { onUpdate: () => void }) {
           </span>
         </div>
         <div className="YouTubeSearchToolTips">
-            {showDisclaimer && showDisclaimer === "YouTube" ? (
+          {showDisclaimer && showDisclaimer === "YouTube" ? (
             <div className="YouTubeDisclaimer">
               Please enter a Song Name and Artist!
             </div>
-            ) : showDisclaimer === "Unique SongTag" ? (
+          ) : showDisclaimer === "Unique SongTag" ? (
             <div className="YouTubeDisclaimer">
               That Song is already in the database! Sorry, slowpoke.
             </div>
-            ) : null}
+          ) : null}
           {!link && potentialLinks != null && potentialLinks.length > 0 && (
             <div className="YouTubeSuggestionsContainer">
               <div className="YouTubeSuggestionsControls">

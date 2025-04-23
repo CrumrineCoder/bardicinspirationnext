@@ -20,6 +20,8 @@ ToDo:
     * Login [DONE]
     * Signup [DONE]
     * Login/Signup Error Handling
+    * Update userstate after logging in/signing up. 
+    * Admin users
     * Guest user
     * Populate Tagvotes when a user creates a tag 
     * Lock adding and voting on tags behind being a user
