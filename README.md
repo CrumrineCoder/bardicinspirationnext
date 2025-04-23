@@ -28,18 +28,20 @@ ToDo:
     * Lock adding songs behind being a user
     * User Profiles (Able to make their own notes and save them?)
 * Check if song name + artist is in DB already [DONE]
-* Check if YT link is valid + serialize it to be the ID only
+* Check if YT link is valid + serialize it to be the ID only [DONE]
     * Feature where we'll search for a valid YT video for them [DONE]
-* Update YT Link
+    * Update YT Link
 * No duplicate tags, or duplicate songnames and artist combos. [DONE]
     * Duplicate tag back end error handling (Don't create new tag, just make new songtag) [DONE]
     * Duplicate song front end error handling [DONE]
 * Community Notes (How they used it in a game)
-* Search By Tag (Maybe we can do something where we pull all tags, and the AI can suggest a few tags based on what the user wrote?)
+* Search By Tag (Maybe we can do something where we pull all tags, and the AI can suggest a few tags based on what the user wrote?) [DONE]
     * AI suggested tags for a song 
+    * AI parse body of text to find a song
 * Copy link
 * Get BPM of songs from a library? 
 * Errors = vicious mockery. Health bar on the screen, does 1d8 damage each time? 
+    * Bard styling in general
 * Make all tags be lowercase in db -> how do you check if a tag is unique despite capitalization differences 
 * Delete tag
 * Handle tag does not exist in searchTag
