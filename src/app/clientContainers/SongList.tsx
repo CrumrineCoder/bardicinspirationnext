@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchAllSongs, fetchTagsBySongID } from "../queries/fetchData";
 import SongComponent from "./components/SongComponent";
 import SearchTag from "./components/searchTags";
+import AISearchTags from "./components/aiSearchTags";
 import { Song } from "../interfaces";
 // fetchTagsByID, fetchSongTagsByID,   fetchUsersByID, fetchTagVotesByID
 export default function SongList({ refresh }: { refresh: boolean }) {
@@ -43,6 +44,7 @@ export default function SongList({ refresh }: { refresh: boolean }) {
 
   return (
     <div className="SongListContainer">
+      <AISearchTags></AISearchTags>
       <SearchTag
         setSongListSongs={(updatedSongs: Song[] | null) => {
           setSongs(updatedSongs);

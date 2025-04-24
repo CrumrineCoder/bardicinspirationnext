@@ -184,6 +184,15 @@ html {
       }
     }
     .SongListContainer {
+      .AISearchTagsContainer{
+        width: auto; 
+        .AISearchTagsInput{
+          display: inline-block;
+          width: auto; 
+          background: white; 
+          max-width: 50%;
+        }
+      }
       .SearchTagContainer {
         margin: 10px 0px;
         .SearchTagForm {
