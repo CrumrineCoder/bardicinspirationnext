@@ -4,6 +4,7 @@ import { Song, Tag } from "../../interfaces";
 import { useEffect, useState } from "react";
 import { fetchTagsBySongID } from "../../queries/fetchData";
 import YouTube from "react-youtube";
+import Gemini from "../requestGemini";
 
 const ytPlayerOptions = {
   playerVars: {
@@ -26,6 +27,7 @@ export default function SongComponent({ song }: { song: Song }) {
   return (
     <div className="MusicBox">
       <div className="MusicBoxSongContainer">
+      <Gemini songName={song.songName} artist={song.artist}></Gemini>
         <h2 className="MusicBoxHeader">
           <p>{song.songName} </p>
           <p>{song.artist} </p>
@@ -46,6 +48,7 @@ export default function SongComponent({ song }: { song: Song }) {
             <p className="tagDisclaimer">No tags!</p>
           )}
         </div>
+       
         <AddTagButton onUpdate={() => getTags()} songID={song.id} />
       </div>
     </div>
