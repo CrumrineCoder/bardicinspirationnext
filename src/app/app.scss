@@ -6,7 +6,7 @@ $black: #2b2b2b;
 $blue: #4b4e6d;
 @use "sass:color";
 
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
 
 /*
 @import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
@@ -38,11 +38,12 @@ html {
   body {
     margin: 0px;
     padding: 20px;
-    .authenticationContainer{
-      .SignUpForm, .LoginForm{
-        padding-bottom: 5px; 
+    .authenticationContainer {
+      .SignUpForm,
+      .LoginForm {
+        padding-bottom: 5px;
         > * {
-          margin: 0px 3px; 
+          margin: 0px 3px;
         }
       }
     }
@@ -183,20 +184,19 @@ html {
       }
     }
     .SongListContainer {
-       .SearchTagContainer{
-        margin: 10px 0px; 
-        .SearchTagForm{
-          .SearchTagBar{
-            margin-right: 10px; 
+      .SearchTagContainer {
+        margin: 10px 0px;
+        .SearchTagForm {
+          .SearchTagBar {
+            margin-right: 10px;
           }
-          .SearchTagSubmitButton{
-
+          .SearchTagSubmitButton {
           }
         }
-        .SearchTagResetButton{
-          margin-top: 10px; 
+        .SearchTagResetButton {
+          margin-top: 10px;
         }
-       }
+      }
       .MusicBoxContainer {
         display: flex;
         flex-wrap: wrap;
@@ -240,12 +240,12 @@ html {
               p:nth-child(1) {
                 font-weight: 800;
                 font-style: normal;
-                margin-bottom: 10px; 
+                margin-bottom: 10px;
               }
-              p:nth-child(2){
-               // color: color.scale($black, $lightness: 15%);
-               opacity: .9;
-               font-weight: 600; 
+              p:nth-child(2) {
+                // color: color.scale($black, $lightness: 15%);
+                opacity: 0.9;
+                font-weight: 600;
               }
               p {
                 margin: 0;
@@ -268,7 +268,7 @@ html {
             padding-top: 2px;
             .allTags {
               padding-bottom: 15px;
-              padding-top: 15px; 
+              padding-top: 15px;
               .tagDisclaimer {
                 color: white;
                 font-style: italic;
@@ -280,10 +280,24 @@ html {
                 font-weight: 500;
               }
             }
-            .geminiButton{
-              color: white; 
-              border-color: white; 
-              margin-bottom: 10px; 
+            .AITags {
+              .AITagButton{
+              //  color: color.scale($white, $lightness: -5%);
+                opacity: .7; 
+                &:hover{
+                  opacity: 1; 
+                }
+              }
+              .geminiButton {
+                color: $white;
+                border-color: $white;
+                display: block;
+                margin: 10px auto;
+                &:hover{
+                  color: color.scale($white, $lightness: -20%);
+                  border-color: color.scale($white, $lightness: -20%);
+                }
+              }
             }
             .formContainer {
               background: hsl(220, 12%, 95%);

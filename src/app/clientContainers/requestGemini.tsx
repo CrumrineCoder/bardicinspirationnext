@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function requestGemini({
   songName,
   artist,
@@ -5,13 +7,16 @@ export default function requestGemini({
 }: {
   songName: string;
   artist: string;
-  tags: string[]
+  tags: string[];
 }) {
+  const [AITags, setAITags] = useState<string[] | null>(null);
   async function requestGeminiAPI() {
     const response = await fetch(
       `/api/requestGemini?songName=${encodeURIComponent(
         songName
-      )}&artist=${encodeURIComponent(artist)}&tags=${encodeURIComponent(tags.join(","))}`,
+      )}&artist=${encodeURIComponent(artist)}&tags=${encodeURIComponent(
+        tags.join(",")
+      )}`,
       {
         method: "GET",
         headers: {
@@ -19,10 +24,24 @@ export default function requestGemini({
         },
       }
     );
+    if (response.ok) {
+      const data = await response.json();
+      setAITags(data);
+    } else {
+      console.error("Failed to fetch:", response.status, response.statusText);
+    }
   }
   return (
-    <button className="geminiButton" onClick={() => requestGeminiAPI()}>
-      AI Suggested Tags
-    </button>
+    <div className="AITags">
+      {AITags &&
+        AITags.map((AITag, index) => (
+          <button style={{color: "white"}} key={index} className="AITagButton">
+            {AITag}
+          </button>
+        ))}
+      <button className="geminiButton" onClick={() => requestGeminiAPI()}>
+        AI Suggested Tags
+      </button>
+    </div>
   );
 }
