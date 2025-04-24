@@ -37,10 +37,13 @@ export default function requestGemini({
     }
   }
 
-  async function submitAITag(tagName: string) {
-    if (tagName) {
+  async function submitAITag(tagName: string, index: number) {
+    if (tagName && AITags) {
       try {
         await addTagToDB(tagName.toLowerCase(), songID);
+        let newArray = AITags;
+        delete newArray[index];
+        setAITags(newArray);
         onUpdate(); 
       } catch (error: unknown) {
         console.error("Error adding tag to database:", error);
@@ -57,7 +60,7 @@ export default function requestGemini({
               style={{ color: "white" }}
               key={index}
               className="AITagButton"
-              onClick={() => submitAITag(AITag)}
+              onClick={() => submitAITag(AITag, index)}
             >
               {AITag}
             </button>
