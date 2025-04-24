@@ -1,18 +1,28 @@
-
-
-export default function requestGemini({ songName, artist }: { songName: string; artist: string }){
-
-    async function requestGeminiAPI(){
-        const response = await fetch(`/api/requestGemini?songName=${encodeURIComponent(songName)}&artist=${encodeURIComponent(artist)}`, {
-            method: 'GET',
-            headers: {
-                "Content-Type": "application/json",
-              },
-        })
-    }
-    return(
-        <div>
-            <button onClick={()=> requestGeminiAPI()}>Request Gemini</button>
-        </div>
-    )
+export default function requestGemini({
+  songName,
+  artist,
+  tags,
+}: {
+  songName: string;
+  artist: string;
+  tags: string[]
+}) {
+  async function requestGeminiAPI() {
+    const response = await fetch(
+      `/api/requestGemini?songName=${encodeURIComponent(
+        songName
+      )}&artist=${encodeURIComponent(artist)}&tags=${encodeURIComponent(tags.join(","))}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
+  return (
+    <button className="geminiButton" onClick={() => requestGeminiAPI()}>
+      AI Suggested Tags
+    </button>
+  );
 }
