@@ -17,7 +17,7 @@ export default function AddTagButton({
     if (tagName) {
       try {
         await addTagToDB(tagName.toLowerCase(), songID);
-        onUpdate(); // Ensure the parent component is updated after successful submission
+        onUpdate(); 
         setShowDisclaimer(false);
         setTagName(null);
       } catch (error: unknown) {

@@ -1,10 +1,15 @@
 import { useState } from "react";
+import { addTagToDB } from "../queries/addToDB";
 
 export default function requestGemini({
+  onUpdate,
+  songID, 
   songName,
   artist,
   tags,
 }: {
+  onUpdate: () => void;
+  songID: number; 
   songName: string;
   artist: string;
   tags: string[];
@@ -31,6 +36,18 @@ export default function requestGemini({
       console.error("Failed to fetch:", response.status, response.statusText);
     }
   }
+
+  async function submitAITag(tagName: string) {
+    if (tagName) {
+      try {
+        await addTagToDB(tagName.toLowerCase(), songID);
+        onUpdate(); 
+      } catch (error: unknown) {
+        console.error("Error adding tag to database:", error);
+      }
+    }
+  }
+
   return (
     <div className="AITags">
       {AITags ? (
@@ -40,6 +57,7 @@ export default function requestGemini({
               style={{ color: "white" }}
               key={index}
               className="AITagButton"
+              onClick={() => submitAITag(AITag)}
             >
               {AITag}
             </button>

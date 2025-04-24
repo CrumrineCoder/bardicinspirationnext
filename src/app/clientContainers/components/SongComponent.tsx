@@ -1,10 +1,11 @@
 import AddTagButton from "./submitTag";
+import Gemini from "../requestGemini";
 
 import { Song, Tag } from "../../interfaces";
 import { useEffect, useState } from "react";
 import { fetchTagsBySongID } from "../../queries/fetchData";
 import YouTube from "react-youtube";
-import Gemini from "../requestGemini";
+
 
 const ytPlayerOptions = {
   playerVars: {
@@ -21,6 +22,7 @@ export default function SongComponent({ song }: { song: Song }) {
       setTags(data);
     });
   };
+  
   useEffect(() => {
     getTags();
   }, []);
@@ -48,7 +50,7 @@ export default function SongComponent({ song }: { song: Song }) {
             <p className="tagDisclaimer">No tags!</p>
           )}
         </div>
-        <Gemini songName={song.songName} artist={song.artist} tags={tags.map(tag => tag.tagName)}></Gemini>
+        <Gemini onUpdate={() => getTags()} songID={song.id} songName={song.songName} artist={song.artist} tags={tags.map(tag => tag.tagName)}></Gemini>
         <AddTagButton onUpdate={() => getTags()} songID={song.id} />
       </div>
     </div>
