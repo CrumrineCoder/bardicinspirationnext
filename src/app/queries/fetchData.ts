@@ -33,6 +33,13 @@ export async function fetchAllSongs() {
   return songs;
 }
 
+export async function fetchAllTags(){
+  const tags = await db
+  .select()
+  .from(tagTable);
+  return tags; 
+}
+
 export async function fetchTagsBySongID(songID: number) {
   const songTags = await db
     .select()
