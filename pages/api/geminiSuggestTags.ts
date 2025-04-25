@@ -12,7 +12,7 @@ export default async function main(req: NextApiRequest, res: NextApiResponse) {
   const pingAI = await ai.models.generateContent({
     model: "gemini-2.0-flash",
     contents:
-      "Take this user's summary of their upcoming game session [ " + searchQuery.sessionNotes + " ], and suggest which tags are the most relevant. Here are the tags used so far [ " + searchQuery.allTags + " ]",
+      "Take this user's summary of their upcoming game session [ " + searchQuery.sessionNotes + " ], and suggest which tags are the most relevant. Here are the tags used so far [ " + searchQuery.allTags + " ]. Do not suggest new tags. Don't use special formatting. Tell the user how each tag matches what they wrote. ",
   });
   if (!pingAI) {
     throw new Error("Failed to fetch data from YouTube API");
