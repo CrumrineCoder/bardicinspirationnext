@@ -5,6 +5,7 @@ export default function AISearchTags() {
   const [userInput, setUserInput] = useState<string>(
     "Add your session notes here!"
   );
+  const [AIResponse, setAIResponse] = useState<string | null>(null);
 
   const handleInput = (e: React.FormEvent<HTMLQuoteElement>) => {
     setUserInput(e.currentTarget.textContent || "");
@@ -31,7 +32,7 @@ export default function AISearchTags() {
         );
         if (response.ok) {
           const data = await response.text();
-          console.log(data);
+          setAIResponse(data);
         }
       }
     });
@@ -54,6 +55,7 @@ export default function AISearchTags() {
       >
         Ask AI!
       </button>
+      {AIResponse && <div>{AIResponse}</div>}
     </div>
   );
 }
