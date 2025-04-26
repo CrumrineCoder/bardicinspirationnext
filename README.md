@@ -55,6 +55,7 @@ ToDo:
     * Search Song Name 
 * Copy link
 * Get BPM of songs from a library? 
+    * I would have to grab the audiostream.
 * Errors = vicious mockery. Health bar on the screen, does 1d8 damage each time? 
     * Bard styling in general
 * Make all tags be lowercase in db -> how do you check if a tag is unique despite capitalization differences [DONE]
@@ -65,9 +66,15 @@ ToDo:
     * Sort songs when searched by tag
 * Show popular tags at the top. 
 * Should I use the YouTube thumbnail art for the background of the song elements? I feel like making a million API calls to YT is not the way to go... and I shouldnt store them locallly, but it'd be nice to use it as a background image on them.    
+* Add initial tags. 
+* Validate if YT link is OK
+* Get a random song, or select a random tag? 
+* user comments on songs -> manage in profile. 
+* Disable AI buttons in progress
 
 * Playlists [Inspired by Melodice - although it'd be different with Bardic Inspiration]
     * It'd be saving songs for a session, probably somewhere in a user's profile. Maybe we can have a stat where songs are used in playlists as a number? As a way to rate popularity? Or just a "I used this!" button on a song. 
+    * Save session notes to user
 * Chrome/Firefox Extension that acts like a Pinterest for the songs to be added. 
 
 * - GET FEEDBACK FROM REDDIT AND FRIENDS - 

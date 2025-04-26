@@ -1,5 +1,6 @@
 import { signUp } from "../../../auth";
 import { useActionState } from "react";
+import { verifySession } from "../dal";
 
 export default function SignupForm() {
   const [state, action, pending] = useActionState(signUp, undefined);
@@ -11,6 +12,7 @@ export default function SignupForm() {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         await signUp(state, formData);
+        verifySession();
       }}
     >
       <input id="username" name="username" placeholder="username" />

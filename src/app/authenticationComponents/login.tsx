@@ -13,7 +13,7 @@ export default function loginForm() {
           e.preventDefault();
           if (userName && password) {
             await login(userName, password);
-            verifySession()
+            verifySession();
           }
         }}
       >
