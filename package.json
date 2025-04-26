@@ -11,6 +11,8 @@
     "db-create": "npx drizzle-kit push -- dotenv_config_path='.env.local'"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.30.0",
+    "@clerk/nextjs": "^6.18.0",
     "@google/genai": "^0.9.0",
     "@neondatabase/serverless": "^1.0.0",
     "bcrypt": "^5.1.1",
