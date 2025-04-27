@@ -1,4 +1,5 @@
 import { CurrentUserProvider } from "./authenticationComponents/CurrentUserContext";
+import "./globals.css";
 
 export const metadata = {
   title: "Bardic Inspiration",
@@ -30,6 +31,7 @@ import {
 } from '@clerk/nextjs'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

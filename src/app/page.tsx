@@ -4,7 +4,7 @@ import "./app.scss";
 import SongList from "./clientContainers/SongList";
 import SubmitSongForm from "./clientContainers/components/submitSongForm";
 import AuthenticationParent from "./authenticationComponents/authenticationParent";
-import HomePage from "./landingContainer/homePage";
+import Landing from "./landingContainer/Landing";
 
 import { useState } from "react";
 
@@ -16,10 +16,11 @@ export default function Home() {
 
   return (
     <>
-      <HomePage></HomePage>
-      <SongList refresh={refresh} />
+      <Landing></Landing>
+    
     </>
   );
 }
 //    <AuthenticationParent></AuthenticationParent>
 //    <SubmitSongForm onUpdate={triggerRefresh}></SubmitSongForm>
+//   <SongList refresh={refresh} />
