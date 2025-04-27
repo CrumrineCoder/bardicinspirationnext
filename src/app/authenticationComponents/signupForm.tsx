@@ -1,8 +1,10 @@
 import { signUp } from "../../../auth";
 import { useActionState } from "react";
 import { verifySession } from "../dal";
+import { useAuth } from "../authenticationComponents/CurrentUserContext";
 
 export default function SignupForm() {
+  const { checkUser } = useAuth();
   const [state, action, pending] = useActionState(signUp, undefined);
 
   return (
@@ -12,7 +14,7 @@ export default function SignupForm() {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         await signUp(state, formData);
-        verifySession();
+        await checkUser(); 
       }}
     >
       <input id="username" name="username" placeholder="username" />
