@@ -71,6 +71,7 @@ ToDo:
 * Get a random song, or select a random tag? 
 * user comments on songs -> manage in profile. 
 * Disable AI buttons in progress
+* Different versions of the same song (JP, edits, remixes, etc.)
 
 * Playlists [Inspired by Melodice - although it'd be different with Bardic Inspiration]
     * It'd be saving songs for a session, probably somewhere in a user's profile. Maybe we can have a stat where songs are used in playlists as a number? As a way to rate popularity? Or just a "I used this!" button on a song. 

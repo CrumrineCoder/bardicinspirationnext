@@ -15,9 +15,11 @@ export default function Home() {
 
   return (
     <>
-      <AuthenticationParent></AuthenticationParent>
-      <SubmitSongForm onUpdate={triggerRefresh}></SubmitSongForm>
+   
+   
       <SongList refresh={refresh} />
     </>
   );
 }
+//    <AuthenticationParent></AuthenticationParent>
+//    <SubmitSongForm onUpdate={triggerRefresh}></SubmitSongForm>
