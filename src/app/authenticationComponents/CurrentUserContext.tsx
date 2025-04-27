@@ -1,5 +1,5 @@
 import { User } from "../interfaces";
-import { useState, createContext } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 import { getCurrentCookie, logout } from "../session";
 
 interface AuthContextType {
@@ -35,4 +35,21 @@ export const CurrentUserProvider = ({
     await logout();
     setUserID(null);
   }
+
+  useEffect(() => {
+    checkUser();
+  }, []);
+  return (
+    <AuthContext.Provider value={{ userID, checkUser, logoutUser }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
+
+export function useAuth() {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return context;
+}
