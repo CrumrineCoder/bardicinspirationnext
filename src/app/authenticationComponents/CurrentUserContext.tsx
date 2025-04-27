@@ -1,5 +1,5 @@
 'use client';
-import { User } from "../interfaces";
+
 import { useEffect, useState, createContext, useContext } from "react";
 import { getCurrentCookie, logout } from "../session";
 
