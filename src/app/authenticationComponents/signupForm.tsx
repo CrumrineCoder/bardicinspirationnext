@@ -1,6 +1,5 @@
 import { signUp } from "../../../auth";
 import { useActionState } from "react";
-import { verifySession } from "../dal";
 import { useAuth } from "../authenticationComponents/CurrentUserContext";
 
 export default function SignupForm() {

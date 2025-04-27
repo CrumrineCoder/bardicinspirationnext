@@ -2,7 +2,6 @@ import { login } from "../../../auth";
 import { useAuth } from "../authenticationComponents/CurrentUserContext";
 
 import { useState } from "react";
-import { verifySession } from "../dal";
 
 export default function loginForm() {
   const { checkUser } = useAuth();
