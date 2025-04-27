@@ -78,3 +78,9 @@ ToDo:
 * Chrome/Firefox Extension that acts like a Pinterest for the songs to be added. 
 
 * - GET FEEDBACK FROM REDDIT AND FRIENDS - 
+
+* Concepts to update with:
+- DAL
+- DTO
+- Providers/Middleware/Protected Routes
+- React Query/Clerk/Server Actions
