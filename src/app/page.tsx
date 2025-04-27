@@ -4,6 +4,7 @@ import "./app.scss";
 import SongList from "./clientContainers/SongList";
 import SubmitSongForm from "./clientContainers/components/submitSongForm";
 import AuthenticationParent from "./authenticationComponents/authenticationParent";
+import HomePage from "./landingContainer/homePage";
 
 import { useState } from "react";
 
@@ -15,8 +16,7 @@ export default function Home() {
 
   return (
     <>
-   
-   
+      <HomePage></HomePage>
       <SongList refresh={refresh} />
     </>
   );
