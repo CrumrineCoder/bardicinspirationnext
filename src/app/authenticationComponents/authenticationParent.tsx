@@ -4,30 +4,11 @@ import { useEffect, useState } from "react";
 import SignUpForm from "./signupForm";
 import LoginForm from "./login";
 import { logout } from "../session";
+import { useAuth } from "../authenticationComponents/CurrentUserContext";
 
 export default function HomePageAuth() {
-  const [userID, setUserID] = useState<number | null>(null);
+  const { userID, logoutUser } = useAuth(); 
 
-  async function deleteUser() {
-    await logout();
-    setUserID(null);
-  }
-  async function checkUser() {
-    const user = await getCurrentCookie();
-    const user2 = await verifySession();
-    // Maybe use an interface here? Not sure how to handle a Promise here with TypeScript
-    if (
-      user &&
-      typeof user === "object" &&
-      "userId" in user &&
-      typeof user.userId === "number"
-    ) {
-      setUserID(user.userId);
-    }
-  }
-  useEffect(() => {
-    checkUser();
-  }, []);
   return (
     <div className="authenticationContainer">
       {!userID ? (
@@ -37,7 +18,7 @@ export default function HomePageAuth() {
         </>
       ) : (
         <>
-          <button onClick={() => deleteUser()}>Log Out</button>
+          <button onClick={() => logoutUser()}>Log Out</button>
         </>
       )}
     </div>

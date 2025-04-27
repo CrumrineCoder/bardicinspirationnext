@@ -1,9 +1,11 @@
 import { login } from "../../../auth";
+import { useAuth } from "../authenticationComponents/CurrentUserContext";
 
 import { useState } from "react";
 import { verifySession } from "../dal";
 
 export default function loginForm() {
+  const { checkUser } = useAuth();
   const [userName, setUserName] = useState<string | null>(null);
   const [password, setPassword] = useState<string | null>(null);
   return (
@@ -13,7 +15,7 @@ export default function loginForm() {
           e.preventDefault();
           if (userName && password) {
             await login(userName, password);
-            verifySession();
+            await checkUser(); 
           }
         }}
       >
