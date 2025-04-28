@@ -9,17 +9,29 @@ export default function GeminiTagresults({
 }: GeminiTagResultsProps) {
   const [songs, setSongs] = useState<Song[] | null>();
   const [songIndex, setSongIndex] = useState<number>(0);
+  const [showSongs, setShowSongs] = useState<boolean>(false);
 
   return (
     <div>
       <div className="flex items-center space-x-2 mt-2">
         <button
           onClick={() => {
-            fetchSongsByTagName(tag.toLowerCase())
-              .then((data) => {
-                setSongs(data);
-              })
-              .catch((error) => {});
+            if (!showSongs) {
+              if (!songs) {
+                fetchSongsByTagName(tag.toLowerCase())
+                  .then((data) => {
+                    setSongs(data);
+                    setShowSongs(true);
+                  })
+                  .catch((error) => {
+                    console.error("Error fetching songs:", error);
+                  });
+              } else {
+                setShowSongs(true);
+              }
+            } else {
+              setShowSongs(false);
+            }
           }}
           className="px-4 py-2 bg-green-500 text-white rounded"
         >
@@ -27,7 +39,7 @@ export default function GeminiTagresults({
         </button>
         <span className="pl-10">{reason}</span>
       </div>
-      {songs && (
+      {songs && showSongs && (
         <>
           <div className="my-2 flex flex-col items-center">
             <span className="text-center">
