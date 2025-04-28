@@ -1,5 +1,6 @@
 import { CurrentUserProvider } from "./authenticationComponents/CurrentUserContext";
 import "./globals.css";
+import "./app.scss";
 
 export const metadata = {
   title: "Bardic Inspiration",

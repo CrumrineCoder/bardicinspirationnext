@@ -12,6 +12,7 @@ Useful Tutorials in making this site:
 * https://orm.drizzle.team/docs/guides/unique-case-insensitive-email
 * https://nextjs.org/docs/app/building-your-application/authentication#3-create-a-user-or-check-user-credentials
 * https://nextjs.org/learn/dashboard-app/adding-authentication
+* https://tailwindcss.com/docs/
 
 Inspiration:
 * https://melodice.org/

@@ -29,7 +29,7 @@ button {
 }
 
 html {
-  background-color: $white;
+  background-color: $black;
   color: $black;
   width: 100%;
   height: 100vh;
@@ -38,6 +38,7 @@ html {
   body {
     margin: 0px;
     padding: 20px;
+    background-color: $black;
     .authenticationContainer {
       .SignUpForm,
       .LoginForm {
