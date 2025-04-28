@@ -17,6 +17,7 @@ export default function GeminiSessionNotes() {
   };
 
   async function queryAI() {
+    setAIResponse(null);
     fetchAllTags().then(async (response) => {
       const data = await response;
       if (data) {
