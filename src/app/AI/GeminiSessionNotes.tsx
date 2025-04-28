@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { fetchAllTags } from "../../queries/fetchData";
+import { fetchAllTags } from "../queries/fetchData";
+import { Textarea } from "@/components/ui/textarea";
 
-export default function AISearchTags() {
+export default function GeminiSessionNotes() {
   const [userInput, setUserInput] = useState<string>(
     "Add your session notes here!"
   );
   const [AIResponse, setAIResponse] = useState<string | null>(null);
 
-  const handleInput = (e: React.FormEvent<HTMLQuoteElement>) => {
-    setUserInput(e.currentTarget.textContent || "");
+  const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setUserInput(e.target.value);
   };
 
   async function queryAI() {
@@ -38,24 +39,23 @@ export default function AISearchTags() {
     });
   }
 
-  // Ask AI to parse user input and match it to tags
   return (
     <div className="AISearchTagsContainer">
-      <blockquote
-        className="AISearchTagsInput"
-        contentEditable="true"
-        onInput={(e) => {
-          handleInput(e);
-        }}
-      ></blockquote>
+      <Textarea
+        className="AISearchTagsInput mt-10"
+        value={userInput}
+        onChange={handleInput}
+        placeholder="Add your session notes here!"
+      />
       <button
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
         onClick={() => {
           queryAI();
         }}
       >
         Ask AI!
       </button>
-      {AIResponse && <div>{AIResponse}</div>}
+      {AIResponse && <div className="mt-4">{AIResponse}</div>}
     </div>
   );
 }

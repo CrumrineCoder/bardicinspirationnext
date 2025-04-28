@@ -1,4 +1,4 @@
-import { Textarea } from "@/components/ui/textarea";
+import GeminiSessionNotes from "../AI/GeminiSessionNotes";
 
 export default function HomePage() {
   return (
@@ -8,7 +8,11 @@ export default function HomePage() {
           <h1 className="scroll-m-40 text-5xl font-extrabold tracking-tight lg:text-6xl">
             Welcome to Bardic Inspiration!
           </h1>
-            <Textarea className="mt-20" defaultValue="Enter your session notes here!"></Textarea>
+          <h2 className="text-center text-2xl font-semibold mt-4">
+            Find music for your next tabletop session
+          </h2>
+          <GeminiSessionNotes
+          ></GeminiSessionNotes>
         </div>
       </div>
     </>
