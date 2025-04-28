@@ -1,17 +1,20 @@
 import { fetchSongsByTagName } from "../queries/fetchData";
-import { GeminiTagResultsProps } from "../interfaces";
+import { GeminiTagResultsProps, Song } from "../interfaces";
+import { useState } from "react";
 
 export default function GeminiTagresults({
   tag,
   reason,
 }: GeminiTagResultsProps) {
+  const [songs, setSongs] = useState<Song[] | null>();
+
   return (
     <div className="flex items-center space-x-2 mt-2">
       <button
         onClick={() => {
           fetchSongsByTagName(tag.toLowerCase())
             .then((data) => {
-              console.log(data);
+              setSongs(data);
             })
             .catch((error) => {});
         }}
@@ -20,6 +23,9 @@ export default function GeminiTagresults({
         {tag}
       </button>
       <span className="pl-10">{reason}</span>
+      {songs && songs.map((song, index) => (
+        <div key={index}>{song.songName}</div>
+      ))}
     </div>
   );
 }
