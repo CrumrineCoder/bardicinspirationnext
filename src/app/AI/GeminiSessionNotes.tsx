@@ -49,14 +49,16 @@ export default function GeminiSessionNotes() {
         onChange={handleInput}
         placeholder="Add your session notes here!"
       />
-      <button
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-        onClick={() => {
-          queryAI();
-        }}
-      >
-        Ask AI!
-      </button>
+      <div className="mt-4 flex justify-end">
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+          onClick={() => {
+            queryAI();
+          }}
+        >
+          Ask AI!
+        </button>
+      </div>
       <div className="mt-4">
         {AIResponse &&
           AIResponse.map((tag, index) => (
@@ -64,7 +66,7 @@ export default function GeminiSessionNotes() {
               <button className="px-4 py-2 bg-green-500 text-white rounded">
                 {tag.tag}
               </button>
-                <span className="pl-10">{tag.reason}</span>
+              <span className="pl-10">{tag.reason}</span>
             </div>
           ))}
       </div>

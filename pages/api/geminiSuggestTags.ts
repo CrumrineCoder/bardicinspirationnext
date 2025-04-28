@@ -28,7 +28,7 @@ export default async function main(req: NextApiRequest, res: NextApiResponse) {
   });
 
   if (!pingAI) {
-    throw new Error("Failed to fetch data from AI model");
+    res.status(500).json({ error: "Failed to fetch data from AI model" });
   }
 
   if (!pingAI.text) {
@@ -40,7 +40,7 @@ export default async function main(req: NextApiRequest, res: NextApiResponse) {
     const jsonStart = pingAI.text.indexOf("{");
     const jsonEnd = pingAI.text.lastIndexOf("}");
     if (jsonStart === -1 || jsonEnd === -1) {
-      throw new Error("No JSON structure found in AI response");
+      res.status(500).json({ error: "No JSON structure found in AI response" });
     }
 
     const jsonResponse = JSON.parse(pingAI.text.slice(jsonStart, jsonEnd + 1));
