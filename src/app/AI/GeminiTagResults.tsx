@@ -29,31 +29,35 @@ export default function GeminiTagresults({
       </div>
       {songs && (
         <>
-          <div className="my-5 flex flex-col items-center">
-            <span className="text-center">Found {songs.length} result{songs.length > 1 && <>s</>}!</span>
-            <br />
-            <div className="flex space-x-4">
-              <button
-            onClick={() => setSongIndex(songIndex - 1)}
-            className={`${
-              songIndex !== 0
-                ? "opacity-100"
-                : "opacity-0 pointer-events-none"
-            }`}
-              >
-            Previous
-              </button>
-              <button
-            onClick={() => setSongIndex(songIndex + 1)}
-            className={`${
-              songIndex !== songs.length - 1
-                ? "opacity-100"
-                : "opacity-0 pointer-events-none"
-            }`}
-              >
-            Next
-              </button>
-            </div>
+          <div className="my-2 flex flex-col items-center">
+            <span className="text-center">
+              Found {songs.length} result{songs.length > 1 && <>s</>}!
+            </span>
+            {songs.length > 1 && (
+              <div className="flex space-x-4">
+                <br />
+                <button
+                  onClick={() => setSongIndex(songIndex - 1)}
+                  className={`${
+                    songIndex !== 0
+                      ? "opacity-100"
+                      : "opacity-0 pointer-events-none"
+                  }`}
+                >
+                  Previous
+                </button>
+                <button
+                  onClick={() => setSongIndex(songIndex + 1)}
+                  className={`${
+                    songIndex !== songs.length - 1
+                      ? "opacity-100"
+                      : "opacity-0 pointer-events-none"
+                  }`}
+                >
+                  Next
+                </button>
+              </div>
+            )}
           </div>
           <GeminiSongCard song={songs[songIndex]}></GeminiSongCard>
         </>
