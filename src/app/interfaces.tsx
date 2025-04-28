@@ -24,3 +24,8 @@ export interface User {
 export interface SessionPayload extends JWTPayload {
   userId: number;
 }
+
+export interface GeminiTagResultsProps {
+  tag: string;
+  reason: string;
+}

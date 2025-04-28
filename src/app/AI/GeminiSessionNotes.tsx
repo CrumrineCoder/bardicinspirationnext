@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { fetchAllTags } from "../queries/fetchData";
 import { Textarea } from "@/components/ui/textarea";
+import GeminiTagresults from "./GeminiTagResults";
+import { GeminiTagResultsProps } from "../interfaces";
 
 export default function GeminiSessionNotes() {
   const [userInput, setUserInput] = useState<string>(
     "Add your session notes here!"
   );
-  const [AIResponse, setAIResponse] = useState<
-    { tag: string; reason: string }[] | null
-  >(null);
+  const [AIResponse, setAIResponse] = useState<GeminiTagResultsProps[] | null>(
+    null
+  );
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setUserInput(e.target.value);
@@ -61,13 +63,12 @@ export default function GeminiSessionNotes() {
       </div>
       <div className="mt-4">
         {AIResponse &&
-          AIResponse.map((tag, index) => (
-            <div key={index} className="flex items-center space-x-2 mt-2">
-              <button className="px-4 py-2 bg-green-500 text-white rounded">
-                {tag.tag}
-              </button>
-              <span className="pl-10">{tag.reason}</span>
-            </div>
+          AIResponse.map((response, index) => (
+            <GeminiTagresults
+              key={index}
+              tag={response.tag}
+              reason={response.reason}
+            ></GeminiTagresults>
           ))}
       </div>
     </div>
