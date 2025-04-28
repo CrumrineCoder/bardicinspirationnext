@@ -1,3 +1,5 @@
+import { Textarea } from "@/components/ui/textarea";
+
 export default function HomePage() {
   return (
     <>
@@ -6,6 +8,7 @@ export default function HomePage() {
           <h1 className="scroll-m-40 text-5xl font-extrabold tracking-tight lg:text-6xl">
             Welcome to Bardic Inspiration!
           </h1>
+            <Textarea className="mt-20" defaultValue="Enter your session notes here!"></Textarea>
         </div>
       </div>
     </>
