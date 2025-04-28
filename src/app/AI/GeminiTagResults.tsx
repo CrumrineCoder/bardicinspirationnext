@@ -29,16 +29,32 @@ export default function GeminiTagresults({
       </div>
       {songs && (
         <>
-          {" "}
-          <span className="text-center">Found {songs.length} results!</span>
-          {songIndex !== 0 && (
-            <button onClick={() => setSongIndex(songIndex - 1)}>
-              Previous
-            </button>
-          )}
-          {songIndex !== songs.length-1 && (
-            <button onClick={() => setSongIndex(songIndex + 1)}>Next</button>
-          )}
+          <div className="my-5 flex flex-col items-center">
+            <span className="text-center">Found {songs.length} results!</span>
+            <br />
+            <div className="flex space-x-4">
+              <button
+            onClick={() => setSongIndex(songIndex - 1)}
+            className={`${
+              songIndex !== 0
+                ? "opacity-100"
+                : "opacity-0 pointer-events-none"
+            }`}
+              >
+            Previous
+              </button>
+              <button
+            onClick={() => setSongIndex(songIndex + 1)}
+            className={`${
+              songIndex !== songs.length - 1
+                ? "opacity-100"
+                : "opacity-0 pointer-events-none"
+            }`}
+              >
+            Next
+              </button>
+            </div>
+          </div>
           <GeminiSongCard song={songs[songIndex]}></GeminiSongCard>
         </>
       )}
