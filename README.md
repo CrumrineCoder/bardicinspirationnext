@@ -25,6 +25,7 @@ ToDo:
 * Front End (Make it pretty! Animations!)
     -> In progress!
     * Home Page
+        * Animate link copied tooltip
 * Auth
     * Login [DONE]
     * Signup [DONE]
