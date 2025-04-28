@@ -30,7 +30,7 @@ export default function GeminiTagresults({
       {songs && (
         <>
           <div className="my-5 flex flex-col items-center">
-            <span className="text-center">Found {songs.length} results!</span>
+            <span className="text-center">Found {songs.length} result{songs.length > 1 && <>s</>}!</span>
             <br />
             <div className="flex space-x-4">
               <button

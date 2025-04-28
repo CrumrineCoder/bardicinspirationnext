@@ -46,7 +46,7 @@ export default function GeminiSessionNotes() {
   return (
     <div className="AISearchTagsContainer w-[60vw] bg-white p-2 rounded-lg">
       <Textarea
-        className="AISearchTagsInput mt-10"
+        className="AISearchTagsInput mt-10 min-h-[200px]"
         value={userInput}
         onChange={handleInput}
         placeholder="Add your session notes here!"
