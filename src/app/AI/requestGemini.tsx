@@ -52,23 +52,21 @@ export default function requestGemini({
   }
 
   return (
-    <div className="AITags">
+    <div>
       {AITags ? (
-        <div className="AITagButtonContainer">
+        <div>
           {AITags.map((AITag, index) => (
             <button
-              style={{ color: "white" }}
               key={index}
-              className="AITagButton"
               onClick={() => submitAITag(AITag, index)}
             >
               {AITag}
             </button>
           ))}
-          <p className="AITagDisclaimer">Click on a Tag to add it!</p>
+          <p>Click on a Tag to add it!</p>
         </div>
       ) : (
-        <button className="geminiButton" onClick={() => requestGeminiAPI()}>
+        <button onClick={() => requestGeminiAPI()}>
           AI Suggested Tags
         </button>
       )}

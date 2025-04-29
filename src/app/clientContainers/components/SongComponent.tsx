@@ -1,5 +1,5 @@
 import AddTagButton from "./submitTag";
-import Gemini from "../requestGemini";
+import Gemini from "../../AI/requestGemini";
 
 import { Song, Tag } from "../../interfaces";
 import { useEffect, useState } from "react";

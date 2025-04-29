@@ -28,13 +28,12 @@ export default function AddTagButton({
   }
   return (
     <form
-      className="formContainer"
       onSubmit={(e) => {
         e.preventDefault();
         submitTag();
       }}
     >
-      <div className="formInputContainer">
+      <div>
         <input
           type="text"
           name="tagName"
@@ -46,9 +45,9 @@ export default function AddTagButton({
         />
       </div>
       {showDisclaimer && (
-        <div className="DupeTagDisclaimer">Hey numbskull, tag already exists on this song!</div>
+        <div>Hey numbskull, tag already exists on this song!</div>
       )}
-      <button className="submitButton" type="submit">
+      <button type="submit">
         Add Tag
       </button>
     </form>

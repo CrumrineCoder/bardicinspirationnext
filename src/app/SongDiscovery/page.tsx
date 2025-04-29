@@ -19,6 +19,10 @@ export default function SongDiscovery() {
     });
   }, []);
 
+  useEffect(()=>{
+
+  }, [selectedSong])
+
   return (
     <div>{selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}</div>
   );
