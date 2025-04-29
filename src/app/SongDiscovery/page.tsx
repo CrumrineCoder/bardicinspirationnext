@@ -1,11 +1,25 @@
-import { useState } from "react";
-import {Song} from "../interfaces";
+"use client";
+import { useState, useEffect } from "react";
+import { Song, Tag } from "../interfaces";
+import CurrentSong from "./CurrentSong";
+import { fetchAllSongs } from "../queries/fetchData";
 
 export default function SongDiscovery() {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
+  const [selectedTag, setSelectedTag] = useState<Tag | null>(null);
+  const [allSongs, setAllSongs] = useState<Song[] | null>(null);
+
+  useEffect(() => {
+    fetchAllSongs().then(async (response) => {
+      const data = await response;
+      setAllSongs(data);
+      if (data) {
+        setSelectedSong(data[0]);
+      }
+    });
+  }, []);
+
   return (
-    <div>
-   
-    </div>
+    <div>{selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}</div>
   );
 }
