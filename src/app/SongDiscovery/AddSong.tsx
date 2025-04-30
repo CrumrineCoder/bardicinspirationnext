@@ -83,11 +83,22 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
   }
   //    <Image src={blankwhiteimage} alt="placeholder" className="w-full opacity-90" />
   return (
-    <div className="text-white relative max-w-lg mx-auto">
-      <div className="relative">
-        <div className="border border-gray-500 w-full h-24" />
+    <div className="text-white flex flex-col gap-2 relative">
+      <div className="">
+        {potentialLinks ? (
+          <YouTube
+            videoId={potentialLinks[potentialLinkIndex]}
+            opts={ytPlayerOptions}
+          />
+        ) : (
+          <YouTube
+            videoId={"NSlkW1fFkyo"}
+            opts={ytPlayerOptions}
+            className="opacity-0"
+          />
+        )}
         <form
-          className="relative w-full mt-4"
+          className=""
           onSubmit={(e) => {
             e.preventDefault();
             submitForm();
@@ -103,7 +114,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
                 value={songName || ""}
                 onChange={(e) => setSongName(e.target.value)}
                 onFocus={() => setShowDisclaimer(null)} // Fixed onFocus handler
-                className="border p-2 w-full"
+                className="w-full p-2"
               />
               <input
                 type="text"
@@ -113,27 +124,25 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
                 value={artist || ""}
                 onChange={(e) => setArtist(e.target.value)}
                 onFocus={() => setShowDisclaimer(null)}
-                className="border p-2 w-full"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                name="link"
-                required
-                placeholder="Enter YouTube Link"
-                value={link || ""}
-                onChange={(e) => setLink(e.target.value)}
-                onFocus={() => setShowDisclaimer(null)}
-                className="border p-2 w-full"
+                className="w-full p-2"
               />
               <span
-                className="text-blue-500 cursor-pointer"
+                className="text-blue-500 cursor-pointer float-right"
                 onClick={findYouTubeAndSave}
               >
-                OR find it for me
+                OR find YouTube link for me
               </span>
             </div>
+            <input
+              type="text"
+              name="link"
+              required
+              placeholder="Enter YouTube Link"
+              value={link || ""}
+              onChange={(e) => setLink(e.target.value)}
+              onFocus={() => setShowDisclaimer(null)}
+              className="w-full p-2"
+            />
           </div>
           <button
             type="submit"

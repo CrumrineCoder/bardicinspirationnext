@@ -9,7 +9,7 @@ import {
 } from "../queries/fetchData";
 import TagListing from "./TagListing";
 import SongListing from "./SongListing";
-import AddSong from "./AddSong"
+import AddSong from "./AddSong";
 import Link from "next/link";
 
 export default function SongDiscovery() {
@@ -77,30 +77,34 @@ export default function SongDiscovery() {
           Add Song
         </button>
       </div>
-      {!addingSong ? (
-        <div className="relative flex text-white gap-10">
-          <SongListing
-            selectedSong={selectedSong}
-            allSongs={allSongs}
-            setSelectedSong={setSelectedSong}
-          ></SongListing>
-          {selectedSong && <CurrentSong allTags={allTags} song={selectedSong}></CurrentSong>}
-          <TagListing
-            selectedTag={selectedTag}
-            allTags={allTags}
-            setSelectedTag={setSelectedTag}
-            getSongsByTagName={getSongsByTagName}
-            getAllSongs={getAllSongs}
-          ></TagListing>
-        </div>
-      ) : (
-        <AddSong
-          onUpdate={() => {
-            getAllSongs();
-            setAddingSong(!addingSong);
-          }}
-        ></AddSong>
-      )}
+      <div className="relative flex text-white gap-10">
+        <SongListing
+          selectedSong={selectedSong}
+          allSongs={allSongs}
+          setSelectedSong={setSelectedSong}
+        ></SongListing>
+        {!addingSong ? (
+          <>
+            {selectedSong && (
+              <CurrentSong allTags={allTags} song={selectedSong}></CurrentSong>
+            )}
+          </>
+        ) : (
+          <AddSong
+            onUpdate={() => {
+              getAllSongs();
+              setAddingSong(!addingSong);
+            }}
+          ></AddSong>
+        )}
+        <TagListing
+          selectedTag={selectedTag}
+          allTags={allTags}
+          setSelectedTag={setSelectedTag}
+          getSongsByTagName={getSongsByTagName}
+          getAllSongs={getAllSongs}
+        ></TagListing>
+      </div>
       <Link
         href="/"
         className="mx-auto mt-4 flex w-fit items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 cursor-pointer"
