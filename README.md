@@ -26,7 +26,7 @@ ToDo:
 - Front End (Make it pretty! Animations!)
   -> In progress!
 
-  - Home Page
+  - Home Page [DONE]
 
     - Animate link copied tooltip (https://flowbite.com/docs/components/tooltips/)
 
@@ -37,6 +37,7 @@ ToDo:
              Tooltip content
          <div class="tooltip-arrow" data-popper-arrow></div>
       ```
+   - Songs Page [DONE]
 
 * Auth
   - Login [DONE]
@@ -68,7 +69,7 @@ ToDo:
   - Multiple tags search
   - Filter by source (Hollow Knight)
   - Search Song Name
-* Copy link
+* Copy link [DONE]
 * Get BPM of songs from a library?
   - I would have to grab the audiostream.
 * Errors = vicious mockery. Health bar on the screen, does 1d8 damage each time?
@@ -90,6 +91,7 @@ ToDo:
 * Mass add OSTs/albums to the DB
   - Automatically retrieve Song Title & Artist from a youtube link
 * Jingles when buttons are pressed, like a C on a Harp or something. Just cute stuff like that. 
+* How to make it so you can't add the same songname and artist, but it's OK if the version is different? hm.
 
 * Playlists [Inspired by Melodice - although it'd be different with Bardic Inspiration]
   - It'd be saving songs for a session, probably somewhere in a user's profile. Maybe we can have a stat where songs are used in playlists as a number? As a way to rate popularity? Or just a "I used this!" button on a song.

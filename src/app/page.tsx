@@ -19,7 +19,7 @@ export default function Home() {
       <Landing></Landing>
       <Link
         href="/SongDiscovery"
-        className="mx-auto mt-4 flex w-fit items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+        className="mx-auto mt-4 flex w-fit items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 cursor-pointer"
       >
         Find More Songs
       </Link>

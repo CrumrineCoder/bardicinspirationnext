@@ -101,7 +101,7 @@ export default function SongDiscovery({ refresh }: { refresh: boolean }) {
       )}
        <Link
         href="/"
-        className="mx-auto mt-4 flex w-fit items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+        className="mx-auto mt-4 flex w-fit items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 cursor-pointer"
       >
         Back to AI Suggestions
       </Link>
