@@ -32,7 +32,7 @@ export default function AddTagButton({
         e.preventDefault();
         submitTag();
       }}
-      className="flex items-center space-x-2 mt-3" 
+      className="flex items-center space-x-2 mt-3"
     >
       <div>
         <input
@@ -46,10 +46,7 @@ export default function AddTagButton({
           className="px-2 py-1 border border-gray-300 rounded"
         />
       </div>
-      <button
-        type="submit"
-        className="px-4 SmallButton" 
-      >
+      <button type="submit" className="px-4 SmallButton">
         Add Tag
       </button>
       {showDisclaimer && (
