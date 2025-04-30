@@ -25,7 +25,17 @@ export default function SongDiscovery() {
     <div className="relative flex gap-5">
       <div>
         {allSongs &&
-          allSongs.map((song, index) => <div className="SongListing py-1" onClick={() => {setSelectedSong(song)}} key={index}>{song.songName}</div>)}
+          allSongs.map((song, index) => (
+            <div
+              className={`SongListing py-1 ${selectedSong?.id === song.id ? "pl-5 ActiveSongListing" : ""}`}
+              onClick={() => {
+                setSelectedSong(song);
+              }}
+              key={index}
+            >
+              {song.songName}
+            </div>
+          ))}
       </div>
       {selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}
     </div>

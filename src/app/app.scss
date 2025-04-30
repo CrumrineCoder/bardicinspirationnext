@@ -47,6 +47,11 @@ $blue: #4b4e6d;
   }
 }
 
+.ActiveSongListing{
+  opacity: 1; 
+  cursor: default;
+}
+
 html {
   background-color: $black;
   color: $black;
