@@ -16,9 +16,9 @@ export default function SongListing({
       {allSongs &&
         allSongs.map((song, index) => (
           <div
-            className={`ClickableInlineEntry py-1 ${
-              selectedSong?.id === song.id ? "pl-5 ActiveSongListing" : ""
-            }`}
+            className={`ClickableInlineEntry ${
+              selectedSong?.id === song.id ? "pl-2 ActiveSongListing" : ""
+            } leading-tight pb-2`}
             onClick={() => {
               setSelectedSong(song);
             }}
