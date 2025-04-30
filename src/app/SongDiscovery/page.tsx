@@ -8,13 +8,22 @@ import {
   fetchSongsByTagName,
 } from "../queries/fetchData";
 import TagListing from "./TagListing";
-import SongListing from "./SongListing"
+import SongListing from "./SongListing";
+import SubmitSongForm from "../clientContainers/components/submitSongForm";
 
-export default function SongDiscovery() {
+export default function SongDiscovery({ refresh }: { refresh: boolean }) {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [allSongs, setAllSongs] = useState<Song[] | null>(null);
   const [allTags, setAllTags] = useState<string[] | null>(null);
+
+  useEffect(() => {
+    fetchAllSongs().then(async (response) => {
+      const data = await response;
+      setAllSongs(data);
+    });
+  }, [refresh]);
+
 
   function getSongsByTagName(selectedTag: string | null) {
     if (!selectedTag) {
@@ -69,6 +78,7 @@ export default function SongDiscovery() {
   }
 
   return (
+    <div>
     <div className="relative flex text-white gap-10">
       <SongListing
         selectedSong={selectedSong}
@@ -83,6 +93,9 @@ export default function SongDiscovery() {
         getSongsByTagName={getSongsByTagName}
         getAllSongs={getAllSongs}
       ></TagListing>
+     
     </div>
+     <SubmitSongForm onUpdate={getAllSongs}></SubmitSongForm>
+     </div>
   );
 }
