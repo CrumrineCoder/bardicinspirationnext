@@ -3,7 +3,7 @@ interface TagListingProps {
     allTags: string[] | null;
     setSelectedTag: (tagName: string | null) => void;
     getSongsByTagName: (tagName: string | null) => void;
-    getAllSongs: () => void; 
+    getAllSongs: () => void;
   }
   
   export default function Taglisting({
@@ -11,7 +11,7 @@ interface TagListingProps {
     allTags,
     setSelectedTag,
     getSongsByTagName,
-    getAllSongs
+    getAllSongs,
   }: TagListingProps) {
     return (
       <div>
@@ -31,7 +31,7 @@ interface TagListingProps {
             required
             value={selectedTag || ""}
             onChange={(e) => {
-              setSelectedTag(e.target.value); 
+              setSelectedTag(e.target.value);
             }}
             className="mr-2 p-1"
           />
@@ -42,7 +42,7 @@ interface TagListingProps {
         <button
           className="SmallButton"
           onClick={() => {
-            setSelectedTag(null); 
+            setSelectedTag(null);
             getAllSongs();
           }}
         >
@@ -58,7 +58,9 @@ interface TagListingProps {
                   setSelectedTag(tag); // Set the selected tag when a tag is clicked
                   getSongsByTagName(tag); // Trigger search for the clicked tag
                 }}
-                className="pr-2 ClickableInlineEntry SidebarTagListing"
+                className={`pr-2 ClickableInlineEntry SidebarTagListing ${
+                  selectedTag === tag ? "text-yellow-500 font-bold" : ""
+                }`}
               >
                 {tag}
               </span>

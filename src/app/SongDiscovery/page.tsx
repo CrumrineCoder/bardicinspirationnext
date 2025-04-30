@@ -10,12 +10,14 @@ import {
 import TagListing from "./TagListing";
 import SongListing from "./SongListing";
 import SubmitSongForm from "../clientContainers/components/submitSongForm";
+import Link from "next/link"
 
 export default function SongDiscovery({ refresh }: { refresh: boolean }) {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [allSongs, setAllSongs] = useState<Song[] | null>(null);
   const [allTags, setAllTags] = useState<string[] | null>(null);
+  const [addingSong, setAddingSong] = useState<boolean>(false);
 
   useEffect(() => {
     fetchAllSongs().then(async (response) => {
@@ -23,7 +25,6 @@ export default function SongDiscovery({ refresh }: { refresh: boolean }) {
       setAllSongs(data);
     });
   }, [refresh]);
-
 
   function getSongsByTagName(selectedTag: string | null) {
     if (!selectedTag) {
@@ -69,33 +70,41 @@ export default function SongDiscovery({ refresh }: { refresh: boolean }) {
     getAllTags();
   }, []);
 
-  function searchTag() {
-    if (selectedTag) {
-      fetchSongsByTagName(selectedTag).then(async (response) => {
-        setAllSongs(response);
-      });
-    }
-  }
-
   return (
     <div>
-    <div className="relative flex text-white gap-10">
-      <SongListing
-        selectedSong={selectedSong}
-        allSongs={allSongs}
-        setSelectedSong={setSelectedSong}
-      ></SongListing>
-      {selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}
-      <TagListing
-        selectedTag={selectedTag}
-        allTags={allTags}
-        setSelectedTag={setSelectedTag}
-        getSongsByTagName={getSongsByTagName}
-        getAllSongs={getAllSongs}
-      ></TagListing>
-     
+      <div className="flex justify-center">
+        <button
+          className="SmallButton mb-5"
+          onClick={() => setAddingSong(!addingSong)}
+        >
+          Add Song
+        </button>
+      </div>
+      {!addingSong ? (
+        <div className="relative flex text-white gap-10">
+          <SongListing
+            selectedSong={selectedSong}
+            allSongs={allSongs}
+            setSelectedSong={setSelectedSong}
+          ></SongListing>
+          {selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}
+          <TagListing
+            selectedTag={selectedTag}
+            allTags={allTags}
+            setSelectedTag={setSelectedTag}
+            getSongsByTagName={getSongsByTagName}
+            getAllSongs={getAllSongs}
+          ></TagListing>
+        </div>
+      ) : (
+        <SubmitSongForm onUpdate={() => { getAllSongs(); setAddingSong(!addingSong); }}></SubmitSongForm>
+      )}
+       <Link
+        href="/"
+        className="mx-auto mt-4 flex w-fit items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+      >
+        Back to AI Suggestions
+      </Link>
     </div>
-     <SubmitSongForm onUpdate={getAllSongs}></SubmitSongForm>
-     </div>
   );
 }

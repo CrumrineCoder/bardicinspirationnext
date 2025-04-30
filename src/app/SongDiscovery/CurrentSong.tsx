@@ -43,7 +43,7 @@ export default function currentSong({ song }: { song: Song }) {
               </span>
             ))
           ) : (
-            <p>No tags!</p>
+            <p className="italic">No tags!</p>
           )}
         </div>
         <Gemini
