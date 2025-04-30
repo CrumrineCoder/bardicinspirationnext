@@ -84,7 +84,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
   //    <Image src={blankwhiteimage} alt="placeholder" className="w-full opacity-90" />
   return (
     <div className="text-white flex flex-col gap-2 relative">
-      <div className="">
+      <div className="flex">
         {potentialLinks ? (
           <YouTube
             videoId={potentialLinks[potentialLinkIndex]}
@@ -94,64 +94,62 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
           <YouTube
             videoId={"NSlkW1fFkyo"}
             opts={ytPlayerOptions}
-            className="opacity-0"
+            className="opacity-0 pointer-events-none"
           />
         )}
-        <form
-          className=""
-          onSubmit={(e) => {
-            e.preventDefault();
-            submitForm();
-          }}
-        >
-          <div className="flex justify-between items-center">
-            <div>
-              <input
-                type="text"
-                name="songName"
-                required
-                placeholder="Enter Song Name"
-                value={songName || ""}
-                onChange={(e) => setSongName(e.target.value)}
-                onFocus={() => setShowDisclaimer(null)} // Fixed onFocus handler
-                className="w-full p-2"
-              />
-              <input
-                type="text"
-                name="artist"
-                required
-                placeholder="Enter Artist Name"
-                value={artist || ""}
-                onChange={(e) => setArtist(e.target.value)}
-                onFocus={() => setShowDisclaimer(null)}
-                className="w-full p-2"
-              />
-              <span
-                className="text-blue-500 cursor-pointer float-right"
-                onClick={findYouTubeAndSave}
-              >
-                OR find YouTube link for me
-              </span>
-            </div>
-            <input
-              type="text"
-              name="link"
-              required
-              placeholder="Enter YouTube Link"
-              value={link || ""}
-              onChange={(e) => setLink(e.target.value)}
-              onFocus={() => setShowDisclaimer(null)}
-              className="w-full p-2"
-            />
-          </div>
-          <button
-            type="submit"
-            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded w-full"
-          >
-            Add Song
-          </button>
-        </form>
       </div>
+      <form
+        className="flex flex-col gap-1"
+        onSubmit={(e) => {
+          e.preventDefault();
+          submitForm();
+        }}
+      >
+        <div className="">
+          <input
+            type="text"
+            name="link"
+            required
+            placeholder="Enter YouTube Link"
+            value={link || ""}
+            onChange={(e) => setLink(e.target.value)}
+            onFocus={() => setShowDisclaimer(null)}
+            className="p-2 float-right"
+          />
+          <input
+            type="text"
+            name="songName"
+            required
+            placeholder="Enter Song Name"
+            value={songName || ""}
+            onChange={(e) => setSongName(e.target.value)}
+            onFocus={() => setShowDisclaimer(null)}
+            className="p-2 block"
+          />
+          <input
+            type="text"
+            name="artist"
+            required
+            placeholder="Enter Artist Name"
+            value={artist || ""}
+            onChange={(e) => setArtist(e.target.value)}
+            onFocus={() => setShowDisclaimer(null)}
+            className="p-2 block"
+          />
+          <span
+            className="text-blue-500 cursor-pointer block"
+            onClick={findYouTubeAndSave}
+          >
+            OR find YouTube link for me
+          </span>
+        </div>
+        <button
+          type="submit"
+          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Add Song
+        </button>
+      </form>
     </div>
   );
 }
