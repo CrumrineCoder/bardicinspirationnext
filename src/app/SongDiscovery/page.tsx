@@ -7,12 +7,29 @@ import {
   fetchAllTags,
   fetchSongsByTagName,
 } from "../queries/fetchData";
+import TagListing from "./TagListing";
 
 export default function SongDiscovery() {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [allSongs, setAllSongs] = useState<Song[] | null>(null);
   const [allTags, setAllTags] = useState<string[] | null>(null);
+
+  function getSongsByTagName(selectedTag: string | null) {
+    if (!selectedTag) {
+      console.warn("No tag selected.");
+      return;
+    }
+    fetchSongsByTagName(selectedTag.toLowerCase())
+      .then((data) => {
+        setAllSongs(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching songs by tag name:", error);
+        // Need to add a disclaimer to show that the tag isn't in the DB
+        // Also suggested tags, autocomplete, etc.
+      });
+  }
 
   function getAllSongs() {
     fetchAllSongs().then(async (response) => {
@@ -69,72 +86,13 @@ export default function SongDiscovery() {
           ))}
       </div>
       {selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}
-      <div>
-        <div>
-          <form
-            className=""
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (selectedTag) {
-                fetchSongsByTagName(selectedTag.toLowerCase())
-                  .then((data) => {
-                    setAllSongs(data);
-                  })
-                  .catch((error) => {
-                    console.error("Error fetching songs by tag name:", error);
-                    // Need to add a disclaimer to show that the tag isn't in the DB
-                    // Also suggested tags, autocomplete, etc.
-                  });
-              }
-            }}
-          >
-            <input
-              type="text"
-              name="tagName"
-              placeholder="Enter Tag"
-              required
-              value={selectedTag || ""}
-              onChange={(e) => {
-                e.preventDefault();
-                setSelectedTag(e.target.value);
-              }}
-              className="mr-2 p-1"
-            />
-            <button
-              onClick={() => searchTag()}
-              className="SmallButton"
-              type="submit"
-            >
-              Search Tag
-            </button>
-          </form>
-          <button
-            className="SmallButton"
-            onClick={() => {
-              setSelectedTag(null);
-              getAllSongs();
-            }}
-          >
-            Reset Filter
-          </button>
-        </div>
-        {allTags && (
-          <div className="text-center">
-            <h4>Recent Tags</h4>
-            {allTags.map((tag, index) => (
-              <span
-                key={index}
-                onClick={async () => {
-                  setSelectedTag(tag);
-                }}
-                className="pr-2 ClickableInlineEntry SidebarTagListing"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
+      <TagListing
+        selectedTag={selectedTag}
+        allTags={allTags}
+        setSelectedTag={setSelectedTag}
+        getSongsByTagName={getSongsByTagName}
+        getAllSongs={getAllSongs}
+      ></TagListing>
     </div>
   );
 }
