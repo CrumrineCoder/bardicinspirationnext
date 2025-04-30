@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Song, Tag } from "../interfaces";
+import { Song } from "../interfaces";
 import CurrentSong from "./CurrentSong";
 import {
   fetchAllSongs,
@@ -10,9 +10,9 @@ import {
 import TagListing from "./TagListing";
 import SongListing from "./SongListing";
 import SubmitSongForm from "../clientContainers/components/submitSongForm";
-import Link from "next/link"
+import Link from "next/link";
 
-export default function SongDiscovery({ refresh }: { refresh: boolean }) {
+export default function SongDiscovery() {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [allSongs, setAllSongs] = useState<Song[] | null>(null);
@@ -24,7 +24,7 @@ export default function SongDiscovery({ refresh }: { refresh: boolean }) {
       const data = await response;
       setAllSongs(data);
     });
-  }, [refresh]);
+  }, []);
 
   function getSongsByTagName(selectedTag: string | null) {
     if (!selectedTag) {
@@ -37,8 +37,6 @@ export default function SongDiscovery({ refresh }: { refresh: boolean }) {
       })
       .catch((error) => {
         console.error("Error fetching songs by tag name:", error);
-        // Need to add a disclaimer to show that the tag isn't in the DB
-        // Also suggested tags, autocomplete, etc.
       });
   }
 
@@ -59,7 +57,6 @@ export default function SongDiscovery({ refresh }: { refresh: boolean }) {
         const mappedData = data.map((tag: { tagName: string }) => {
           return tag.tagName;
         });
-        // Might have to change this to keep the IDs; will figure out during search.
         setAllTags(mappedData);
       }
     });
@@ -97,9 +94,14 @@ export default function SongDiscovery({ refresh }: { refresh: boolean }) {
           ></TagListing>
         </div>
       ) : (
-        <SubmitSongForm onUpdate={() => { getAllSongs(); setAddingSong(!addingSong); }}></SubmitSongForm>
+        <SubmitSongForm
+          onUpdate={() => {
+            getAllSongs();
+            setAddingSong(!addingSong);
+          }}
+        ></SubmitSongForm>
       )}
-       <Link
+      <Link
         href="/"
         className="mx-auto mt-4 flex w-fit items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 cursor-pointer"
       >

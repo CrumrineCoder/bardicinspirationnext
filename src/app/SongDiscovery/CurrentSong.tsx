@@ -38,29 +38,34 @@ export default function currentSong({ song }: { song: Song }) {
   }, [song]);
   return (
     <div className="text-white flex flex-col gap-2 relative">
-    <button
-      onClick={copyToClipboard}
-      className="mt-1 mb-5 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 self-start cursor-pointer"
-    >
-      Copy Link
-    </button>
-      {tooltipVisible && (
-        <div
-          id="CopyTooltip"
-          className="absolute top-[-25px] left-[50px] transform -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded shadow-lg"
-        >
-          Link copied!
-        </div>
-      )}
       <div className="flex">
         <div>
           <YouTube videoId={song.link} opts={ytPlayerOptions} />
         </div>
       </div>
       <div className="w-full flex flex-col gap-1">
-        <h1 className="text-2xl font-bold">{song.songName}</h1>
-        <span className="opacity-70">{song.artist}</span>
-
+        <div className="flex justify-between items-center relative">
+          <div>
+            <h1 className="text-2xl font-bold">{song.songName}</h1>
+            <span className="opacity-70">{song.artist}</span>
+          </div>
+          <div className="relative">
+            <button
+              onClick={copyToClipboard}
+              className="mt-1 mb-5 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 self-start cursor-pointer"
+            >
+              Copy Link
+            </button>
+            {tooltipVisible && (
+              <div
+            id="CopyTooltip"
+            className="absolute top-[-25px] left-[0px] transform -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded shadow-lg"
+              >
+            Link copied!
+              </div>
+            )}
+          </div>
+        </div>
         <div className="">
           {tags.length > 0 ? (
             tags.map((tag, index) => (
