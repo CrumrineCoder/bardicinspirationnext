@@ -57,7 +57,7 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
           <div className="relative">
             <button
               onClick={copyToClipboard}
-              className="mt-1 mb-5 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 self-start cursor-pointer"
+              className="SmallButton"
             >
               Copy Link
             </button>

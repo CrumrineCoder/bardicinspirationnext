@@ -9,7 +9,7 @@ import {
 } from "../queries/fetchData";
 import TagListing from "./TagListing";
 import SongListing from "./SongListing";
-import SubmitSongForm from "../clientContainers/components/submitSongForm";
+import AddSong from "./AddSong"
 import Link from "next/link";
 
 export default function SongDiscovery() {
@@ -94,12 +94,12 @@ export default function SongDiscovery() {
           ></TagListing>
         </div>
       ) : (
-        <SubmitSongForm
+        <AddSong
           onUpdate={() => {
             getAllSongs();
             setAddingSong(!addingSong);
           }}
-        ></SubmitSongForm>
+        ></AddSong>
       )}
       <Link
         href="/"
