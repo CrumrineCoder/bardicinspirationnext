@@ -29,11 +29,6 @@ $blue: #4b4e6d;
   }
 }
 
-.ActiveSongListing {
-  opacity: 1;
-  cursor: default;
-}
-
 .ClickableInlineEntry {
   opacity: 0.7;
   cursor: pointer;
@@ -41,6 +36,14 @@ $blue: #4b4e6d;
     opacity: 1;
   }
 }
+
+
+.ActiveSongListing {
+  opacity: 1;
+  cursor: default;
+  color: white; 
+}
+
 
 html {
   background-color: $black;
