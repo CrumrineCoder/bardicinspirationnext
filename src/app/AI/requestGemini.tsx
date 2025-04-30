@@ -9,12 +9,14 @@ export default function requestGemini({
   songName,
   artist,
   tags,
+  allTags
 }: {
   onUpdate: () => void;
   songID: number;
   songName: string;
   artist: string;
   tags: string[];
+  allTags: string[] | null;
 }) {
   const [AITags, setAITags] = useState<string[] | null>(null);
 
@@ -24,15 +26,15 @@ export default function requestGemini({
   async function requestGeminiAPI() {
     const response = await fetch(
       `/api/requestGemini?songName=${encodeURIComponent(
-        songName
+      songName
       )}&artist=${encodeURIComponent(artist)}&tags=${encodeURIComponent(
-        tags.join(",")
-      )}`,
+      tags.join(",")
+      )}&allTags=${encodeURIComponent(allTags?.join(",") || "")}`,
       {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
       }
     );
     if (response.ok) {
@@ -58,7 +60,7 @@ export default function requestGemini({
   }
 
   return (
-    <div>
+    <div className="mt-2">
       {AITags ? (
         <div>
           {AITags.map((AITag, index) => (

@@ -12,7 +12,12 @@ const ytPlayerOptions = {
   },
 };
 
-export default function currentSong({ song }: { song: Song }) {
+interface CurrentSongProps {
+  song: Song;
+  allTags: string[] | null;
+}
+
+export default function currentSong({ song, allTags }: CurrentSongProps) {
   const [tags, setTags] = useState<{ tagName: string }[]>([]);
   const [tooltipVisible, setTooltipVisible] = useState(false);
 
@@ -58,10 +63,10 @@ export default function currentSong({ song }: { song: Song }) {
             </button>
             {tooltipVisible && (
               <div
-            id="CopyTooltip"
-            className="absolute top-[-25px] left-[0px] transform -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded shadow-lg"
+                id="CopyTooltip"
+                className="absolute top-[-25px] left-[0px] transform -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded shadow-lg"
               >
-            Link copied!
+                Link copied!
               </div>
             )}
           </div>
@@ -83,6 +88,7 @@ export default function currentSong({ song }: { song: Song }) {
           songName={song.songName}
           artist={song.artist}
           tags={tags.map((tag) => tag.tagName)}
+          allTags={allTags}
         ></Gemini>
         <AddTagButton onUpdate={() => getTags()} songID={song.id} />
       </div>

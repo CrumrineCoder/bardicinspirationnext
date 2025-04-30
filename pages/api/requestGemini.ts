@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
+
 export default async function main(req: NextApiRequest, res: NextApiResponse) {
   const searchQuery = req.query;
   if (!searchQuery || !searchQuery.songName || !searchQuery.artist) {
@@ -18,7 +19,7 @@ export default async function main(req: NextApiRequest, res: NextApiResponse) {
       searchQuery.artist +
       " to generate tags for the use of the song in a tabletop RPG game. Here are the current user tags: " +
       searchQuery.tags +
-      " Do not return anything other than tags in your response. Keep your response to the best 10 tags max. Do not include artists, licensing, or brands as tags. Return it formatted as an array.",
+      ". Do not include duplicates of the current user tags. And here are all the tags used in the database: " + searchQuery.allTags + ". Do not stretch to use the database tags if they do not match. Do not return anything other than tags in your response. Keep your response to the best 10 tags max. Do not include artists, licensing, or brands as tags. Return it formatted as an array.",
   });
   if (!pingAI) {
     throw new Error("Failed to fetch data from YouTube API");

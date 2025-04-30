@@ -84,7 +84,7 @@ export default function SongDiscovery() {
             allSongs={allSongs}
             setSelectedSong={setSelectedSong}
           ></SongListing>
-          {selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}
+          {selectedSong && <CurrentSong allTags={allTags} song={selectedSong}></CurrentSong>}
           <TagListing
             selectedTag={selectedTag}
             allTags={allTags}
