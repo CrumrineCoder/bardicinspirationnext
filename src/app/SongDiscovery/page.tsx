@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Song, Tag } from "../interfaces";
 import CurrentSong from "./CurrentSong";
-import { fetchAllSongs } from "../queries/fetchData";
+import { fetchAllSongs, fetchAllTags } from "../queries/fetchData";
 
 export default function SongDiscovery() {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);

@@ -23,7 +23,7 @@ export default function currentSong({ song }: { song: Song }) {
 
   useEffect(() => {
     getTags();
-  }, []);
+  }, [song]);
   return (
     <div className="text-white flex flex-col gap-2 relative">
       <div className="flex">
