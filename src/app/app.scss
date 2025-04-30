@@ -38,6 +38,15 @@ $blue: #4b4e6d;
   }
 }
 
+.SongListing{
+  color: white;
+  opacity: .7;
+  cursor: pointer; 
+  &:hover{
+    opacity: 1; 
+  }
+}
+
 html {
   background-color: $black;
   color: $black;

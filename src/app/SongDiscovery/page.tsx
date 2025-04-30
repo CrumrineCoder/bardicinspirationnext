@@ -19,12 +19,14 @@ export default function SongDiscovery() {
     });
   }, []);
 
-  useEffect(()=>{
-
-  }, [selectedSong])
+  useEffect(() => {}, [selectedSong]);
 
   return (
-    <div className="relative max-w-screen-md mx-auto">
+    <div className="relative flex gap-5">
+      <div>
+        {allSongs &&
+          allSongs.map((song, index) => <div className="SongListing py-1" onClick={() => {setSelectedSong(song)}} key={index}>{song.songName}</div>)}
+      </div>
       {selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}
     </div>
   );
