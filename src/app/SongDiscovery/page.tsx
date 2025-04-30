@@ -8,6 +8,7 @@ import {
   fetchSongsByTagName,
 } from "../queries/fetchData";
 import TagListing from "./TagListing";
+import SongListing from "./SongListing"
 
 export default function SongDiscovery() {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
@@ -69,22 +70,11 @@ export default function SongDiscovery() {
 
   return (
     <div className="relative flex text-white gap-10">
-      <div>
-        {allSongs &&
-          allSongs.map((song, index) => (
-            <div
-              className={`ClickableInlineEntry py-1 ${
-                selectedSong?.id === song.id ? "pl-5 ActiveSongListing" : ""
-              }`}
-              onClick={() => {
-                setSelectedSong(song);
-              }}
-              key={index}
-            >
-              {song.songName}
-            </div>
-          ))}
-      </div>
+      <SongListing
+        selectedSong={selectedSong}
+        allSongs={allSongs}
+        setSelectedSong={setSelectedSong}
+      ></SongListing>
       {selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}
       <TagListing
         selectedTag={selectedTag}
