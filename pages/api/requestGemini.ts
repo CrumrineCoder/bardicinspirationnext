@@ -30,3 +30,8 @@ export default async function main(req: NextApiRequest, res: NextApiResponse) {
 
 // And here are all the tags used in the database: " + searchQuery.allTags + "Do not stretch to use the database tags if they do not match.. 
 // The above overloads the model unfortunately
+
+// Include these tags if they match what you found on Youtube, reddit, and blogs: " + searchQuery.allTags + ". 
+// Query stretches to include tags that I don't want. 
+
+// Include strict synonyms of current user tags from this list: [ " + searchQuery.allTags + "]

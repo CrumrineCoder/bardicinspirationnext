@@ -57,7 +57,7 @@ export default function SongDiscovery() {
         const mappedData = data.map((tag: { tagName: string }) => {
           return tag.tagName;
         });
-        setAllTags(mappedData);
+        setAllTags(mappedData.reverse());
       }
     });
   }
