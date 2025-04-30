@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { addTagToDB } from "../queries/addToDB";
+import { Button } from "@/components/ui/button";
 
 export default function requestGemini({
   onUpdate,
-  songID, 
+  songID,
   songName,
   artist,
   tags,
 }: {
   onUpdate: () => void;
-  songID: number; 
+  songID: number;
   songName: string;
   artist: string;
   tags: string[];
@@ -44,7 +45,7 @@ export default function requestGemini({
         let newArray = AITags;
         delete newArray[index];
         setAITags(newArray);
-        onUpdate(); 
+        onUpdate();
       } catch (error: unknown) {
         console.error("Error adding tag to database:", error);
       }
@@ -56,17 +57,17 @@ export default function requestGemini({
       {AITags ? (
         <div>
           {AITags.map((AITag, index) => (
-            <button
-              key={index}
-              onClick={() => submitAITag(AITag, index)}
-            >
+            <button className="AITagSuggestion px-2" key={index} onClick={() => submitAITag(AITag, index)}>
               {AITag}
             </button>
           ))}
-          <p>Click on a Tag to add it!</p>
+          <p className="py-2">Click on a Tag to add it!</p>
         </div>
       ) : (
-        <button onClick={() => requestGeminiAPI()}>
+        <button 
+          onClick={() => requestGeminiAPI()} 
+          className="SmallButton py-2"
+        >
           AI Suggested Tags
         </button>
       )}

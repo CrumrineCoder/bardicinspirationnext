@@ -12,19 +12,29 @@ $blue: #4b4e6d;
 @import url("https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 */
 
-button {
+.SmallButton {
+  
   border-style: none;
   padding: 2px 7px;
   border-radius: 2px;
   font-weight: 500;
   border-radius: 3px;
-  border: $blue 2px solid;
-  color: $blue;
+  border: $white 2px solid;
+  color: $white;
   background: none;
   &:hover {
     cursor: pointer;
     background: $blue;
     color: white;
+    border-color: $blue; 
+  }
+}
+
+.AITagSuggestion{
+  opacity: .7;
+  cursor: pointer; 
+  &:hover{
+    opacity: 1; 
   }
 }
 

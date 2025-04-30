@@ -24,6 +24,8 @@ export default function SongDiscovery() {
   }, [selectedSong])
 
   return (
-    <div>{selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}</div>
+    <div className="relative max-w-screen-md mx-auto">
+      {selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}
+    </div>
   );
 }

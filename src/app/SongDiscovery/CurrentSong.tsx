@@ -25,17 +25,15 @@ export default function currentSong({ song }: { song: Song }) {
     getTags();
   }, []);
   return (
-    <div className="text-white flex flex-col gap-2">
+    <div className="text-white flex flex-col gap-2 relative">
       <div className="flex">
         <div>
           <YouTube videoId={song.link} opts={ytPlayerOptions} />
         </div>
       </div>
-      <div className="w-full flex flex-col gap-2">
-        <h2 className="">
-          <p>{song.songName} </p>
-          <p>{song.artist} </p>
-        </h2>
+      <div className="w-full flex flex-col gap-1">
+        <h1 className="text-2xl font-bold">{song.songName}</h1>
+        <span className="opacity-70">{song.artist}</span>
         <div className="">
           {tags.length > 0 ? (
             tags.map((tag, index) => (

@@ -17,7 +17,7 @@ export default function AddTagButton({
     if (tagName) {
       try {
         await addTagToDB(tagName.toLowerCase(), songID);
-        onUpdate(); 
+        onUpdate();
         setShowDisclaimer(false);
         setTagName(null);
       } catch (error: unknown) {
@@ -32,6 +32,7 @@ export default function AddTagButton({
         e.preventDefault();
         submitTag();
       }}
+      className="flex items-center space-x-2 mt-3" 
     >
       <div>
         <input
@@ -42,14 +43,20 @@ export default function AddTagButton({
           value={tagName || ""}
           onChange={(e) => setTagName(e.target.value)}
           onFocus={() => setShowDisclaimer(false)}
+          className="px-2 py-1 border border-gray-300 rounded"
         />
       </div>
-      {showDisclaimer && (
-        <div>Hey numbskull, tag already exists on this song!</div>
-      )}
-      <button type="submit">
+      <button
+        type="submit"
+        className="px-4 SmallButton" 
+      >
         Add Tag
       </button>
+      {showDisclaimer && (
+        <div className="text-red-500 text-sm ml-2">
+          Hey numbskull, tag already exists on this song!
+        </div>
+      )}
     </form>
   );
 }
