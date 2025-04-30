@@ -2,6 +2,11 @@
 import { addSongToDB } from "../queries/addToDB";
 import { useState } from "react";
 
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Image from "next/image";
+
+import blankwhiteimage from "../../blank-white-landscape-7sn5o1woonmklx1h.jpg";
+
 // TODO: probably move this to its own component
 import YouTube from "react-youtube";
 
@@ -78,121 +83,11 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
   }
 
   return (
-    <div className="">
-      <form
-        className=""
-        onSubmit={(e) => {
-          e.preventDefault();
-          submitForm();
-        }}
-      >
-        <div className="">
-          <label htmlFor="songName"></label>
-          <input
-            type="text"
-            name="songName"
-            required
-            placeholder="Enter Song Name"
-            value={songName || ""}
-            onChange={(e) => setSongName(e.target.value)}
-            onFocus={() => setShowDisclaimer(null)}
-          />
-        </div>
-        <div className="">
-          <label htmlFor="artist"></label>
-          <input
-            type="text"
-            name="artist"
-            required
-            placeholder="Enter Artist Name"
-            value={artist || ""}
-            onChange={(e) => setArtist(e.target.value)}
-            onFocus={() => setShowDisclaimer(null)}
-          />
-        </div>
-        <div className="">
-          <label htmlFor="link"></label>
-          <input
-            type="text"
-            name="link"
-            required
-            placeholder="Enter YouTube Link"
-            value={link || ""}
-            onChange={(e) => setLink(e.target.value)}
-            onFocus={() => setShowDisclaimer(null)}
-          />
-          <span className="YouTubeFindButton" onClick={findYouTubeAndSave}>
-            OR find it for me
-          </span>
-        </div>
-        <div className="">
-          {showDisclaimer && showDisclaimer === "YouTube" ? (
-            <div className="">Please enter a Song Name and Artist!</div>
-          ) : showDisclaimer === "Unique SongTag" ? (
-            <div className="">
-              That Song is already in the database! Sorry, slowpoke.
-            </div>
-          ) : null}
-          {!link && potentialLinks != null && potentialLinks.length > 0 && (
-            <div className="">
-              <div className="">
-                <span
-                  className=""
-                  style={{
-                    opacity: potentialLinkIndex > 0 ? 1 : 0,
-                    pointerEvents: potentialLinkIndex > 0 ? "auto" : "none",
-                  }}
-                  onClick={() => {
-                    if (potentialLinkIndex > 0) {
-                      setPotentialLinkIndex(potentialLinkIndex - 1);
-                    }
-                  }}
-                >
-                  ...previouS
-                </span>
-                <span
-                  onClick={() => {
-                    setLink(
-                      "https://www.youtube.com/watch?v=" +
-                        potentialLinks[potentialLinkIndex]
-                    );
-                  }}
-                  className=""
-                >
-                  Use this one!
-                </span>
-                <span
-                  className=""
-                  style={{
-                    opacity:
-                      potentialLinkIndex < potentialLinks.length - 1 ? 1 : 0,
-                    pointerEvents:
-                      potentialLinkIndex < potentialLinks.length - 1
-                        ? "auto"
-                        : "none",
-                  }}
-                  onClick={() => {
-                    if (potentialLinkIndex < potentialLinks.length - 1) {
-                      setPotentialLinkIndex(potentialLinkIndex + 1);
-                    }
-                  }}
-                >
-                  Next...
-                </span>
-              </div>
-              <YouTube
-                className=""
-                videoId={potentialLinks[potentialLinkIndex]}
-                opts={ytPlayerOptions}
-              />
-            </div>
-          )}
-        </div>
-        <span onClick={() => resetVal()} className="">
-          Reset
-        </span>
-        <button type="submit">Add Song</button>
-      </form>
+    <div className="text-white">
+      TESTING
+      <AspectRatio ratio={16 / 9}>
+        <Image src={blankwhiteimage} alt="placeholder"></Image>
+      </AspectRatio>
     </div>
   );
 }
