@@ -63,7 +63,7 @@ export default function requestGemini({
         <div>
           {AITags.map((AITag, index) => (
             <button
-              className="AITagSuggestion px-2"
+              className="ClickableInlineEntry px-2"
               key={index}
               onClick={() => submitAITag(AITag, index)}
             >

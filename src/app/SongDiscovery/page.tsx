@@ -46,18 +46,18 @@ export default function SongDiscovery() {
   useEffect(() => {
     if (selectedTag) {
       fetchSongsByTagName(selectedTag).then(async (response) => {
-            setAllSongs(response);
-        });
+        setAllSongs(response);
+      });
     }
   }, [selectedTag]);
 
   return (
     <div className="relative flex text-white gap-10">
-      <div className="w-50">
+      <div>
         {allSongs &&
           allSongs.map((song, index) => (
             <div
-              className={`SongListing py-1 ${
+              className={`ClickableInlineEntry py-1 ${
                 selectedSong?.id === song.id ? "pl-5 ActiveSongListing" : ""
               }`}
               onClick={() => {
@@ -120,7 +120,7 @@ export default function SongDiscovery() {
                 onClick={() => {
                   setSelectedTag(tag);
                 }}
-                className="pr-2"
+                className="pr-2 ClickableInlineEntry"
               >
                 {tag}
               </span>
