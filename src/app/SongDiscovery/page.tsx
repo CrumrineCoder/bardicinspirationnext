@@ -10,7 +10,7 @@ import {
 
 export default function SongDiscovery() {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
-  const [selectedTag, setSelectedTag] = useState<Tag | null>(null);
+  const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [allSongs, setAllSongs] = useState<Song[] | null>(null);
   const [allTags, setAllTags] = useState<string[] | null>(null);
   const [tagName, setTagName] = useState<string | null>(null);
@@ -43,26 +43,34 @@ export default function SongDiscovery() {
     getAllTags();
   }, []);
 
+  useEffect(() => {
+    if (selectedTag) {
+      fetchSongsByTagName(selectedTag).then(async (response) => {
+            setAllSongs(response);
+        });
+    }
+  }, [selectedTag]);
+
   return (
-      <div className="relative flex text-white gap-10">
-        <div className="w-50">
-          {allSongs &&
-            allSongs.map((song, index) => (
-              <div
-                className={`SongListing py-1 ${
-                  selectedSong?.id === song.id ? "pl-5 ActiveSongListing" : ""
-                }`}
-                onClick={() => {
-                  setSelectedSong(song);
-                }}
-                key={index}
-              >
-                {song.songName}
-              </div>
-            ))}
-        </div>
-        {selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}
-        <div>
+    <div className="relative flex text-white gap-10">
+      <div className="w-50">
+        {allSongs &&
+          allSongs.map((song, index) => (
+            <div
+              className={`SongListing py-1 ${
+                selectedSong?.id === song.id ? "pl-5 ActiveSongListing" : ""
+              }`}
+              onClick={() => {
+                setSelectedSong(song);
+              }}
+              key={index}
+            >
+              {song.songName}
+            </div>
+          ))}
+      </div>
+      {selectedSong && <CurrentSong song={selectedSong}></CurrentSong>}
+      <div>
         <form
           className=""
           onSubmit={(e) => {
@@ -106,12 +114,20 @@ export default function SongDiscovery() {
         </form>
         {allTags && (
           <div>
+            <h4>Recent Tags</h4>
             {allTags.map((tag, index) => (
-              <div>{tag}</div>
+              <span
+                onClick={() => {
+                  setSelectedTag(tag);
+                }}
+                className="pr-2"
+              >
+                {tag}
+              </span>
             ))}
           </div>
         )}
       </div>
-      </div>
+    </div>
   );
 }
