@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addTagToDB } from "../queries/addToDB";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
 
 export default function requestGemini({
   onUpdate,
@@ -16,6 +17,10 @@ export default function requestGemini({
   tags: string[];
 }) {
   const [AITags, setAITags] = useState<string[] | null>(null);
+
+  useEffect(() => {
+    setAITags(null);
+  }, [songID]);
   async function requestGeminiAPI() {
     const response = await fetch(
       `/api/requestGemini?songName=${encodeURIComponent(
@@ -57,17 +62,18 @@ export default function requestGemini({
       {AITags ? (
         <div>
           {AITags.map((AITag, index) => (
-            <button className="AITagSuggestion px-2" key={index} onClick={() => submitAITag(AITag, index)}>
+            <button
+              className="AITagSuggestion px-2"
+              key={index}
+              onClick={() => submitAITag(AITag, index)}
+            >
               {AITag}
             </button>
           ))}
           <p className="py-2">Click on a Tag to add it!</p>
         </div>
       ) : (
-        <button 
-          onClick={() => requestGeminiAPI()} 
-          className="SmallButton py-2"
-        >
+        <button onClick={() => requestGeminiAPI()} className="SmallButton py-2">
           AI Suggested Tags
         </button>
       )}

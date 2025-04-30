@@ -2,7 +2,11 @@
 import { useState, useEffect } from "react";
 import { Song, Tag } from "../interfaces";
 import CurrentSong from "./CurrentSong";
-import { fetchAllSongs, fetchAllTags, fetchSongsByTagName } from "../queries/fetchData";
+import {
+  fetchAllSongs,
+  fetchAllTags,
+  fetchSongsByTagName,
+} from "../queries/fetchData";
 
 export default function SongDiscovery() {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
@@ -10,7 +14,7 @@ export default function SongDiscovery() {
   const [allSongs, setAllSongs] = useState<Song[] | null>(null);
   const [tagName, setTagName] = useState<string | null>(null);
 
-  useEffect(() => {
+  function getAllSongs() {
     fetchAllSongs().then(async (response) => {
       const data = await response;
       setAllSongs(data);
@@ -18,14 +22,16 @@ export default function SongDiscovery() {
         setSelectedSong(data[0]);
       }
     });
+  }
+
+  useEffect(() => {
+    getAllSongs();
   }, []);
 
-  useEffect(() => {}, [selectedSong]);
-
   return (
-    <div>
+    <div className="text-white">
       <form
-        className="SearchTagForm"
+        className="float-right"
         onSubmit={(e) => {
           e.preventDefault();
           if (tagName) {
@@ -48,27 +54,31 @@ export default function SongDiscovery() {
           required
           value={tagName || ""}
           onChange={(e) => setTagName(e.target.value)}
-          className="SearchTagBar"
+          className=""
         />
-        <button className="SearchTagSubmitButton" type="submit">
+        <button className="" type="submit">
           Search Tag
         </button>
-      </form>
-      <button
-        className="SearchTagResetButton"
-        onClick={() => {
-          setTagName(null);
-        }}
-      >
-        Reset Filter
-      </button>
-      <div className="relative flex gap-5">
         <div>
+          <button
+            className=""
+            onClick={() => {
+              setTagName(null);
+              getAllSongs();
+            }}
+          >
+            Reset Filter
+          </button>
+        </div>
+      </form>
+
+      <div className="relative flex">
+        <div className="mr-20">
           {allSongs &&
             allSongs.map((song, index) => (
               <div
                 className={`SongListing py-1 ${
-                  selectedSong?.id === song.id ? "pl-5 ActiveSongListing" : ""
+                  selectedSong?.id === song.id ? "ml-5 ActiveSongListing" : ""
                 }`}
                 onClick={() => {
                   setSelectedSong(song);

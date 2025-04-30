@@ -22,6 +22,7 @@ export default function currentSong({ song }: { song: Song }) {
   };
 
   useEffect(() => {
+    setTags([]);
     getTags();
   }, [song]);
   return (
