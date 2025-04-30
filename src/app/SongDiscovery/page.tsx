@@ -17,7 +17,7 @@ export default function SongDiscovery() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [allSongs, setAllSongs] = useState<Song[] | null>(null);
   const [allTags, setAllTags] = useState<string[] | null>(null);
-  const [addingSong, setAddingSong] = useState<boolean>(false);
+  const [addingSong, setAddingSong] = useState<boolean>(true);
 
   useEffect(() => {
     fetchAllSongs().then(async (response) => {

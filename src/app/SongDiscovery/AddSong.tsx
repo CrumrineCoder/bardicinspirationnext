@@ -81,13 +81,68 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
       setShowDisclaimer("YouTube");
     }
   }
-
+  //    <Image src={blankwhiteimage} alt="placeholder" className="w-full opacity-90" />
   return (
-    <div className="text-white">
-      TESTING
-      <AspectRatio ratio={16 / 9}>
-        <Image src={blankwhiteimage} alt="placeholder"></Image>
-      </AspectRatio>
+    <div className="text-white relative max-w-lg mx-auto">
+      <div className="relative">
+        <div className="border border-gray-500 w-full h-24" />
+        <form
+          className="relative w-full mt-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+            submitForm();
+          }}
+        >
+          <div className="flex justify-between items-center">
+            <div>
+              <input
+                type="text"
+                name="songName"
+                required
+                placeholder="Enter Song Name"
+                value={songName || ""}
+                onChange={(e) => setSongName(e.target.value)}
+                onFocus={() => setShowDisclaimer(null)} // Fixed onFocus handler
+                className="border p-2 w-full"
+              />
+              <input
+                type="text"
+                name="artist"
+                required
+                placeholder="Enter Artist Name"
+                value={artist || ""}
+                onChange={(e) => setArtist(e.target.value)}
+                onFocus={() => setShowDisclaimer(null)}
+                className="border p-2 w-full"
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="link"
+                required
+                placeholder="Enter YouTube Link"
+                value={link || ""}
+                onChange={(e) => setLink(e.target.value)}
+                onFocus={() => setShowDisclaimer(null)}
+                className="border p-2 w-full"
+              />
+              <span
+                className="text-blue-500 cursor-pointer"
+                onClick={findYouTubeAndSave}
+              >
+                OR find it for me
+              </span>
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded w-full"
+          >
+            Add Song
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
