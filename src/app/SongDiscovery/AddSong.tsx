@@ -85,11 +85,58 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
   return (
     <div className="text-white flex flex-col gap-2 relative">
       <div className="flex">
-        {potentialLinks ? (
-          <YouTube
-            videoId={potentialLinks[potentialLinkIndex]}
-            opts={ytPlayerOptions}
-          />
+        {!link && potentialLinks != null && potentialLinks.length > 0 ? (
+          <div className="flex flex-col">
+            <YouTube
+              videoId={potentialLinks[potentialLinkIndex]}
+              opts={ytPlayerOptions}
+            />
+            <div>
+              <span
+                className="YouTubePreviousButton"
+                style={{
+                  opacity: potentialLinkIndex > 0 ? 1 : 0,
+                  pointerEvents: potentialLinkIndex > 0 ? "auto" : "none",
+                }}
+                onClick={() => {
+                  if (potentialLinkIndex > 0) {
+                    setPotentialLinkIndex(potentialLinkIndex - 1);
+                  }
+                }}
+              >
+                ...previouS
+              </span>
+              <span
+                onClick={() => {
+                  setLink(
+                    "https://www.youtube.com/watch?v=" +
+                      potentialLinks[potentialLinkIndex]
+                  );
+                }}
+                className="YouTubeConfirmButton"
+              >
+                Use this one!
+              </span>
+              <span
+                className="YouTubeNextButton"
+                style={{
+                  opacity:
+                    potentialLinkIndex < potentialLinks.length - 1 ? 1 : 0,
+                  pointerEvents:
+                    potentialLinkIndex < potentialLinks.length - 1
+                      ? "auto"
+                      : "none",
+                }}
+                onClick={() => {
+                  if (potentialLinkIndex < potentialLinks.length - 1) {
+                    setPotentialLinkIndex(potentialLinkIndex + 1);
+                  }
+                }}
+              >
+                Next...
+              </span>
+            </div>
+          </div>
         ) : (
           <YouTube
             videoId={"NSlkW1fFkyo"}
@@ -140,7 +187,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
             className="text-blue-500 cursor-pointer block"
             onClick={findYouTubeAndSave}
           >
-            OR find YouTube link for me
+            Find YouTube link for me
           </span>
         </div>
         <button
