@@ -16,7 +16,7 @@ export default function Taglisting({
   disabled
 }: TagListingProps) {
   return (
-    <div className={disabled ? "opacity-50 pointer-events-none" : ""}>
+    <div className={disabled ? "disabled" : ""}>
       <form
         className=""
         onSubmit={(e) => {
