@@ -50,7 +50,6 @@ export default function SongComponent({ song }: { song: Song }) {
             <p className="tagDisclaimer">No tags!</p>
           )}
         </div>
-        <Gemini onUpdate={() => getTags()} songID={song.id} songName={song.songName} artist={song.artist} tags={tags.map(tag => tag.tagName)}></Gemini>
         <AddTagButton onUpdate={() => getTags()} songID={song.id} />
       </div>
     </div>

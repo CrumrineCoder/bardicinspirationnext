@@ -86,12 +86,12 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
     <div className="text-white flex flex-col gap-2 relative">
       <div className="flex">
         {!link && potentialLinks != null && potentialLinks.length > 0 ? (
-          <div className="flex flex-col">
+          <div className="flex flex-col w-full">
             <YouTube
               videoId={potentialLinks[potentialLinkIndex]}
               opts={ytPlayerOptions}
             />
-            <div>
+            <div className="flex justify-between">
               <span
                 className="YouTubePreviousButton"
                 style={{
