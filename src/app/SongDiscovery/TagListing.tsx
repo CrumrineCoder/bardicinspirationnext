@@ -4,6 +4,7 @@ interface TagListingProps {
   setSelectedTag: (tagName: string | null) => void;
   getSongsByTagName: (tagName: string | null) => void;
   getAllSongs: () => void;
+  disabled?: boolean; 
 }
 
 export default function Taglisting({
@@ -12,9 +13,10 @@ export default function Taglisting({
   setSelectedTag,
   getSongsByTagName,
   getAllSongs,
+  disabled
 }: TagListingProps) {
   return (
-    <div>
+    <div className={disabled ? "opacity-50 pointer-events-none" : ""}>
       <form
         className=""
         onSubmit={(e) => {

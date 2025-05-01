@@ -82,6 +82,7 @@ export default function SongDiscovery() {
           selectedSong={selectedSong}
           allSongs={allSongs}
           setSelectedSong={setSelectedSong}
+          disabled={addingSong}
         ></SongListing>
         {!addingSong ? (
           <>
@@ -103,6 +104,7 @@ export default function SongDiscovery() {
           setSelectedTag={setSelectedTag}
           getSongsByTagName={getSongsByTagName}
           getAllSongs={getAllSongs}
+          disabled={addingSong}
         ></TagListing>
       </div>
       <Link

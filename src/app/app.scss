@@ -29,6 +29,7 @@ $blue: #4b4e6d;
   }
 }
 
+
 .ClickableInlineEntry {
   opacity: 0.7;
   cursor: pointer;
@@ -51,7 +52,13 @@ $blue: #4b4e6d;
   }
 }
 
-
+.disabled {
+  pointer-events: none;
+  user-select: none;
+  & * {
+    pointer-events: none;
+  }
+}
 html {
   background-color: $black;
   color: $black;

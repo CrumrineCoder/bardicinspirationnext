@@ -4,15 +4,17 @@ interface SongListingProps {
   selectedSong: Song | null;
   allSongs: Song[] | null;
   setSelectedSong: (song: Song | null) => void;
+  disabled?: boolean; 
 }
 
 export default function SongListing({
   selectedSong,
   allSongs,
   setSelectedSong,
+  disabled
 }: SongListingProps) {
   return (
-    <div>
+    <div className={disabled ? "disabled" : ""}>
       {allSongs &&
         allSongs.map((song, index) => (
           <div
