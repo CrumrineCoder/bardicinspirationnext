@@ -16,7 +16,7 @@ export default function requestGemini({
   songName: string;
   artist: string;
   tags: string[];
-  allTags: string[] | null;
+  allTags?: string[] | null;
 }) {
   const [AITags, setAITags] = useState<string[] | null>(null);
 

@@ -14,7 +14,7 @@ const ytPlayerOptions = {
 
 interface CurrentSongProps {
   song: Song;
-  allTags: string[] | null;
+  allTags?: string[] | null;
 }
 
 export default function currentSong({ song, allTags }: CurrentSongProps) {
@@ -41,11 +41,29 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
     setTags([]);
     getTags();
   }, [song]);
+  /*
+      <iframe
+            className="w-full aspect-video block"
+            src={`https://www.youtube.com/embed/${song.link}`}
+            title={song.songName}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+
+            <YouTube videoId={song.link} opts={ytPlayerOptions} />
+          */
   return (
     <div className="text-white flex flex-col gap-2 relative">
       <div className="flex">
         <div>
-          <YouTube videoId={song.link} opts={ytPlayerOptions} />
+          <iframe
+            className="w-3xl aspect-video block"
+            src={`https://www.youtube.com/embed/${song.link}`}
+            title={song.songName}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         </div>
       </div>
       <div className="w-full flex flex-col gap-1">
@@ -55,10 +73,7 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
             <span className="opacity-70">{song.artist}</span>
           </div>
           <div className="relative">
-            <button
-              onClick={copyToClipboard}
-              className="SmallButton"
-            >
+            <button onClick={copyToClipboard} className="SmallButton">
               Copy Link
             </button>
             {tooltipVisible && (

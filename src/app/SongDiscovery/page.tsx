@@ -12,12 +12,21 @@ import SongListing from "./SongListing";
 import AddSong from "./AddSong";
 import Link from "next/link";
 
+// from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffleArray(array: Song[]) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 export default function SongDiscovery() {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [allSongs, setAllSongs] = useState<Song[] | null>(null);
   const [allTags, setAllTags] = useState<string[] | null>(null);
-  const [addingSong, setAddingSong] = useState<boolean>(true);
+  const [addingSong, setAddingSong] = useState<boolean>(false);
 
   useEffect(() => {
     fetchAllSongs().then(async (response) => {
@@ -43,9 +52,10 @@ export default function SongDiscovery() {
   function getAllSongs() {
     fetchAllSongs().then(async (response) => {
       const data = await response;
-      setAllSongs(data);
-      if (data) {
-        setSelectedSong(data[0]);
+      const shuffledSongs = shuffleArray(data);
+      if (shuffledSongs) {
+        setAllSongs(shuffledSongs);
+        setSelectedSong(shuffledSongs[0]);
       }
     });
   }
@@ -74,7 +84,7 @@ export default function SongDiscovery() {
           className="SmallButton mb-5"
           onClick={() => setAddingSong(!addingSong)}
         >
-          Add Song
+          {!addingSong ? "Submit Song" : "Find Songs"}
         </button>
       </div>
       <div className="relative flex text-white gap-10">

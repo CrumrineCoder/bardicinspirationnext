@@ -39,6 +39,8 @@ ToDo:
       ```
    - Songs Page [DONE]
 
+   - Button Styling 
+
 * Auth
   - Login [DONE]
   - Signup [DONE]
@@ -92,6 +94,7 @@ ToDo:
   - Automatically retrieve Song Title & Artist from a youtube link
 * Jingles when buttons are pressed, like a C on a Harp or something. Just cute stuff like that. 
 * How to make it so you can't add the same songname and artist, but it's OK if the version is different? hm.
+* Autofill from YT video
 
 * Playlists [Inspired by Melodice - although it'd be different with Bardic Inspiration]
   - It'd be saving songs for a session, probably somewhere in a user's profile. Maybe we can have a stat where songs are used in playlists as a number? As a way to rate popularity? Or just a "I used this!" button on a song.
