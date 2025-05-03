@@ -15,6 +15,19 @@ export default function SongListing({
 }: SongListingProps) {
   return (
     <div className={disabled ? "disabled" : ""}>
+      <div className="flex justify-center mb-3">
+        <button
+          className="SmallButton"
+          onClick={() => {
+            if (allSongs && allSongs.length > 0) {
+              const randomIndex = Math.floor(Math.random() * allSongs.length);
+              setSelectedSong(allSongs[randomIndex]);
+            }
+          }}
+        >
+          Random Song
+        </button>
+      </div>
       {allSongs &&
         allSongs.map((song, index) => (
           <div
@@ -25,8 +38,8 @@ export default function SongListing({
               setSelectedSong(song);
             }}
             key={index}
-            >
-            {song.songName} {" "}
+          >
+            {song.songName}{" "}
             {song.version && (
               <span className="opacity-50 inline">
                 [{song.version} version]

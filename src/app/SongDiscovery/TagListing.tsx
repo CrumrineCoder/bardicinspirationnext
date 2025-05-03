@@ -37,7 +37,7 @@ export default function Taglisting({
           }}
           className="mr-2 mb-3 p-1"
         />
-        <button className="SmallButton" type="submit">
+        <button className="SmallButton float-right" type="submit">
           Search Tag
         </button>
       </form>

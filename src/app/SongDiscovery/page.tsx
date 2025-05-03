@@ -88,12 +88,14 @@ export default function SongDiscovery() {
         </button>
       </div>
       <div className="relative flex text-white gap-10">
-        <SongListing
-          selectedSong={selectedSong}
-          allSongs={allSongs}
-          setSelectedSong={setSelectedSong}
-          disabled={addingSong}
-        ></SongListing>
+        <div>
+          <SongListing
+            selectedSong={selectedSong}
+            allSongs={allSongs}
+            setSelectedSong={setSelectedSong}
+            disabled={addingSong}
+          ></SongListing>
+        </div>
         {!addingSong ? (
           <>
             {selectedSong && (

@@ -85,11 +85,11 @@ ToDo:
 * Show popular tags at the top.
 * Should I use the YouTube thumbnail art for the background of the song elements? I feel like making a million API calls to YT is not the way to go... and I shouldnt store them locallly, but it'd be nice to use it as a background image on them.
 * Add initial tags.
-* Validate if YT link is OK
-* Get a random song, or select a random tag?
+* Validate if YT link is OK [DONE]
+* Get a random song, [DONE] or select a random tag?
 * user comments on songs -> manage in profile.
 * Disable AI buttons in progress
-* Different versions of the same song (JP, edits, remixes, etc.)
+* Different versions of the same song (JP, edits, remixes, etc.) [DONE]
 * Mass add OSTs/albums to the DB
   - Automatically retrieve Song Title & Artist from a youtube link
 * Jingles when buttons are pressed, like a C on a Harp or something. Just cute stuff like that. 
