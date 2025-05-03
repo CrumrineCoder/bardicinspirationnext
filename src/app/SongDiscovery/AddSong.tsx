@@ -166,7 +166,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
             value={link || ""}
             onChange={(e) => setLink(e.target.value)}
             onFocus={() => setShowDisclaimer(null)}
-            className="p-2 float-right text-sm"
+            className="p-2 float-right text-sm border border-gray-300 rounded"
           />
           <input
             type="text"
@@ -176,7 +176,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
             value={songName || ""}
             onChange={(e) => setSongName(e.target.value)}
             onFocus={() => setShowDisclaimer(null)}
-            className="p-2 block text-sm"
+            className="p-2 block text-sm border border-gray-300 rounded mb-2"
           />
           <input
             type="text"
@@ -186,10 +186,10 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
             value={artist || ""}
             onChange={(e) => setArtist(e.target.value)}
             onFocus={() => setShowDisclaimer(null)}
-            className="p-2 block text-sm"
+            className="p-2 block text-sm border border-gray-300 rounded mb-2"
           />
           <span
-            className="text-blue-500 cursor-pointer block text-sm"
+            className="text-blue-500 cursor-pointer block text-sm mb-4"
             onClick={findYouTubeAndSave}
           >
             Find YouTube link for me
@@ -201,12 +201,12 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
             value={version || ""}
             onChange={(e) => setVersion(e.target.value)}
             onFocus={() => setShowDisclaimer(null)}
-            className="p-2 block text-xs w-1/2"
+            className="p-2 block text-xs w-1/2 border border-gray-300 rounded"
           />
         </div>
         <button
           type="submit"
-          className="SmallButton self-center"
+          className="SmallButton self-center mt-2"
         >
           Add Song
         </button>
