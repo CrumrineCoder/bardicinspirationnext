@@ -19,7 +19,7 @@ export default async function main(req: NextApiRequest, res: NextApiResponse) {
       searchQuery.artist +
       " to generate tags for the use of the song in a tabletop RPG game. Here are the user's tags: [" +
       searchQuery.tags +
-      "]. And here is every tag: [" + searchQuery.allTags + "]. Use the user's tags, YouTube video comments of the songs, Reddit posts, and other blogs to suggest other preexisting tags to recommend. You can suggest a new tag that's not in the database if it's a good one. Do not include duplicates of the current user tags. Do not return anything other than tags in your response. Keep your response to the best 10 tags max. Do not include artists, licensing, or brands as tags. Return it formatted as an array.",
+      "]. And here is every tag: [" + searchQuery.allTags + "]. Use the user's tags, YouTube video comments of the songs, Reddit posts, and other blogs to suggest other preexisting tags to recommend. If you can think of a new tag that's not in the database, feel free to include if it's a good one. Only include like 1 or 2 new tags. Do not include duplicates of the current user tags. Do not return anything other than tags in your response. Keep your response to the best 10 tags max. Do not include artists, licensing, or brands as tags. Return it formatted as an array.",
   });
   if (!pingAI) {
     throw new Error("Failed to fetch data from YouTube API");

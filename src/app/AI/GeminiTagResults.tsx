@@ -33,7 +33,7 @@ export default function GeminiTagresults({
               setShowSongs(false);
             }
           }}
-          className="px-4 py-2 bg-green-500 text-white rounded"
+          className="SmallButton SmallButtonOnWhite"
         >
           {tag}
         </button>

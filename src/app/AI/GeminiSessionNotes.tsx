@@ -54,7 +54,7 @@ export default function GeminiSessionNotes() {
       />
       <div className="mt-4 flex justify-end">
         <button
-          className="px-4 py-2 bg-blue-500 text-white rounded"
+          className="SmallButton SmallButtonOnWhite"
           onClick={() => {
             queryAI();
           }}

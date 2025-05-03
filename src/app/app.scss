@@ -29,6 +29,16 @@ $blue: #4b4e6d;
   }
 }
 
+.SmallButtonOnWhite{
+  border-color: $black;
+  color: $black; 
+  &:hover {
+    background: $white;
+    color: black;
+    border-color: black;
+  }
+}
+
 .ClickableInlineEntry {
   opacity: 0.7;
   cursor: pointer;
