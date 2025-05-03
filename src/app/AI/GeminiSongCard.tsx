@@ -25,15 +25,18 @@ export default function GeminiSongCard({ song }: { song: Song }) {
     <div>
       <div className="flex align-top gap-3">
         <YouTube videoId={song.link} opts={ytPlayerOptions} />
-        <div className="text-center mb-4 relative">
+        <div className="text-center mb-4 relative flex-1">
           <button
             onClick={copyToClipboard}
-            className="SmallButton SmallButtonOnWhite"
+            className="SmallButton SmallButtonOnWhite mb-7"
           >
             Copy Link
           </button>
           {tooltipVisible && (
-            <div id="CopyTooltip" className="absolute top-[-25px] left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded shadow-lg">
+            <div
+              id="CopyTooltip"
+              className="absolute top-[-25px] left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded shadow-lg"
+            >
               Link copied!
             </div>
           )}
