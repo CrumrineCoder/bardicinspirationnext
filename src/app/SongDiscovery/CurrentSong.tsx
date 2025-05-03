@@ -1,16 +1,8 @@
-import YouTube from "react-youtube";
 import { Song } from "../interfaces";
 import { fetchTagsBySongID } from "../queries/fetchData";
 import { useState, useEffect } from "react";
 import AddTagButton from "../clientContainers/components/submitTag";
 import Gemini from "../AI/requestGemini";
-
-const ytPlayerOptions = {
-  playerVars: {
-    autoplay: 0,
-    controls: 1,
-  },
-};
 
 interface CurrentSongProps {
   song: Song;
@@ -44,18 +36,7 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
     getTags();
     setWaitingForTags(true);
   }, [song]);
-  /*
-      <iframe
-            className="w-full aspect-video block"
-            src={`https://www.youtube.com/embed/${song.link}`}
-            title={song.songName}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
 
-            <YouTube videoId={song.link} opts={ytPlayerOptions} />
-          */
   return (
     <div className="text-white flex flex-col gap-2 relative">
       <div className="flex">
@@ -72,8 +53,13 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
       <div className="w-full flex flex-col gap-1">
         <div className="flex justify-between items-center relative">
           <div>
-            <h1 className="text-2xl font-bold">{song.songName}</h1>
-            <span className="opacity-70">{song.artist}</span>
+            <h1 className="text-2xl font-bold inline">{song.songName}</h1>{" "}
+            {song.version && (
+              <span className="opacity-50 inline">
+                [{song.version} version]
+              </span>
+            )}
+            <span className="opacity-70 block">{song.artist}</span>
           </div>
           <div className="relative">
             <button onClick={copyToClipboard} className="SmallButton">
@@ -90,8 +76,9 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
           </div>
         </div>
         <div className="">
-        {waitingForTags ? <p className="italic">Waiting for Tags...</p> : (
-          tags.length > 0 ? (
+          {waitingForTags ? (
+            <p className="italic">Waiting for Tags...</p>
+          ) : tags.length > 0 ? (
             tags.map((tag, index) => (
               <span className="p-2" key={index}>
                 {tag.tagName}
@@ -99,8 +86,7 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
             ))
           ) : (
             <p className="italic">No tags!</p>
-          )
-        )}
+          )}
         </div>
         <Gemini
           onUpdate={() => getTags()}

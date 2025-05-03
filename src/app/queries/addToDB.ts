@@ -7,13 +7,15 @@ import { searchForTagIDWithName } from "./fetchData";
 export async function addSongToDB(
   songName: string,
   artist: string,
-  link: string
+  link: string,
+  version?: string | null
 ) {
   try {
     await db.insert(songsTable).values({
       songName: songName,
       artist: artist,
       link: link,
+      version: version
     });
     console.log("Data sent successfully!");
   } catch (error) {

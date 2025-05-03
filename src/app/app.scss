@@ -52,7 +52,7 @@ $blue: #4b4e6d;
 
 .disabled {
   cursor: not-allowed !important;
-  opacity: .5; 
+  opacity: .3; 
   & * {
     pointer-events: none;
     user-select: none;

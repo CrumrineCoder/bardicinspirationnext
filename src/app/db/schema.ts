@@ -44,6 +44,7 @@ export const songsTable = pgTable("songs", {
   songName: text("songname").notNull(),
   artist: text("artist").notNull(),
   link: text("link").notNull(),
+  version: text("version")
 });
 
 export const tagTable = pgTable("tags", {

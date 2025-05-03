@@ -24,6 +24,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
   const [potentialLinks, setPotentialLinks] = useState<string[] | null>(null);
   const [showDisclaimer, setShowDisclaimer] = useState<string | null>(null);
   const [potentialLinkIndex, setPotentialLinkIndex] = useState<number>(0);
+  const [version, setVersion] = useState<string | null>(null);
 
   function resetVal() {
     setSongName(null);
@@ -31,6 +32,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
     setLink(null);
     setPotentialLinks(null);
     setShowDisclaimer(null);
+    setVersion(null);
     setPotentialLinkIndex(0);
   }
 
@@ -47,7 +49,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
         setShowDisclaimer("Invalid YouTube URL");
         return;
       }
-      addSongToDB(songName, artist, videoID)
+      addSongToDB(songName, artist, videoID, version)
         .then(() => {
           onUpdate();
           resetVal();
@@ -155,7 +157,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
           submitForm();
         }}
       >
-        <div className="">
+        <div className="text-sm">
           <input
             type="text"
             name="link"
@@ -164,7 +166,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
             value={link || ""}
             onChange={(e) => setLink(e.target.value)}
             onFocus={() => setShowDisclaimer(null)}
-            className="p-2 float-right"
+            className="p-2 float-right text-sm"
           />
           <input
             type="text"
@@ -174,7 +176,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
             value={songName || ""}
             onChange={(e) => setSongName(e.target.value)}
             onFocus={() => setShowDisclaimer(null)}
-            className="p-2 block"
+            className="p-2 block text-sm"
           />
           <input
             type="text"
@@ -184,14 +186,23 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
             value={artist || ""}
             onChange={(e) => setArtist(e.target.value)}
             onFocus={() => setShowDisclaimer(null)}
-            className="p-2 block"
+            className="p-2 block text-sm"
           />
           <span
-            className="text-blue-500 cursor-pointer block"
+            className="text-blue-500 cursor-pointer block text-sm"
             onClick={findYouTubeAndSave}
           >
             Find YouTube link for me
           </span>
+          <input
+            type="text"
+            name="version"
+            placeholder="OPTIONAL: version, eg. remix/language"
+            value={version || ""}
+            onChange={(e) => setVersion(e.target.value)}
+            onFocus={() => setShowDisclaimer(null)}
+            className="p-2 block text-xs w-1/2"
+          />
         </div>
         <button
           type="submit"

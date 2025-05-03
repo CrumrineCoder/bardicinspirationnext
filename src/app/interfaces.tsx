@@ -5,6 +5,7 @@ export interface Song {
   songName: string;
   artist: string;
   link: string;
+  version?: string | null;
 }
 
 export interface Tag {
