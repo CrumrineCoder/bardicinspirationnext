@@ -20,6 +20,7 @@ interface CurrentSongProps {
 export default function currentSong({ song, allTags }: CurrentSongProps) {
   const [tags, setTags] = useState<{ tagName: string }[]>([]);
   const [tooltipVisible, setTooltipVisible] = useState(false);
+  const [waitingForTags, setWaitingForTags] = useState(true);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(
@@ -34,12 +35,14 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
     fetchTagsBySongID(song.id).then(async (response) => {
       const data = await response;
       setTags(data);
+      setWaitingForTags(false);
     });
   };
 
   useEffect(() => {
     setTags([]);
     getTags();
+    setWaitingForTags(true);
   }, [song]);
   /*
       <iframe
@@ -87,7 +90,8 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
           </div>
         </div>
         <div className="">
-          {tags.length > 0 ? (
+        {waitingForTags ? <p className="italic">Waiting for Tags...</p> : (
+          tags.length > 0 ? (
             tags.map((tag, index) => (
               <span className="p-2" key={index}>
                 {tag.tagName}
@@ -95,7 +99,8 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
             ))
           ) : (
             <p className="italic">No tags!</p>
-          )}
+          )
+        )}
         </div>
         <Gemini
           onUpdate={() => getTags()}
