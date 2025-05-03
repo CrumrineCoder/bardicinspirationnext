@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Song } from "../interfaces";
 import CurrentSong from "./CurrentSong";
 import {
@@ -87,38 +87,47 @@ export default function SongDiscovery() {
           {!addingSong ? "Submit Song" : "Find Songs"}
         </button>
       </div>
-      <div className="relative flex text-white gap-10">
-        <div>
-          <SongListing
-            selectedSong={selectedSong}
-            allSongs={allSongs}
-            setSelectedSong={setSelectedSong}
-            disabled={addingSong}
-          ></SongListing>
+      <Suspense fallback={<>Loading...</>}>
+        <div className="relative flex text-white gap-10">
+          {allSongs ? (
+            <SongListing
+              selectedSong={selectedSong}
+              allSongs={allSongs}
+              setSelectedSong={setSelectedSong}
+              disabled={addingSong}
+            ></SongListing>
+          ): <div className="m-2">Loading Song titles...</div>}
+          {!addingSong ? (
+            <>
+              {selectedSong ? (
+                <CurrentSong
+                  allTags={allTags}
+                  song={selectedSong}
+                ></CurrentSong>
+              ) : (
+                <div className="m-2">Loading Current Song...</div>
+              )}
+            </>
+          ) : (
+            <AddSong
+              onUpdate={() => {
+                getAllSongs();
+                setAddingSong(!addingSong);
+              }}
+            ></AddSong>
+          )}
+          {allTags ? (
+            <TagListing
+              selectedTag={selectedTag}
+              allTags={allTags}
+              setSelectedTag={setSelectedTag}
+              getSongsByTagName={getSongsByTagName}
+              getAllSongs={getAllSongs}
+              disabled={addingSong}
+            ></TagListing>
+          ): <div className="m-2">Loading Tag Categories...</div>}
         </div>
-        {!addingSong ? (
-          <>
-            {selectedSong && (
-              <CurrentSong allTags={allTags} song={selectedSong}></CurrentSong>
-            )}
-          </>
-        ) : (
-          <AddSong
-            onUpdate={() => {
-              getAllSongs();
-              setAddingSong(!addingSong);
-            }}
-          ></AddSong>
-        )}
-        <TagListing
-          selectedTag={selectedTag}
-          allTags={allTags}
-          setSelectedTag={setSelectedTag}
-          getSongsByTagName={getSongsByTagName}
-          getAllSongs={getAllSongs}
-          disabled={addingSong}
-        ></TagListing>
-      </div>
+      </Suspense>
       <Link
         href="/"
         className="mx-auto mt-4 flex w-fit items-center justify-center rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 cursor-pointer"

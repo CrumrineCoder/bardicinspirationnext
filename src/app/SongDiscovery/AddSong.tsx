@@ -95,7 +95,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
-            <div className="flex justify-between">
+            <div className="flex justify-between mt-2">
               <span
                 className="SmallButton"
                 style={{
@@ -117,7 +117,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
                       potentialLinks[potentialLinkIndex]
                   );
                 }}
-                className=""
+                className="SmallButton"
               >
                 Use this one!
               </span>
@@ -206,7 +206,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
         </div>
         <button
           type="submit"
-          className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+          className="SmallButton self-center"
         >
           Add Song
         </button>
