@@ -35,7 +35,7 @@ export default function Taglisting({
           onChange={(e) => {
             setSelectedTag(e.target.value);
           }}
-          className="mr-2 p-1"
+          className="mr-2 mb-3 p-1"
         />
         <button className="SmallButton" type="submit">
           Search Tag

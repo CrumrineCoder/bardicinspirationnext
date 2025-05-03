@@ -87,10 +87,12 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
       <div className="flex">
         {!link && potentialLinks != null && potentialLinks.length > 0 ? (
           <div className="flex flex-col w-full">
-            <YouTube
-              videoId={potentialLinks[potentialLinkIndex]}
-              opts={ytPlayerOptions}
-            />
+            <iframe
+              className="w-3xl aspect-video block"
+              src={`https://www.youtube.com/embed/${potentialLinks[potentialLinkIndex]}`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
             <div className="flex justify-between">
               <span
                 className="YouTubePreviousButton"
@@ -138,11 +140,12 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
             </div>
           </div>
         ) : (
-          <YouTube
-            videoId={"NSlkW1fFkyo"}
-            opts={ytPlayerOptions}
-            className="opacity-0 pointer-events-none"
-          />
+          <iframe
+            className="w-3xl aspect-video block opacity-0 pointer-events-none"
+            src={`https://www.youtube.com/embed/NSlkW1fFkyo`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         )}
       </div>
       <form
