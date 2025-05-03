@@ -97,7 +97,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
             ></iframe>
             <div className="flex justify-between">
               <span
-                className="YouTubePreviousButton"
+                className="SmallButton"
                 style={{
                   opacity: potentialLinkIndex > 0 ? 1 : 0,
                   pointerEvents: potentialLinkIndex > 0 ? "auto" : "none",
@@ -117,12 +117,12 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
                       potentialLinks[potentialLinkIndex]
                   );
                 }}
-                className="YouTubeConfirmButton"
+                className=""
               >
                 Use this one!
               </span>
               <span
-                className="YouTubeNextButton"
+                className="SmallButton"
                 style={{
                   opacity:
                     potentialLinkIndex < potentialLinks.length - 1 ? 1 : 0,
