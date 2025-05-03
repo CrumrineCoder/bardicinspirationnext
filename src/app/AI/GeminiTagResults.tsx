@@ -46,29 +46,28 @@ export default function GeminiTagresults({
               Found {songs.length} result{songs.length > 1 && <>s</>}!
             </span>
             {songs.length > 1 && (
-              <div className="flex space-x-4">
-                <br />
+                <div className="flex justify-between w-full">
                 <button
                   onClick={() => setSongIndex(songIndex - 1)}
-                  className={`${
-                    songIndex !== 0
-                      ? "opacity-100"
-                      : "opacity-0 pointer-events-none"
+                  className={`SmallButton SmallButtonOnWhite ${
+                  songIndex !== 0
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
                   }`}
                 >
-                  Previous
+                  ...previous
                 </button>
                 <button
                   onClick={() => setSongIndex(songIndex + 1)}
-                  className={`${
-                    songIndex !== songs.length - 1
-                      ? "opacity-100"
-                      : "opacity-0 pointer-events-none"
+                  className={`SmallButton SmallButtonOnWhite ${
+                  songIndex !== songs.length - 1
+                    ? "opacity-100"
+                    : "opacity-0 pointer-events-none"
                   }`}
                 >
-                  Next
+                  Next...
                 </button>
-              </div>
+                </div>
             )}
           </div>
           <GeminiSongCard song={songs[songIndex]}></GeminiSongCard>
