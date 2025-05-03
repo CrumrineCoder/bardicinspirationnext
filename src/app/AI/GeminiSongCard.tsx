@@ -35,7 +35,7 @@ export default function GeminiSongCard({ song }: { song: Song }) {
           {tooltipVisible && (
             <div
               id="CopyTooltip"
-              className="absolute top-[-25px] left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded shadow-lg"
+              className="absolute top-[-30px] left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded shadow-lg"
             >
               Link copied!
             </div>
