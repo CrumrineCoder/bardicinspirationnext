@@ -21,8 +21,8 @@ $blue: #4b4e6d;
   border: $white 2px solid;
   color: $white;
   background: none;
+  cursor: pointer;
   &:hover {
-    cursor: pointer;
     background: $black;
     color: white;
     border-color: white;
