@@ -67,7 +67,7 @@ ToDo:
   - AI suggested tags for a song [DONE]
     - Base case suggested tags too -> instrumental or vocal? How fast or slow? Use in game? Could make a form that's like a starter guide for tags on a song.
   - AI related tags based on what's already in the db.
-  - AI parse body of text to find a song
+  - AI parse body of text to find a song [DONE]
   - Multiple tags search
   - Filter by source (Hollow Knight)
   - Search Song Name

@@ -204,10 +204,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
             className="p-2 block text-xs w-1/2 border border-gray-300 rounded"
           />
         </div>
-        <button
-          type="submit"
-          className="SmallButton self-center mt-2"
-        >
+        <button type="submit" className="SmallButton self-center mt-2">
           Add Song
         </button>
       </form>
