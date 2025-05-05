@@ -1,6 +1,6 @@
 "use client";
-import { addTagToDB } from "../../queries/addToDB";
-import { fetchTagsBySongID } from "../../queries/fetchData";
+import { addTagToDB } from "../queries/addToDB";
+import { fetchTagsBySongID } from "../queries/fetchData";
 import { useState } from "react";
 
 export default function AddTagButton({

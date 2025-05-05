@@ -1,7 +1,7 @@
 import { Song } from "../interfaces";
 import { fetchTagsBySongID } from "../queries/fetchData";
 import { useState, useEffect } from "react";
-import AddTagButton from "../clientContainers/components/submitTag";
+import AddTagButton from "./submitTag";
 import Gemini from "../AI/requestGemini";
 
 interface CurrentSongProps {
