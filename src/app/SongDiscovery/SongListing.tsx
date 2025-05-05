@@ -14,7 +14,7 @@ export default function SongListing({
   disabled,
 }: SongListingProps) {
   return (
-    <div className={disabled ? "disabled" : ""}>
+    <div className={`${disabled ? "disabled" : ""} w-48`}>
       <div className="flex justify-center mb-3">
         <button
           className="SmallButton"
@@ -41,7 +41,7 @@ export default function SongListing({
           >
             {song.songName}{" "}
             {song.version && (
-              <span className="opacity-50 inline">
+              <span className="opacity-50 block">
                 [{song.version} version]
               </span>
             )}
