@@ -17,10 +17,12 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
   const [songName, setSongName] = useState<string | null>(null);
   const [artist, setArtist] = useState<string | null>(null);
   const [link, setLink] = useState<string | null>(null);
-  const [potentialLinks, setPotentialLinks] = useState<string[] | null>(null);
-  const [showDisclaimer, setShowDisclaimer] = useState<string | null>(null);
-  const [potentialLinkIndex, setPotentialLinkIndex] = useState<number>(0);
   const [version, setVersion] = useState<string | null>(null);
+  // List of YouTube IDs
+  const [potentialLinks, setPotentialLinks] = useState<string[] | null>(null);
+  const [potentialLinkIndex, setPotentialLinkIndex] = useState<number>(0);
+
+  const [showDisclaimer, setShowDisclaimer] = useState<string | null>(null);
 
   function resetVal() {
     setSongName(null);
@@ -47,7 +49,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
       }
       addSongToDB(songName, artist, videoID, version)
         .then(() => {
-          // Update the parent and reset current component 
+          // Update the parent and reset current component
           onUpdate();
           resetVal();
         })
@@ -56,7 +58,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
         });
     }
   }
-  // Find the Top 5 YouTubeIDs for the current songName and Artist 
+  // Find the Top 5 YouTubeIDs for the current songName and Artist
   async function findYouTubeAndSave() {
     if (songName && artist) {
       try {
@@ -83,6 +85,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
     }
   }
   //    <Image src={blankwhiteimage} alt="placeholder" className="w-full opacity-90" />
+  // We're not using React-Youtube because it doesn't refresh properly if the user navigates from the Home Page. So we'll just use the actual iframe.
   return (
     <div className="text-white flex flex-col gap-2 relative">
       <div className="flex">
