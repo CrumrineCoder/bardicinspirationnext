@@ -1,14 +1,19 @@
 import { fetchSongsByTagName } from "../queries/fetchData";
 import { GeminiTagResultsProps, Song } from "../interfaces";
 import { useState } from "react";
+
+// Formatting for each Song to display the YouTube video, songname & artist 
 import GeminiSongCard from "./GeminiSongCard";
 
 export default function GeminiTagresults({
   tag,
   reason,
 }: GeminiTagResultsProps) {
+  // All Songs to be displayed in that row
   const [songs, setSongs] = useState<Song[] | null>();
+  // Current song 
   const [songIndex, setSongIndex] = useState<number>(0);
+  // Toggle for the [tag] button to show all the songs
   const [showSongs, setShowSongs] = useState<boolean>(false);
 
   return (

@@ -10,14 +10,14 @@ const ytPlayerOptions = {
 };
 
 export default function GeminiSongCard({ song }: { song: Song }) {
-  const [tooltipVisible, setTooltipVisible] = useState(false);
 
+  // Functionality for the Link Copied! tooltip
+  const [tooltipVisible, setTooltipVisible] = useState(false);
   const copyToClipboard = () => {
     navigator.clipboard.writeText(
       `https://www.youtube.com/watch?v=${song.link}`
     );
     setTooltipVisible(true);
-
     setTimeout(() => setTooltipVisible(false), 1000);
   };
 
