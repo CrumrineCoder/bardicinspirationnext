@@ -7,6 +7,7 @@ interface SongListingProps {
   disabled?: boolean;
 }
 
+// Left songlisting; can set the selected song in the parent (Page.tsx)
 export default function SongListing({
   selectedSong,
   allSongs,

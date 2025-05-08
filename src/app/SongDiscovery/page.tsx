@@ -13,6 +13,7 @@ import AddSong from "./AddSong";
 import Link from "next/link";
 
 // from https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+// We're using this to randomize the Song Listing on the left 
 function shuffleArray(array: Song[]) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -24,30 +25,11 @@ function shuffleArray(array: Song[]) {
 export default function SongDiscovery() {
   const [selectedSong, setSelectedSong] = useState<Song | null>(null);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  // Not sure if there's a better way to be handling displaying every song in the database other than storing it all here
   const [allSongs, setAllSongs] = useState<Song[] | null>(null);
   const [allTags, setAllTags] = useState<string[] | null>(null);
+  // Toggle state for if the user is changing between the Add Song UI and the manually viewing songs UI [We're keeping the functionality here to maintain the UI between the two for aesthetic purposes]
   const [addingSong, setAddingSong] = useState<boolean>(false);
-
-  useEffect(() => {
-    fetchAllSongs().then(async (response) => {
-      const data = await response;
-      setAllSongs(data);
-    });
-  }, []);
-
-  function getSongsByTagName(selectedTag: string | null) {
-    if (!selectedTag) {
-      console.warn("No tag selected.");
-      return;
-    }
-    fetchSongsByTagName(selectedTag.toLowerCase())
-      .then((data) => {
-        setAllSongs(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching songs by tag name:", error);
-      });
-  }
 
   function getAllSongs() {
     fetchAllSongs().then(async (response) => {
@@ -67,15 +49,33 @@ export default function SongDiscovery() {
         const mappedData = data.map((tag: { tagName: string }) => {
           return tag.tagName;
         });
+        // Recent tags; so we'll reverse it. We could've done this in the query itself but I prefer to just do it here so we don't have to have a dedicated query for it. 
         setAllTags(mappedData.reverse());
       }
     });
   }
 
+  // On first load, fetch all songs and tags from the database.
   useEffect(() => {
     getAllSongs();
     getAllTags();
   }, []);
+
+  // Functionality when the user clicks on a tag on the right hand side. 
+  function getSongsByTagName(selectedTag: string | null) {
+    if (!selectedTag) {
+      console.warn("No tag selected.");
+      return;
+    }
+    // Change all songs to be the subset of songs with the tag; we could handle this by keeping allSongs and searchSongs(?) separate but that might be future functionality. This works for now. 
+    fetchSongsByTagName(selectedTag.toLowerCase())
+      .then((data) => {
+        setAllSongs(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching songs by tag name:", error);
+      });
+  }
 
   return (
     <div>

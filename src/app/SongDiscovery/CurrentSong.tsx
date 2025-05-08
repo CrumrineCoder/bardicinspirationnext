@@ -1,19 +1,30 @@
-import { Song } from "../interfaces";
 import { fetchTagsBySongID } from "../queries/fetchData";
 import { useState, useEffect } from "react";
 import AddTagButton from "./submitTag";
 import Gemini from "../AI/requestGemini";
+
+import { Song } from "../interfaces";
+/*
+  id: number;
+  songName: string;
+  artist: string;
+  link: string;
+  version?: string | null;
+*/
 
 interface CurrentSongProps {
   song: Song;
   allTags?: string[] | null;
 }
 
+// Component which takes a Song's data and formats it to be displayed to the user.
 export default function currentSong({ song, allTags }: CurrentSongProps) {
   const [tags, setTags] = useState<{ tagName: string }[]>([]);
-  const [tooltipVisible, setTooltipVisible] = useState(false);
+  // Waiting state so that we can show "Waiting for Tags" vs "No Tags" for the user
   const [waitingForTags, setWaitingForTags] = useState(true);
 
+  // Handle tooltip for "Link Copied!"
+  const [tooltipVisible, setTooltipVisible] = useState(false);
   const copyToClipboard = () => {
     navigator.clipboard.writeText(
       `https://www.youtube.com/watch?v=${song.link}`
@@ -23,6 +34,7 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
     setTimeout(() => setTooltipVisible(false), 1000);
   };
 
+  // Given a Song ID [parent component is fed an array of them], get the tags to be displayed.
   const getTags = () => {
     fetchTagsBySongID(song.id).then(async (response) => {
       const data = await response;
@@ -31,6 +43,7 @@ export default function currentSong({ song, allTags }: CurrentSongProps) {
     });
   };
 
+  // When the song changes, reset everything to default
   useEffect(() => {
     setTags([]);
     getTags();

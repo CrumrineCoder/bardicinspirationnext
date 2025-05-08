@@ -3,6 +3,7 @@ import { addTagToDB } from "../queries/addToDB";
 import { fetchTagsBySongID } from "../queries/fetchData";
 import { useState } from "react";
 
+// This button exists below the current song that allows users to add tags to the db for the current song
 export default function AddTagButton({
   onUpdate,
   songID,
@@ -11,13 +12,16 @@ export default function AddTagButton({
   songID: number;
 }) {
   const [tagName, setTagName] = useState<string | null>(null);
+  // Error handling
   const [showDisclaimer, setShowDisclaimer] = useState<boolean>(false);
 
   async function submitTag() {
     if (tagName) {
       try {
         await addTagToDB(tagName.toLowerCase(), songID);
+        // Update parent
         onUpdate();
+        // Reset
         setShowDisclaimer(false);
         setTagName(null);
       } catch (error: unknown) {

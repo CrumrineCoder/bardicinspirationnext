@@ -5,7 +5,17 @@ export interface Song {
   songName: string;
   artist: string;
   link: string;
+  // Version is optional because there might not be alternative versions/this is the default version
   version?: string | null;
+}
+
+export interface TagListingProps {
+  selectedTag: string | null;
+  allTags: string[] | null;
+  setSelectedTag: (tagName: string | null) => void;
+  getSongsByTagName: (tagName: string | null) => void;
+  getAllSongs: () => void;
+  disabled?: boolean; 
 }
 
 export interface Tag {

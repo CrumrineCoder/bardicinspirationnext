@@ -1,19 +1,13 @@
-interface TagListingProps {
-  selectedTag: string | null;
-  allTags: string[] | null;
-  setSelectedTag: (tagName: string | null) => void;
-  getSongsByTagName: (tagName: string | null) => void;
-  getAllSongs: () => void;
-  disabled?: boolean; 
-}
+import { TagListingProps } from "../interfaces";
 
+// Right hand listing for all tags
 export default function Taglisting({
   selectedTag,
   allTags,
   setSelectedTag,
   getSongsByTagName,
   getAllSongs,
-  disabled
+  disabled,
 }: TagListingProps) {
   return (
     <div className={disabled ? "disabled" : ""}>
@@ -58,7 +52,7 @@ export default function Taglisting({
               <span
                 key={index}
                 onClick={() => {
-                  setSelectedTag(tag); 
+                  setSelectedTag(tag);
                   getSongsByTagName(tag);
                 }}
                 className={`pr-2 ClickableInlineEntry SidebarTagListing ${
