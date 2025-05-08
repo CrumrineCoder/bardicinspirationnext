@@ -9,7 +9,7 @@ export default async function findYouTubeURL(
     try{
         const searchQuery  = req.query;
 
-        //  query: { songName: 'City of Tears', artist: 'Hollow Knight' },
+        // Example query: { songName: 'City of Tears', artist: 'Hollow Knight' },
         // Validate the query
         if (!searchQuery || (!searchQuery.songName || !searchQuery.artist)) {
             res.status(400).json({ error: "Missing search query" });

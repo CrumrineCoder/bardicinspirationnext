@@ -10,6 +10,8 @@ function validateSyntax(urlToParse: string) {
   }
   return false;
 }
+
+// Currently not in use
 export default async function validateYouTubeURL(
   req: NextApiRequest,
   res: NextApiResponse

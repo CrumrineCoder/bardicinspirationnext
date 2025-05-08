@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
+// Currently not in use
 export default async function main(req: NextApiRequest, res: NextApiResponse) {
   const searchQuery = req.query;
   if (!searchQuery || !searchQuery.sessionNotes || !searchQuery.allTags) {
