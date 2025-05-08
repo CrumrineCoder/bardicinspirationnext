@@ -12,7 +12,8 @@ export default async function main(req: NextApiRequest, res: NextApiResponse) {
   const searchQuery = req.query;
   // I'm unsure on how to best handle allTags; I think it's best to pipe it through the API but I'm not sure how scaleable it is to ask the AI directly in the prompt to compare it. Has a risk of overloading it.
   // Might need some way to update the Gemini AI with a local state of the tags, if that's even possible. 
-  if (!searchQuery || !searchQuery.songName || !searchQuery.artist || !searchQuery.tags || !searchQuery.allTags) {
+  // The song might not have tags, so we're not validating for that 
+  if (!searchQuery || !searchQuery.songName || !searchQuery.artist) {
     res.status(400).json({ error: "Missing search query" });
     return;
   }

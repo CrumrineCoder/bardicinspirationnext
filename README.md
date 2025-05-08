@@ -97,6 +97,7 @@ ToDo:
   - Filter by source (Hollow Knight)
   - Search Song Name
 * Copy link [DONE]
+* When the user submits a song, make it the current song
 * Get BPM of songs from a library?
   - I would have to grab the audiostream.
 * Errors = vicious mockery. Health bar on the screen, does 1d8 damage each time?
