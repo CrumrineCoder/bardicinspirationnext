@@ -2,11 +2,6 @@
 import { addSongToDB } from "../queries/addToDB";
 import { useState } from "react";
 
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import Image from "next/image";
-
-import blankwhiteimage from "../../blank-white-landscape-7sn5o1woonmklx1h.jpg";
-
 // TODO: probably move this to its own component
 import YouTube from "react-youtube";
 
@@ -17,6 +12,7 @@ const ytPlayerOptions = {
   },
 };
 
+// Form that handles user submission of songs into the database
 export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
   const [songName, setSongName] = useState<string | null>(null);
   const [artist, setArtist] = useState<string | null>(null);
@@ -51,6 +47,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
       }
       addSongToDB(songName, artist, videoID, version)
         .then(() => {
+          // Update the parent and reset current component 
           onUpdate();
           resetVal();
         })
@@ -59,6 +56,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
         });
     }
   }
+  // Find the Top 5 YouTubeIDs for the current songName and Artist 
   async function findYouTubeAndSave() {
     if (songName && artist) {
       try {
@@ -75,6 +73,7 @@ export default function AddSong({ onUpdate }: { onUpdate: () => void }) {
         );
         const data = await response.json();
         setPotentialLinks(data.videoIDs);
+        // Reset link because we'll be adding a new one from the potential link carousel
         setLink(null);
       } catch (error) {
         console.log("Error: " + error);
