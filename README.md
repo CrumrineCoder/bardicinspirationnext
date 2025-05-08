@@ -63,8 +63,8 @@ ToDo:
          <div class="tooltip-arrow" data-popper-arrow></div>
       ```
    - Songs Page [DONE]
-
    - Button Styling 
+   - Responsive 
 
 * Auth
   - Login [DONE]

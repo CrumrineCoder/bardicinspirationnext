@@ -1,8 +1,5 @@
 "use client";
 
-import SongList from "./clientContainers/SongList";
-import SubmitSongForm from "./clientContainers/components/submitSongForm";
-import AuthenticationParent from "./authenticationComponents/authenticationParent";
 import Landing from "./landingContainer/Landing";
 import Link from "next/link";
 
