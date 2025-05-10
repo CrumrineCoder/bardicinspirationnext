@@ -5,4 +5,5 @@ import Page from "../src/app/page";
 test("Page", () => {
   render(<Page />);
   expect(screen.getByRole("link", { name: "Find More Songs" })).toBeDefined();
+  expect(screen.getByTestId("landing-container")).toBeDefined();
 });
