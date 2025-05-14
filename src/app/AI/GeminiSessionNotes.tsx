@@ -25,38 +25,47 @@ export default function GeminiSessionNotes() {
     setUserInput(e.target.value);
   };
 
-  async function queryAI() {
+async function queryAI() {
+  try {
     // Clear current response
     setAIResponse(null);
+
     // Get every tag in the Database
-    fetchAllTags().then(async (response) => {
-      const data = await response;
-      if (data) {
-        // Get the TagName from each tag
-        const mappedData = data.map((tag: { tagName: string }) => {
-          return tag.tagName;
-        });
-        // Then make an array to send to the API
-        const joinedTags = mappedData.join(",");
-        const response = await fetch(
-          `/api/geminiSuggestTags?sessionNotes=${encodeURIComponent(
-            userInput
-          )}&allTags=${encodeURIComponent(joinedTags)}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        if (await response.ok) {
-          const data = await response.json();
-          // We'll be getting a JSON from the API here, which can be iterated upon to make the GeminiTagResults
-          setAIResponse(data.tags);
+    const response = await fetchAllTags();
+    const data = await response;
+
+    if (data) {
+      // Get the TagName from each tag
+      const mappedData = data.map((tag: { tagName: string }) => tag.tagName);
+
+      // Then make an array to send to the API
+      const joinedTags = mappedData.join(",");
+
+      const apiResponse = await fetch(
+        `/api/geminiSuggestTags?sessionNotes=${encodeURIComponent(
+          userInput
+        )}&allTags=${encodeURIComponent(joinedTags)}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
+      );
+
+      if (!apiResponse.ok) {
+        throw new Error(`API Error: ${apiResponse.statusText}`);
       }
-    });
+
+      const apiData = await apiResponse.json();
+
+      // We'll be getting a JSON from the API here, which can be iterated upon to make the GeminiTagResults
+      setAIResponse(apiData.tags);
+    }
+  } catch (error) {
+    console.error("Error querying AI:", error);
   }
+}
 
   return (
     <div className="AISearchTagsContainer w-[60vw] bg-white p-2 rounded-lg">
