@@ -29,6 +29,7 @@
     "lucide-react": "^0.503.0",
     "next": "15.3.0",
     "next-auth": "^5.0.0-beta.26",
+    "opencommit": "^3.2.7",
     "pg": "^8.14.1",
     "postgres": "^3.4.5",
     "react": "19.1",
