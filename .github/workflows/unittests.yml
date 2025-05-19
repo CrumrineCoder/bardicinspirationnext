@@ -24,3 +24,7 @@ jobs:
 
       - name: Run unit tests
         run: npx vitest run
+        env:
+            DATABASE_URL: ${{ secrets.DATABASE_URL }}
+            YOUTUBE_API_KEY: ${{secrets.YOUTUBE_API_KEY}}
+            GEMINI_API_KEY: ${{secrets.GEMINI_API_KEY}}
